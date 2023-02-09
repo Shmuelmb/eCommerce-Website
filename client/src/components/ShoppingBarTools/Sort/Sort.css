@@ -1,0 +1,24 @@
+.collection-sort {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+  }
+  .collection-sort:first-child {
+    padding-right: 20px;
+  }
+
+  label {
+    color: #666;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 2em;
+    text-transform: uppercase;
+  }
+
+  .collection-sort >p{
+    font-size: small;
+    text-align: center;
+    width: 210px;
+
+  }

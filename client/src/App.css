@@ -1,0 +1,41 @@
+
+
+body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    background-color: #a6aeb094;
+  }
+p{
+  margin: 0;
+}
+
+    @media (max-width: 920px) {
+        .product-card {
+          flex: 1 21%;
+        }
+      
+        .products .product-card:first-child,
+        .products .product-card:nth-child(2) {
+          flex: 2 46%;
+        }
+      }
+      
+      @media (max-width: 600px) {
+        .product-card {
+          flex: 1 46%;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        h1 {
+          margin-bottom: 20px;
+        }
+      
+        .product-filter {
+          flex-direction: column;
+        }
+      
+        .sort {
+          align-self: flex-start;
+        }
+      }

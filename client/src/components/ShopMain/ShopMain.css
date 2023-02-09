@@ -1,0 +1,8 @@
+.ShopMain{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 90%;
+  margin: 15px auto;
+}

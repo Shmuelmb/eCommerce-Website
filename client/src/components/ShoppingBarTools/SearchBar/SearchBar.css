@@ -1,0 +1,10 @@
+.search-container{
+    width: 30%;
+}
+.search-bar{
+    padding-top: 5%;
+    padding-bottom: 5%;
+    width: 100%;
+    font-size: 0.9rem;
+
+}

@@ -1,0 +1,12 @@
+.ShoppingBarTools{
+    display: flex;
+    width: 70%;
+    height: 150px;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+
+
+}
