@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { DataGrid } from "@mui/x-data-grid";
-
+import "./ManagementShopTable.css";
 const ManagementShopTable = () => {
   const [state, setState] = useState([]);
-  const [keys, setKeys] = useState([]);
 
   const getData = async () => {
     try {
@@ -11,48 +9,55 @@ const ManagementShopTable = () => {
         "http://localhost:8000/api/products/getAllProducts"
       );
       const data = await response.json();
-      console.log(data);
+      setState(data);
     } catch (err) {
       console.log(err);
     }
   };
-
+  const removeItem = async (id) => {
+    try {
+      const req = await fetch(
+        `http://localhost:8000/api/products/deleteProduct/${id}`,
+        { method: "DELETE" }
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
     getData();
-  }, []);
-
-  const columns = [
-    { headerName: "ID", width: 70 },
-    { field: "id", headerName: "ID", width: 70 },
-    { field: "id", headerName: "ID", width: 70 },
-    { field: "id", headerName: "ID", width: 70 },
-    { field: "id", headerName: "ID", width: 70 },
-    { field: "id", headerName: "ID", width: 70 },
-    { field: "id", headerName: "ID", width: 70 },
-    { field: "id", headerName: "ID", width: 70 },
-  ];
-
-  const rows = [
-    { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-    { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-    { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-    { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-    { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-    { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-    { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-    { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-    { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
-  ];
+  }, [removeItem]);
 
   return (
-    <div style={{ height: 400, width: "70%" }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        checkboxSelection
-      />
+    <div className="management-shop-table">
+      <div className="data-table">
+        <table>
+          <thead>
+            <tr>
+              <th>item</th>
+              <th>category</th>
+              <th>title</th>
+              <th>price</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            {state.map((val, key) => {
+              return (
+                <tr key={val._id}>
+                  <td>{key + 1}</td>
+                  <td>{val.category}</td>
+                  <td>{val.title}</td>
+                  <td>{val.price}</td>
+                  <td>
+                    <button onClick={() => removeItem(val._id)}>remove</button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
