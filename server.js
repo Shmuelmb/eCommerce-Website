@@ -4,20 +4,23 @@ import cors from "cors";
 import mongoose from "mongoose";
 import { productsAllowedUpdates } from "./data/data.js";
 import dotenv from "dotenv";
-
+import bcrypt from "bcrypt";
+import { addUserController } from "./controllers/UsersControllers.js";
+//dotenv
 dotenv.config();
-
 const { PORT, DB_PASS, DB_USER, DB_HOST, DB_NAME } = process.env;
-//the initialising of the server itself
-const app = express();
 
-// middlewares for the server
+//express and cors
+const app = express();
 app.use(express.json());
 app.use(cors());
+
+//mongoose
 mongoose.set("strictQuery", false);
 
 //schemas
 
+//products
 const ProductsSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -58,10 +61,7 @@ const Products = mongoose.model("Products", ProductsSchema);
 //put - edit an item inside the db --> valid operations --> findOne({condition:condition}) --> model.save()
 //delete - delete an item from the db --> findOneAndDelete({condition:condition})
 
-//build from path and a function that called controller
-// app.get('/api/calculator', async (req,res) => {
-//     res.send({message:"the answer of is"})
-// })
+//products route
 app.get("/api/products/getAllProducts", async (req, res) => {
   try {
     const allProducts = await Products.find({});
@@ -159,11 +159,16 @@ app.delete("/api/products/deleteProduct/:id", async (req, res) => {
     res.status(500).send({ message: e });
   }
 });
+//users route
+app.post("/api/users/register", addUserController);
 
-// mongoose.connect("mongodb://localhost:27017/OnlineShop", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
+app.post("/login", (req, res) => {
+  res.json("login");
+});
+
+app.get("/profile", (req, res) => {
+  res.json("profile");
+});
 
 mongoose.connect(
   `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`,
