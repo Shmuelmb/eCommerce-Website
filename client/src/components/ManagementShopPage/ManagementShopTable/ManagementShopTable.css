@@ -1,7 +1,7 @@
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-
+    
 
   }
   
@@ -31,3 +31,7 @@ table {
     height: 300px;
     width: 70%;
   }
+
+  /* .table-head{
+    position: fixed;
+  } */

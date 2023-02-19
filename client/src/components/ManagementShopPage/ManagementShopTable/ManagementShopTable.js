@@ -33,7 +33,7 @@ const ManagementShopTable = () => {
       <div className="data-table">
         <table>
           <thead>
-            <tr>
+            <tr className="table-head">
               <th>item</th>
               <th>category</th>
               <th>title</th>

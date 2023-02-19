@@ -4,8 +4,20 @@ import cors from "cors";
 import mongoose from "mongoose";
 import { productsAllowedUpdates } from "./data/data.js";
 import dotenv from "dotenv";
-import bcrypt from "bcrypt";
-import { addUserController } from "./controllers/UsersControllers.js";
+import {
+  allProductsController,
+  getProductController,
+  addProductController,
+} from "./Products/ProductsContoroller.js";
+
+import {
+  addUserController,
+  loginController,
+  profileController,
+} from "./Users/UsersControllers.js";
+import { validToken } from "./Users/JWT.js";
+import cookieParser from "cookie-parser";
+
 //dotenv
 dotenv.config();
 const { PORT, DB_PASS, DB_USER, DB_HOST, DB_NAME } = process.env;
@@ -14,45 +26,12 @@ const { PORT, DB_PASS, DB_USER, DB_HOST, DB_NAME } = process.env;
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 
 //mongoose
 mongoose.set("strictQuery", false);
 
 //schemas
-
-//products
-const ProductsSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
-  description: {
-    type: String,
-  },
-  category: {
-    type: String,
-    required: true,
-  },
-  image: {
-    type: String,
-    required: true,
-  },
-  rating: {
-    rate: { type: Number, default: 0 },
-    count: { type: Number, default: 0 },
-  },
-  dateCreated: {
-    type: Date,
-    default: Date.now(),
-  },
-});
-
-// model related to the specific schema
-const Products = mongoose.model("Products", ProductsSchema);
 
 //routes
 
@@ -62,61 +41,22 @@ const Products = mongoose.model("Products", ProductsSchema);
 //delete - delete an item from the db --> findOneAndDelete({condition:condition})
 
 //products route
-app.get("/api/products/getAllProducts", async (req, res) => {
-  try {
-    const allProducts = await Products.find({});
-    res.status(200).send(allProducts);
-  } catch (e) {
-    console.log(e);
-    res.status(500).send({ message: e });
-  }
-});
+app.get("/api/products/getAllProducts", allProductsController);
 
-app.get("/api/products/getProduct/:pid", async (req, res) => {
-  try {
-    const { pid } = req.params;
-    const product = await Products.findOne({ _id: pid });
-    if (!product) {
-      res.status(400).send({ message: "no such product" });
-    } else {
-      console.log(`this id:${pid} is exist`);
-      res.status(200).send(product);
-    }
-  } catch (e) {
-    console.log(e);
-    res.status(500).send({ message: e });
-  }
-});
+app.get("/api/products/getProduct/:id", getProductController);
 
-app.post("/api/products/addProduct", async (req, res) => {
-  try {
-    const product = req.body;
-    const newProduct = new Products({
-      title: product.title,
-      price: product.price,
-      description: product.description,
-      category: product.category,
-      image: product.image,
-      rating: product.rating,
-    });
-    await newProduct.save();
-    res.status(200).send(newProduct);
-  } catch (e) {
-    console.log(e);
-    res.status(500).send({ message: e });
-  }
-});
+app.post("/api/products/addProduct", addProductController);
 
-app.post("/api/products/addProducts", async (req, res) => {
-  try {
-    const productsList = req.body;
-    const newProducts = await Products.insertMany(productsList);
-    res.status(200).send(newProducts);
-  } catch (e) {
-    console.log(e);
-    res.status(500).send({ message: e });
-  }
-});
+// app.post("/api/products/addProducts", async (req, res) => {
+//   try {
+//     const productsList = req.body;
+//     const newProducts = await Products.insertMany(productsList);
+//     res.status(200).send(newProducts);
+//   } catch (e) {
+//     console.log(e);
+//     res.status(500).send({ message: e });
+//   }
+// });
 
 app.put("/api/products/updateProduct/:id", async (req, res) => {
   const { id } = req.params;
@@ -159,12 +99,11 @@ app.delete("/api/products/deleteProduct/:id", async (req, res) => {
     res.status(500).send({ message: e });
   }
 });
+
 //users route
 app.post("/api/users/register", addUserController);
-
-app.post("/login", (req, res) => {
-  res.json("login");
-});
+app.post("/api/users/login", loginController);
+app.get("/api/users/profile", validToken, profileController);
 
 app.get("/profile", (req, res) => {
   res.json("profile");

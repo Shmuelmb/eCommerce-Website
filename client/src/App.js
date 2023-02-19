@@ -16,7 +16,7 @@ function App() {
   const [choosenSortPrice, setChoosenSortPrice] = useState([0, 999.99]);
   const [isChoosenSortH2L, setIsChoosenSortH2L] = useState();
   const [products, setProducts] = useState([]); // המוצרים עם השינויים שלהם
-  const [allProducts, setAllProducts] = useState([]); // רשימת המוצרים ללא שינוים עליהם
+  const [allProducts, setAllProducts] = useState([1, 2]); // רשימת המוצרים ללא שינוים עליהם
   const [loading, setLoading] = useState(false);
   const [cartList, setCartList] = useState([]);
   const [productID, setProductID] = useState("");
@@ -74,9 +74,11 @@ function App() {
       setLoading(false);
     }
   };
+
   useEffect(() => {
     getData();
   }, []);
+
   const categories = createListOfKey(allProducts, "category");
   categories.unshift("All categories");
 
@@ -107,7 +109,8 @@ function App() {
           onFilterChange,
           setChoosenSortPrice,
           allProducts,
-        }}>
+        }}
+      >
         <Nav />
         <Routes>
           <Route path="/" element={<ShopMain />} />
