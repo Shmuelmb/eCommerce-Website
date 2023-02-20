@@ -1,0 +1,12 @@
+
+.manag-prod-page{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    height: 100%;
+  }
+
+
+

@@ -19,3 +19,7 @@ export const addProduct = (product) => {
   });
   return newProduct.save();
 };
+
+export const deleteProduct = (id) => {
+  return Products.findOneAndDelete({ _id: id });
+};

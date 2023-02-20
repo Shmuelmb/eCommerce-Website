@@ -1,0 +1,35 @@
+
+.data-table{
+    margin-top: 15px;
+    overflow: auto;
+    height: 80%;
+    width: 60%;
+    border: 5px solid black;
+
+  }
+
+  .table-head{
+    position: sticky;
+    top: 0;
+    background-color: #0800ff;
+  }
+
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+    
+    
+      }
+      
+      td, th {
+        border: 1px solid #000000;
+        text-align: left;
+        padding: 8px;
+      }
+      th{
+        text-align: center;
+      }
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }

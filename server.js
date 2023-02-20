@@ -8,6 +8,7 @@ import {
   allProductsController,
   getProductController,
   addProductController,
+  deleteProductController,
 } from "./Products/ProductsContoroller.js";
 
 import {
@@ -18,6 +19,7 @@ import {
 import { validToken } from "./Users/JWT.js";
 import cookieParser from "cookie-parser";
 
+import { Products } from "./Products/ProductsSchema.js";
 //dotenv
 dotenv.config();
 const { PORT, DB_PASS, DB_USER, DB_HOST, DB_NAME } = process.env;
@@ -46,6 +48,8 @@ app.get("/api/products/getAllProducts", allProductsController);
 app.get("/api/products/getProduct/:id", getProductController);
 
 app.post("/api/products/addProduct", addProductController);
+
+app.delete("/api/products/deleteProduct/:id", deleteProductController);
 
 // app.post("/api/products/addProducts", async (req, res) => {
 //   try {
@@ -78,22 +82,6 @@ app.put("/api/products/updateProduct/:id", async (req, res) => {
     updates.forEach((update) => (product[update] = req.body[update]));
     await product.save();
     res.status(200).send(product);
-  } catch (e) {
-    console.log(e);
-    res.status(500).send({ message: e });
-  }
-});
-
-app.delete("/api/products/deleteProduct/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const deletedProduct = await Products.findOneAndDelete({ _id: id });
-    // if (!deletedProduct) {
-    //   res
-    //     .status(404)
-    //     .send({ message: "no such product with the specified id" });
-    // }
-    res.status(200).send(deletedProduct);
   } catch (e) {
     console.log(e);
     res.status(500).send({ message: e });

@@ -18,7 +18,7 @@ const ProductsSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    required: true,
+    default: "https://www.azharpark.com/assets/imgs/default.jpg",
   },
   rating: {
     rate: { type: Number, default: 0 },

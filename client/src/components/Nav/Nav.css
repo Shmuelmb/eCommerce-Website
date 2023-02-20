@@ -1,7 +1,13 @@
-/* 
-  
-.nav > h1:hover{
-  color: rgb(193, 220, 20);
-  cursor: pointer;
+.Nav{
+  background-color: #f3fcae;
+  color: black;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
 }
- */
+
+.Nav > h1 {
+  margin: 0 auto 0 0;}

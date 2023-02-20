@@ -39,42 +39,42 @@ const Nav = () => {
     setItemsAmounts(y);
   }, [cartList]);
   return (
-    <AppBar position="static">
-      <Toolbar variant="dense">
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          <h1
-            onClick={() => {
-              navigate("/");
-            }}>
-            Shop online
-          </h1>
-        </Typography>
-        <Button
-          color="error"
-          onClick={() => {
-            navigate("/login");
-          }}>
-          Login
-        </Button>
-        <Button color="error" onClick={() => navigate("about")}>
-          About me
-        </Button>
-        <IconButton>
-          <Badge badgeContent={ItemsAmounts} color="error">
-            <ShoppingCartOutlinedIcon
-              fontSize="large"
-              onClick={toggleDrawer("right", true)}
-            />
-          </Badge>
-        </IconButton>
-        <Drawer
-          anchor={"right"}
-          open={state["right"]}
-          onClose={toggleDrawer("right", false)}>
-          <ShoppingCart />
-        </Drawer>
-      </Toolbar>
-    </AppBar>
+    <div className="Nav">
+      <h1
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        Shop online
+      </h1>
+
+      <Button
+        color="error"
+        onClick={() => {
+          navigate("/login");
+        }}
+      >
+        Login
+      </Button>
+      <Button color="error" onClick={() => navigate("about")}>
+        About me
+      </Button>
+      <IconButton>
+        <Badge badgeContent={ItemsAmounts} color="error">
+          <ShoppingCartOutlinedIcon
+            fontSize="large"
+            onClick={toggleDrawer("right", true)}
+          />
+        </Badge>
+      </IconButton>
+      <Drawer
+        anchor={"right"}
+        open={state["right"]}
+        onClose={toggleDrawer("right", false)}
+      >
+        <ShoppingCart />
+      </Drawer>
+    </div>
   );
 };
 

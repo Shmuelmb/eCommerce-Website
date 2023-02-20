@@ -1,14 +1,28 @@
-
-
 body {
-    margin: 0;
-    font-family: "Roboto", sans-serif;
-    background-color: #625b5b94;
-    
-  }
+  margin: 0;
+
+}
+
+#root{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  max-width: 100vw;
+  background-color: #FCFFE7;
+ height:100vh;
+
+}
+.main{
+  height: 90%;
+  width: 100%;
+}
 p{
   margin: 0;
 }
+
+
 
     @media (max-width: 920px) {
         .product-card {

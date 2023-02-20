@@ -10,6 +10,7 @@ import ProductPage from "./components/ProductPage/ProductPage";
 import LoginPage from "./components/LoginPage/LoginPage";
 import Register from "./components/Register/Register";
 import ManagementShopPage from "./components/ManagementShopPage/ManagementShopPage";
+import ManagProdPage from "./components/ManagementShopPage/ManagProdPage/ManagProdPage";
 function App() {
   // useState object
   const [searchValue, setSearchValue] = useState("");
@@ -56,29 +57,6 @@ function App() {
       .map((p) => p[key])
       .filter((value, index, array) => array.indexOf(value) === index);
 
-  // actions
-  const getData = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch(
-        "http://localhost:8000/api/products/getAllProducts"
-      );
-      const data = await response.json();
-      setAllProducts(data);
-      setProducts(data);
-      addKeyForObjState(setCartList, "Amount", 0, data);
-      addKeyForObjState(setCartList, "DateCreated", 0, data);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
-
   const categories = createListOfKey(allProducts, "category");
   categories.unshift("All categories");
 
@@ -112,15 +90,22 @@ function App() {
         }}
       >
         <Nav />
-        <Routes>
-          <Route path="/" element={<ShopMain />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/admin" element={<ManagementShopPage />} />
-          <Route path="about" element={<AboutMe />} />
-          <Route path="/*" element={<NotFound />} />
-          <Route path="/products/:productid" element={<ProductPage />} />
-        </Routes>
+        <div className="main">
+          <Routes>
+            <Route path="/" element={<ShopMain />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/admin" element={<ManagementShopPage />} />
+            <Route
+              path="/admin/product-management"
+              element={<ManagProdPage />}
+            />
+
+            <Route path="about" element={<AboutMe />} />
+            <Route path="/*" element={<NotFound />} />
+            <Route path="/products/:productid" element={<ProductPage />} />
+          </Routes>
+        </div>
       </MyContext.Provider>
     </BrowserRouter>
   );
