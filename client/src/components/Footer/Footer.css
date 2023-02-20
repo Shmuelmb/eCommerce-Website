@@ -1,0 +1,25 @@
+footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #DC1A22;
+    color: white;
+    max-height: 100vw;
+}
+.logo{
+    display: flex;
+    width: 15%;
+    margin-right:  auto ;
+}
+.logo > img{
+    width: 100%;
+}
+
+.links{
+    width: 30%;
+    margin-right:  auto ;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}

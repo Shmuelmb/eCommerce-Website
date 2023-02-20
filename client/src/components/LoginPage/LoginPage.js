@@ -12,7 +12,7 @@ import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
-import companyLogo from "./shop-img.png";
+import loginImg from "../../images/login-img.png";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -58,7 +58,8 @@ const LoginPage = () => {
                     aria-label="toggle password visibility"
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
-                    edge="end">
+                    edge="end"
+                  >
                     {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 </InputAdornment>
@@ -70,7 +71,7 @@ const LoginPage = () => {
             Login
           </Button>
         </div>
-        <img className="img2" src={companyLogo} alt="s" />
+        <img className="img2" src={loginImg} alt="s" />
       </div>
     </div>
   );
