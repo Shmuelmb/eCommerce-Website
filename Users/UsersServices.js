@@ -2,9 +2,15 @@ import { Users } from "./UsersSchema.js";
 import bcrypt from "bcrypt";
 import { createTokens } from "./JWT.js";
 
-export const addUser = async (username, password) => {
+export const addUser = async (username, password, email, isadmin) => {
   let hash = await bcrypt.hash(password, 10);
-  const newUser = new Users({ UserName: username, Password: hash });
+  const newUser = new Users({
+    UserName: username,
+    Password: hash,
+    Email: email,
+    IsAdmin: isadmin,
+  });
+  console.log(`add new user: ${newUser.UserName}`);
   return newUser.save();
 };
 

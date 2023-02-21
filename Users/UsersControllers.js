@@ -1,10 +1,15 @@
 import { addUser, login } from "./UsersServices.js";
 
 export const addUserController = async (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, email, isadmin } = req.body;
+
   try {
-    const newUser = await addUser(username, password);
-    res.status(200).send(`newUser: ${newUser}`);
+    if (password.length < 8) {
+      res.status(500).send({ message: "your password not safe" });
+    } else {
+      const newUser = await addUser(username, password, email, isadmin);
+      res.status(200).send({ message: `newUser: ${newUser}` });
+    }
   } catch (e) {
     console.log(e);
     res.status(500).send({ message: e });

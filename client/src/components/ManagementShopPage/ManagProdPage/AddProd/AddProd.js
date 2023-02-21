@@ -58,7 +58,8 @@ const AddProd = () => {
           body: prod,
         }
       );
-      const req = response.json();
+      const req = await response.json();
+      console.log(req);
     } catch (e) {
       console.log(e);
     }

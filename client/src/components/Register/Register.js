@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Register.css";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -22,6 +22,17 @@ const Register = () => {
     password: "",
   });
   const [disButton, setDisButton] = useState(true);
+
+  useEffect(() => {
+    const checkLenOfInput = (arr) => arr.every((val) => val.length > 0);
+    const objVal = Object.values(obj);
+    if (checkLenOfInput(objVal) && obj.password.length > 7) {
+      setDisButton(false);
+    } else {
+      setDisButton(true);
+    }
+  }, [obj]);
+
   //func
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event) => {
@@ -31,22 +42,31 @@ const Register = () => {
     pass.length < 8
       ? setError("The Password must contain at least eigth digits")
       : setError(" ");
-  const x = () => {
-    Object.keys(obj).forEach((key) => {
-      if (!obj[key]) {
-        setDisButton(true);
-      } else {
-        setDisButton(false);
-      }
-    });
+
+  const register = async (user) => {
+    try {
+      const newUser = JSON.stringify(user);
+      const response = await fetch("http://localhost:8000/api/users/register", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: newUser,
+      });
+      const req = await response.json();
+      console.log(req.message);
+    } catch (e) {
+      console.log(e);
+    }
   };
+
   return (
     <div className="register-container">
       <div className="register-box">
         <TextField
           onChange={(event) => {
             setObj({ ...obj, email: event.target.value });
-            x();
           }}
           placeholder="Email"
           variant="standard"
@@ -63,7 +83,6 @@ const Register = () => {
         <TextField
           onChange={(event) => {
             setObj({ ...obj, username: event.target.value });
-            x();
           }}
           placeholder="User name"
           variant="standard"
@@ -81,7 +100,6 @@ const Register = () => {
           onChange={(e) => {
             isPassBiggerThenEight(e.target.value);
             setObj({ ...obj, password: e.target.value });
-            x();
           }}
           placeholder="Password"
           type={showPassword ? "text" : "password"}
@@ -110,7 +128,7 @@ const Register = () => {
         />
 
         <Button
-          onClick={() => console.log(obj)}
+          onClick={() => register(obj)}
           disabled={disButton}
           variant="filledTonal"
           endIcon={<SendIcon />}
