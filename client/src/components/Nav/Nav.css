@@ -1,12 +1,14 @@
 .Nav{
-  color: white;
-  height: 10%;
+  color: rgb(0, 0, 0);
+  height: 80px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: #e2caca;
+
 }
 
 .Nav > h1 {

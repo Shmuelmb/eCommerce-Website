@@ -17,6 +17,7 @@
     align-items: center;
     width: 70%;
     height: 500px;
+    transition: all ease-in-out 0.5s !important;
 }
 
 .card > img{

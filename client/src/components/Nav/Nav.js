@@ -2,9 +2,7 @@ import React, { useEffect } from "react";
 import "./Nav.css";
 import { useNavigate } from "react-router-dom";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
+import SearchBar from "../ShoppingBarTools/SearchBar/SearchBar";
 import Button from "@mui/material/Button";
 import { useState, useContext } from "react";
 import Drawer from "@mui/material/Drawer";
@@ -45,8 +43,9 @@ const Nav = () => {
           navigate("/");
         }}
       >
-        Shop online
+        ClickMarket
       </h1>
+      <SearchBar />
 
       <Button
         color="error"

@@ -3,6 +3,8 @@ import "./Register.css";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import EmailIcon from "@mui/icons-material/Email";
+
 import KeyIcon from "@mui/icons-material/Key";
 import { useState } from "react";
 import Button from "@mui/material/Button";
@@ -13,18 +15,57 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
-
+  const [error, setError] = useState("");
+  const [obj, setObj] = useState({
+    email: "",
+    username: "",
+    password: "",
+  });
+  const [disButton, setDisButton] = useState(true);
+  //func
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-
+  const isPassBiggerThenEight = (pass) =>
+    pass.length < 8
+      ? setError("The Password must contain at least eigth digits")
+      : setError(" ");
+  const x = () => {
+    Object.keys(obj).forEach((key) => {
+      if (!obj[key]) {
+        setDisButton(true);
+      } else {
+        setDisButton(false);
+      }
+    });
+  };
   return (
-    <div className="login-container">
-      <div className="login">
+    <div className="register-container">
+      <div className="register-box">
         <TextField
-          placeholder="User Name"
+          onChange={(event) => {
+            setObj({ ...obj, email: event.target.value });
+            x();
+          }}
+          placeholder="Email"
+          variant="standard"
+          helperText="please enter your email address"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <EmailIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+
+        <TextField
+          onChange={(event) => {
+            setObj({ ...obj, username: event.target.value });
+            x();
+          }}
+          placeholder="User name"
           variant="standard"
           helperText="please enter your username"
           InputProps={{
@@ -35,12 +76,18 @@ const Register = () => {
             ),
           }}
         />
+
         <TextField
+          onChange={(e) => {
+            isPassBiggerThenEight(e.target.value);
+            setObj({ ...obj, password: e.target.value });
+            x();
+          }}
           placeholder="Password"
           type={showPassword ? "text" : "password"}
           autoComplete="current-password"
           variant="standard"
-          helperText="please enter your password"
+          helperText={error ? error : "please enter your password"}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -53,7 +100,8 @@ const Register = () => {
                   aria-label="toggle password visibility"
                   onClick={handleClickShowPassword}
                   onMouseDown={handleMouseDownPassword}
-                  edge="end">
+                  edge="end"
+                >
                   {showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
               </InputAdornment>
@@ -61,7 +109,12 @@ const Register = () => {
           }}
         />
 
-        <Button variant="filledTonal" endIcon={<SendIcon />}>
+        <Button
+          onClick={() => console.log(obj)}
+          disabled={disButton}
+          variant="filledTonal"
+          endIcon={<SendIcon />}
+        >
           Register
         </Button>
       </div>

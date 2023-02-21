@@ -10,8 +10,15 @@ const UsersSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-
-  dateCreated: {
+  IsAdmin: {
+    type: Boolean,
+    default: false,
+  },
+  Email: {
+    type: String,
+    required: true,
+  },
+  DateCreated: {
     type: Date,
     default: Date.now(),
   },

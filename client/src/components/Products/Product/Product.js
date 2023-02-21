@@ -10,34 +10,39 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import { Button, CardActionArea } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
+import Zoom from "@mui/material/Zoom";
 
 const Product = ({ id, Urlimage, title, price, category }) => {
   const navigate = useNavigate("products");
   const { setProductID } = useContext(MyContext);
   return (
-    <Card className="pCard" sx={{ width: 250, height: 370 }}>
-      <Stack>
-        <img className="cardImage" src={Urlimage} alt={title} />
-        <CardContent>
-          <Typography
-            className="ty"
-            gutterBottom
-            variant="body2"
-            color="text.secondary">
-            {title}
-          </Typography>
-          <Typography color="black">${price}</Typography>
-        </CardContent>
-        <Addbtn id={id} />
-        <Button
-          onClick={() => {
-            navigate(`/products/${id}`);
-            setProductID(id);
-          }}>
-          More
-        </Button>
-      </Stack>
-    </Card>
+    <Zoom in={true}>
+      <Card className="pCard" sx={{ width: 250, height: 370 }}>
+        <Stack>
+          <img className="cardImage" src={Urlimage} alt={title} />
+          <CardContent>
+            <Typography
+              className="ty"
+              gutterBottom
+              variant="body2"
+              color="text.secondary"
+            >
+              {title}
+            </Typography>
+            <Typography color="black">${price}</Typography>
+          </CardContent>
+          <Addbtn id={id} />
+          <Button
+            onClick={() => {
+              navigate(`/products/${id}`);
+              setProductID(id);
+            }}
+          >
+            More
+          </Button>
+        </Stack>
+      </Card>
+    </Zoom>
   );
 };
 

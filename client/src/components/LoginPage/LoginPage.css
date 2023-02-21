@@ -28,9 +28,24 @@
 }
 
 .login{
+    text-align: center;
         height: 200px;
         display: flex;
         flex-direction: column;
         gap: 20px;
     
+    }
+
+    .login >p{
+        font-size: 0.7rem;
+        color: grey;
+        transition: all ease-in-out 0.2s;
+        font-weight: bold;
+        
+    }
+
+    .login >p:hover{
+        cursor: pointer;
+        color: black;
+        
     }

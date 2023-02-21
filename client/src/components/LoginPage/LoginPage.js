@@ -70,6 +70,9 @@ const LoginPage = () => {
           <Button variant="filledTonal" endIcon={<SendIcon />}>
             Login
           </Button>
+          <p onClick={() => navigate("/register")}>
+            Already have an account? Click Here
+          </p>
         </div>
         <img className="img2" src={loginImg} alt="s" />
       </div>

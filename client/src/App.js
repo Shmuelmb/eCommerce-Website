@@ -12,6 +12,7 @@ import Register from "./components/Register/Register";
 import ManagementShopPage from "./components/ManagementShopPage/ManagementShopPage";
 import ManagProdPage from "./components/ManagementShopPage/ManagProdPage/ManagProdPage";
 import Footer from "./components/Footer/Footer";
+import ProfilePage from "./components/ProfilePage/ProfilePage";
 function App() {
   // useState object
   const [searchValue, setSearchValue] = useState("");
@@ -101,9 +102,10 @@ function App() {
               path="/admin/product-management"
               element={<ManagProdPage />}
             />
-            <Route path="about" element={<AboutMe />} />
-            <Route path="/*" element={<NotFound />} />
+            <Route path="/about" element={<AboutMe />} />
             <Route path="/products/:productid" element={<ProductPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
         <Footer />

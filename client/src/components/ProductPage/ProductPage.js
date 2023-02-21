@@ -2,11 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "./ProductPage.css";
 import { useParams, useNavigate } from "react-router-dom";
 import Addbtn from "../Products/Product/btns/Addbtn";
-import Buybtn from "../Products/Product/btns/Buybtn";
-import Card from "@mui/material/Card";
-import Typography from "@mui/material/Typography";
-import Stack from "@mui/material/Stack";
-import CardContent from "@mui/material/CardContent";
+import Grow from "@mui/material/Grow";
 
 const ProductPage = () => {
   const { productid } = useParams();
@@ -29,19 +25,21 @@ const ProductPage = () => {
 
   return (
     <div className="container">
-      <div className="card">
-        <img src={product.image} alt={product.title} />
-        <div className="detlais">
-          <div className="text">
-            <h4>{product.title}</h4>
-            <p>{product.description}</p>
+      <Grow in={true}>
+        <div className="card">
+          <img src={product.image} alt={product.title} />
+          <div className="detlais">
+            <div className="text">
+              <h4>{product.title}</h4>
+              <p>{product.description}</p>
 
-            <h3>${product.price}</h3>
+              <h3>${product.price}</h3>
+            </div>
+
+            <Addbtn id={product._id} />
           </div>
-
-          <Addbtn id={product._id} />
         </div>
-      </div>
+      </Grow>
     </div>
   );
 };
