@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import EmailIcon from "@mui/icons-material/Email";
-
+import Modal from "@mui/material/Modal";
 import KeyIcon from "@mui/icons-material/Key";
 import { useState } from "react";
 import Button from "@mui/material/Button";
@@ -12,8 +12,11 @@ import SendIcon from "@mui/icons-material/Send";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [obj, setObj] = useState({
@@ -43,6 +46,10 @@ const Register = () => {
       ? setError("The Password must contain at least eigth digits")
       : setError(" ");
 
+  //modal
+  const [isRegister, setIsRegister] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const handleClose = () => setOpenModal(false);
   const register = async (user) => {
     try {
       const newUser = JSON.stringify(user);
@@ -54,8 +61,14 @@ const Register = () => {
         },
         body: newUser,
       });
-      const req = await response.json();
-      console.log(req.message);
+      const data = await response.json();
+      if (!data.register) {
+        setIsRegister(false);
+      } else {
+        setIsRegister(true);
+        setTimeout(() => navigate(data.navigate), 5000);
+      }
+      setOpenModal(true);
     } catch (e) {
       console.log(e);
     }
@@ -136,6 +149,16 @@ const Register = () => {
           Register
         </Button>
       </div>
+      <Modal className="modal-box" open={openModal} onClose={handleClose}>
+        <div className="modal-message">
+          <h3>{isRegister ? "Login success" : "Login error"}</h3>
+          <p>
+            {isRegister
+              ? "Great!, please login with your username and password in the next page"
+              : "The username or email is already in use, please choose another username or email"}
+          </p>
+        </div>
+      </Modal>
     </div>
   );
 };

@@ -13,6 +13,8 @@ import ManagementShopPage from "./components/ManagementShopPage/ManagementShopPa
 import ManagProdPage from "./components/ManagementShopPage/ManagProdPage/ManagProdPage";
 import Footer from "./components/Footer/Footer";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
+import Loading from "./components/LoadingPage/LoadingPage";
+
 function App() {
   // useState object
   const [searchValue, setSearchValue] = useState("");
@@ -20,10 +22,11 @@ function App() {
   const [isChoosenSortH2L, setIsChoosenSortH2L] = useState();
   const [products, setProducts] = useState([]); // המוצרים עם השינויים שלהם
   const [allProducts, setAllProducts] = useState([1, 2]); // רשימת המוצרים ללא שינוים עליהם
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [cartList, setCartList] = useState([]);
   const [productID, setProductID] = useState("");
   const [productsFilter, setProductsFilter] = useState([]);
+  const [isAuth, setIsAuth] = useState(false);
 
   // func
   const onFilterChange = (e) => {
@@ -66,6 +69,7 @@ function App() {
     <BrowserRouter>
       <MyContext.Provider
         value={{
+          setIsAuth,
           createListOfKey,
           productsFilter,
           setProductsFilter,

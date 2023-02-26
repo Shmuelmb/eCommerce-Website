@@ -3,8 +3,7 @@ import "./Products.css";
 import Product from "./Product/Product.js";
 import { useContext } from "react";
 import MyContext from "../../MyContext";
-import Loading from "../Loading/Loading";
-
+import LoadingPage from "../LoadingPage/LoadingPage";
 const sortedProductsPriceHigh2Low = (x) => {
   x.sort((p1, p2) => (p1.price < p2.price ? 1 : p1.price > p2.price ? -1 : 0));
 };
@@ -62,7 +61,7 @@ const Products = () => {
     </div>
   ) : (
     <div>
-      <Loading />
+      <LoadingPage />
     </div>
   );
 };

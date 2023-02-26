@@ -1,35 +1,102 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import KeyIcon from "@mui/icons-material/Key";
-import { useState } from "react";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-
 import loginImg from "../../images/login-img.png";
+import Modal from "@mui/material/Modal";
+import Cookies from "universal-cookie";
+import MyContext from "../../MyContext";
 
 const LoginPage = () => {
+  const { setIsAtuh } = useContext(MyContext);
+  //init package
+  const cookies = new Cookies();
+  //useState
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const [obj, setObj] = useState({
+    username: "",
+    password: "",
+  });
+  const [disButton, setDisButton] = useState(true);
+  const [isLogin, setIsLogin] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
+  const handleClose = () => setOpenModal(false);
 
+  //useEffect
+  useEffect(() => {
+    const checkLenOfInput = (arr) => arr.every((val) => val.length > 0);
+    const objVal = Object.values(obj);
+    if (checkLenOfInput(objVal) && obj.password.length > 7) {
+      setDisButton(false);
+    } else {
+      setDisButton(true);
+    }
+  }, [obj]);
+
+  //func
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+  const isPassBiggerThenEight = (pass) =>
+    pass.length < 8
+      ? setError("The Password must contain at least eigth digits")
+      : setError(" ");
 
-  const navigate = useNavigate();
+  const expriesDate = () => {
+    const d = new Date();
+    d.setDate(d.getDate() + 1);
+    return d;
+  };
+  //api func
+  const login = async (checkUser) => {
+    try {
+      const newUser = JSON.stringify(checkUser);
+      const response = await fetch("http://localhost:8000/api/users/login", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: newUser,
+      });
+      const user = await response.json();
+
+      if (!user.login) {
+        setIsLogin(false);
+      } else {
+        setIsLogin(true);
+        cookies.set("TOKEN", user.accessToken, {
+          expires: expriesDate(),
+        });
+        setTimeout(() => navigate(user.navigate), 3000);
+      }
+
+      setOpenModal(true);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <div className="login-container">
-      <div className="loginBox">
+      <div className="login-box">
         <div className="login">
           <TextField
-            placeholder="User Name"
+            onChange={(event) => {
+              setObj({ ...obj, username: event.target.value });
+            }}
+            placeholder="User name"
             variant="standard"
             helperText="please enter your username"
             InputProps={{
@@ -40,12 +107,17 @@ const LoginPage = () => {
               ),
             }}
           />
+
           <TextField
+            onChange={(e) => {
+              isPassBiggerThenEight(e.target.value);
+              setObj({ ...obj, password: e.target.value });
+            }}
             placeholder="Password"
             type={showPassword ? "text" : "password"}
             autoComplete="current-password"
             variant="standard"
-            helperText="please enter your password"
+            helperText={error ? error : "please enter your password"}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -67,7 +139,12 @@ const LoginPage = () => {
             }}
           />
 
-          <Button variant="filledTonal" endIcon={<SendIcon />}>
+          <Button
+            onClick={() => login(obj)}
+            disabled={disButton}
+            variant="filledTonal"
+            endIcon={<SendIcon />}
+          >
             Login
           </Button>
           <p onClick={() => navigate("/register")}>
@@ -76,6 +153,16 @@ const LoginPage = () => {
         </div>
         <img className="img2" src={loginImg} alt="s" />
       </div>
+      <Modal className="modal-box" open={openModal} onClose={handleClose}>
+        <div className="modal-message">
+          <h3>{!isLogin ? "Login error" : "Login success!"}</h3>
+          <p>
+            {!isLogin
+              ? "The username or password is incorrect, please try agein "
+              : "You'll be taken straight to the homepage"}
+          </p>
+        </div>
+      </Modal>
     </div>
   );
 };

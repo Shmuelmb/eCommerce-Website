@@ -15,7 +15,6 @@ const ShopMain = () => {
 
   // actions
   const getData = async () => {
-    setLoading(true);
     try {
       const response = await fetch(
         "http://localhost:8000/api/products/getAllProducts"
@@ -28,7 +27,7 @@ const ShopMain = () => {
     } catch (err) {
       console.log(err);
     } finally {
-      setLoading(false);
+      setTimeout(() => setLoading(false), 2000);
     }
   };
 

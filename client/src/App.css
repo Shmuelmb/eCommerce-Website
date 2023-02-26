@@ -26,7 +26,19 @@ p{
   margin: 0;
 }
 
+.modal-box{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
 
+.modal-message{
+  color: white;
+  padding: 2%;
+  background-color: #DC1A22;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 15px;
+}
 
     @media (max-width: 920px) {
         .product-card {

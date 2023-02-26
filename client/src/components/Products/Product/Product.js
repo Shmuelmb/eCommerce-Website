@@ -12,7 +12,7 @@ import { Button, CardActionArea } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
 import Zoom from "@mui/material/Zoom";
 
-const Product = ({ id, Urlimage, title, price, category }) => {
+const Product = ({ id, Urlimage, title, price }) => {
   const navigate = useNavigate("products");
   const { setProductID } = useContext(MyContext);
   return (

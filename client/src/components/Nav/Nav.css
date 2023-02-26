@@ -1,15 +1,18 @@
 .Nav{
-  color: rgb(0, 0, 0);
   height: 80px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   text-align: center;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  background-color: #e2caca;
+  box-shadow: #000000 0px 0px 2px;
 
 }
 
 .Nav > h1 {
   margin: 0 auto 0 0;}
+
+  .nav-context{
+    display: flex;
+    justify-content: space-evenly;
+  }

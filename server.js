@@ -12,14 +12,14 @@ import {
 } from "./Products/ProductsContoroller.js";
 
 import {
-  addUserController,
+  registerController,
   loginController,
   profileController,
 } from "./Users/UsersControllers.js";
-import { validToken } from "./Users/JWT.js";
-import cookieParser from "cookie-parser";
-
+import { validateToken } from "./Users/JWT.js";
 import { Products } from "./Products/ProductsSchema.js";
+import cookiesMiddleware from "universal-cookie-express";
+
 //dotenv
 dotenv.config();
 const { PORT, DB_PASS, DB_USER, DB_HOST, DB_NAME } = process.env;
@@ -27,8 +27,8 @@ const { PORT, DB_PASS, DB_USER, DB_HOST, DB_NAME } = process.env;
 //express and cors
 const app = express();
 app.use(express.json());
+app.use(cookiesMiddleware());
 app.use(cors());
-app.use(cookieParser());
 
 //mongoose
 mongoose.set("strictQuery", false);
@@ -89,13 +89,12 @@ app.put("/api/products/updateProduct/:id", async (req, res) => {
 });
 
 //users route
-app.post("/api/users/register", addUserController);
+app.post("/api/users/register", registerController);
 app.post("/api/users/login", loginController);
-app.get("/api/users/profile", validToken, profileController);
-
-app.get("/profile", (req, res) => {
-  res.json("profile");
-});
+app.get("/api/users/profile", validateToken, profileController);
+// app.get("/api/users/auth", validateToken, (req, res) => {
+//   res.json("profile");
+// });
 
 mongoose.connect(
   `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`,

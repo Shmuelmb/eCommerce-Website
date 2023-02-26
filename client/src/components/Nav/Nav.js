@@ -45,34 +45,36 @@ const Nav = () => {
       >
         ClickMarket
       </h1>
-      <SearchBar />
+      <div className="nav-context">
+        <SearchBar />
 
-      <Button
-        color="error"
-        onClick={() => {
-          navigate("/login");
-        }}
-      >
-        Login
-      </Button>
-      <Button color="error" onClick={() => navigate("about")}>
-        About me
-      </Button>
-      <IconButton>
-        <Badge badgeContent={ItemsAmounts} color="error">
-          <ShoppingCartOutlinedIcon
-            fontSize="large"
-            onClick={toggleDrawer("right", true)}
-          />
-        </Badge>
-      </IconButton>
-      <Drawer
-        anchor={"right"}
-        open={state["right"]}
-        onClose={toggleDrawer("right", false)}
-      >
-        <ShoppingCart />
-      </Drawer>
+        <Button
+          color="error"
+          onClick={() => {
+            navigate("/login");
+          }}
+        >
+          Login
+        </Button>
+        <Button color="error" onClick={() => navigate("about")}>
+          About me
+        </Button>
+        <IconButton>
+          <Badge badgeContent={ItemsAmounts} color="error">
+            <ShoppingCartOutlinedIcon
+              fontSize="large"
+              onClick={toggleDrawer("right", true)}
+            />
+          </Badge>
+        </IconButton>
+        <Drawer
+          anchor={"right"}
+          open={state["right"]}
+          onClose={toggleDrawer("right", false)}
+        >
+          <ShoppingCart />
+        </Drawer>
+      </div>
     </div>
   );
 };

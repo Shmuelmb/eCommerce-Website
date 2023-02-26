@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
+import NotFound from "../NotFound/NotFound";
+import Cookies from "universal-cookie";
 
 const ProfilePage = () => {
+  const cookies = new Cookies();
+
+  const auth = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/users/profile", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: ` ${cookies.get("TOKEN")}`,
+        },
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  useEffect(() => {
+    auth();
+  });
+
   return (
     <div>
       <h1>Hello</h1>

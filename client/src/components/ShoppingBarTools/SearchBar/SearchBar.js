@@ -11,6 +11,7 @@ const SearchBar = () => {
   return (
     <div className="search-container">
       <TextField
+        className="search-bar"
         onChange={(event) => {
           setSearchValue(event.target.value);
         }}
