@@ -1,4 +1,5 @@
-import { register, login } from "./UsersServices.js";
+import { register, login, profile } from "./UsersServices.js";
+
 export const registerController = async (req, res) => {
   const { username, password, email, isadmin } = req.body;
 
@@ -35,10 +36,13 @@ export const loginController = async (req, res) => {
 };
 
 export const profileController = async (req, res) => {
-  const id = req.headers.authorization;
+  const token = req.headers.authorization;
   try {
-    res.status(200).send(req);
+    const user = await profile(token);
+    res.status(200).send({ massage: user, success: true });
   } catch (e) {
-    res.status(400).send({ error: e });
+    console.log(e);
+
+    res.status(400).send({ error: e, success: false });
   }
 };

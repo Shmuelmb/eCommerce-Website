@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 const { sign, verify } = JWT;
 
 dotenv.config();
-const { TOKEN_SECRET } = process.env;
+export const { TOKEN_SECRET } = process.env;
 
 export const createTokens = (user) => {
   const accessToken = sign(
@@ -26,6 +26,6 @@ export const validateToken = async (req, res, next) => {
       return next();
     }
   } catch (err) {
-    return res.status(400).json({ error: err });
+    return res.status(400).send({ error: err, success: false });
   }
 };

@@ -1,6 +1,10 @@
 import { Users } from "./UsersSchema.js";
 import bcrypt from "bcrypt";
 import { createTokens } from "./JWT.js";
+import { TOKEN_SECRET } from "./JWT.js";
+import JWT from "jsonwebtoken";
+
+const { sign, verify } = JWT;
 
 export const register = async (username, password, email, isadmin) => {
   let hash = await bcrypt.hash(password, 10);
@@ -36,6 +40,17 @@ export const login = async (username, password) => {
       };
       return user;
     }
+  } else {
+    return false;
+  }
+};
+
+export const profile = async (token) => {
+  const decoded = verify(token, TOKEN_SECRET);
+  if (decoded) {
+    const findUser = await Users.findOne({ _id: decoded.id });
+
+    return findUser;
   } else {
     return false;
   }

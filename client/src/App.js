@@ -70,6 +70,7 @@ function App() {
       <MyContext.Provider
         value={{
           setIsAuth,
+          isAuth,
           createListOfKey,
           productsFilter,
           setProductsFilter,
