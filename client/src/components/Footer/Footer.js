@@ -1,13 +1,21 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Footer.css";
-import logo from "../../images/logo-red.jpg";
 import { AiOutlineLinkedin, AiOutlineGithub } from "react-icons/ai";
 import { IconContext } from "react-icons";
 const Footer = () => {
+  const navigate = useNavigate();
+
   return (
     <footer className="footer-container">
       <div className="logo">
-        <img src={logo} alt="logo" />
+        <h1
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          ClickFashion
+        </h1>
       </div>
       <div className="footer-content">
         <div className="links">

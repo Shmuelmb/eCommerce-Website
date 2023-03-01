@@ -4,16 +4,17 @@ body {
 }
 
 #root{
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #F1F3F2;
+
+  font-family: 'Roboto ', sans-serif;
+  font-weight: 300;
   max-width: 100vw;
   min-height:100vh ;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
+
 
 }
 .main{
@@ -26,6 +27,10 @@ p{
   margin: 0;
 }
 
+h1{
+  margin: 0;
+  font-family: Archivo;
+}
 .modal-box{
   display: flex !important;
   justify-content: center !important;
@@ -44,10 +49,10 @@ p{
   align-items: center;
   background-color: #F1F3F2;
   border: 1px solid #0050B6;
+  color:#0050B6;
   border-radius: .25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.85);
   cursor: pointer;
   display: inline-flex;
   font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -65,14 +70,13 @@ p{
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: baseline;
-  width: 30%;
 }
 
 .button-6:hover,
 .button-6:focus {
   border-color: #0050B6;
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: rgba(0, 0, 0, 0.65);
+  color:#0050B6;
 }
 
 .button-6:hover {
@@ -83,7 +87,7 @@ p{
   background-color: #F0F0F1;
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
-  color: rgba(0, 0, 0, 0.65);
+  color:#0050B6;
   transform: translateY(0);
 }
     @media (max-width: 920px) {

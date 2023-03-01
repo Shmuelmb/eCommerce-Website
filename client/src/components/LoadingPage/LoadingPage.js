@@ -6,7 +6,7 @@ const LoadingPage = () => {
       <div className="lds-circle">
         <div></div>
       </div>
-      <h3>BROWSE, BUY, AND BE HAPPY.</h3>
+      <h3>BROWSE. BUY. AND BE HAPPY.</h3>
     </div>
   );
 };

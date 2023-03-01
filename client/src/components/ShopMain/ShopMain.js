@@ -4,8 +4,7 @@ import Products from "../Products/Products";
 import ShoppingBarTools from "../ShoppingBarTools/ShoppingBarTools";
 import MyContext from "../../MyContext";
 import { useContext, useEffect } from "react";
-import heroImg from "../../images/hero-image.png";
-
+import Hero from "./Hero/Hero";
 const ShopMain = () => {
   const {
     setLoading,
@@ -39,18 +38,11 @@ const ShopMain = () => {
 
   return (
     <div className="ShopMain">
-      <div className="hero-comp">
-        <div className="hero-content">
-          <h2>New Arrival</h2>
-          <h1>THE SPRING COLLECTION</h1>
-          <button className="button-6 ">SHOP NOW</button>
-        </div>
-        <div className="hero-img">
-          <img src={heroImg} alt="hero-img" />
-        </div>
+      <Hero />
+      <div className="products-container">
+        <ShoppingBarTools />
+        <Products />
       </div>
-      <ShoppingBarTools />
-      <Products />
     </div>
   );
 };

@@ -1,19 +1,37 @@
-.Nav{
+.nav-container{
+  position: fixed;
+  background-color: #F1F3F2;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 9;
+
+  
+}
+.nav{
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
   align-items: center;
-  text-align: center;
+  justify-content: space-around;
   color:#0050B6;
-  width: 100%;
-  background-color: #F1F3F2;
+  width: 75%;
 
 }
 
-.Nav > h1 {
-  margin: 0 auto 0 0;}
 
   .nav-context{
     display: flex;
     justify-content: space-evenly;
+  }
+  .btn-navigate{
+    display: flex;
+  }
+  .btn-nav{
+    border: 0px;
+    color: black;
+  }
+
+  .btn-nav:hover{
+    border-bottom: 1px #0050B6 solid;
+
   }

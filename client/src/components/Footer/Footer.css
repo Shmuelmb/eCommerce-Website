@@ -1,15 +1,16 @@
 
 .footer-container{
     height: 200px;
+    width: 100%;
     display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 0.9rem;
-    background-color: #DC1A22;
+    background-color: #262626;
     color: white;
+    margin-top: 20px;
 }
-.logo{
-    margin:  0 auto 0 0;
-    width: 10%;
-}
+
 .logo > img{
     width: 100%;
 }

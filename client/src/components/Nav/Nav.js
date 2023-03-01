@@ -3,10 +3,11 @@ import "./Nav.css";
 import { useNavigate } from "react-router-dom";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import SearchBar from "./SearchBar/SearchBar";
-import Button from "@mui/material/Button";
+import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
+import Person3OutlinedIcon from "@mui/icons-material/Person3Outlined";
 import { useState, useContext } from "react";
 import Drawer from "@mui/material/Drawer";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
 import MyContext from "../../MyContext";
@@ -37,43 +38,52 @@ const Nav = () => {
     setItemsAmounts(y);
   }, [cartList]);
   return (
-    <div className="Nav">
-      <h1
-        onClick={() => {
-          navigate("/");
-        }}
-      >
-        ClickMarket
-      </h1>
-      <div className="nav-context">
-        <SearchBar />
-
-        <Button
-          color="error"
+    <div className="nav-container">
+      <div className="nav">
+        <h1
           onClick={() => {
-            navigate("/login");
+            navigate("/");
           }}
         >
-          Login
-        </Button>
-        <Button color="error" onClick={() => navigate("about")}>
-          About me
-        </Button>
-        <IconButton>
-          <Badge badgeContent={ItemsAmounts} color="error">
-            <ShoppingCartOutlinedIcon
+          ClickFashion
+        </h1>
+        <div className="btn-navigate">
+          <button className="button-6 btn-nav">Home</button>
+          <button className="button-6 btn-nav">Men</button>
+          <button className="button-6 btn-nav">Woman</button>
+          <button className="button-6 btn-nav">Jewelery</button>
+          <button className="button-6 btn-nav">About Us</button>
+        </div>
+
+        <div className="nav-context">
+          {/* <SearchBar /> */}
+          <IconButton>
+            <SearchOutlinedIcon fontSize="large" />
+          </IconButton>
+          <IconButton>
+            <Person3OutlinedIcon
               fontSize="large"
-              onClick={toggleDrawer("right", true)}
+              onClick={() => {
+                navigate("/login");
+              }}
             />
-          </Badge>
-        </IconButton>
-        <Drawer
-          anchor={"right"}
-          open={state["right"]}
-          onClose={toggleDrawer("right", false)}
-        >
-          <ShoppingCart />
-        </Drawer>
+          </IconButton>
+          <IconButton>
+            <Badge badgeContent={ItemsAmounts} color="error">
+              <LocalMallOutlinedIcon
+                fontSize="large"
+                onClick={toggleDrawer("right", true)}
+              />
+            </Badge>
+          </IconButton>
+          <Drawer
+            anchor={"right"}
+            open={state["right"]}
+            onClose={toggleDrawer("right", false)}
+          >
+            <ShoppingCart />
+          </Drawer>
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,39 @@
+.hero-comp{
+    color:#0050B6;
+    height: 80vh;
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  
+  }
+  
+  .hero-content > h1{
+    font-size: 5.625rem;
+    text-align: left; 
+    display: flex;
+    margin: 0;
+    font-family: Archivo;
+  
+  }
+  .hero-content{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+  
+  }
+  
+  .hero-content > button{
+    width: 30%;
+  }
+  
+  .hero-img {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+  }
+  .hero-img > img{
+    width: 100%;
+  
+  }

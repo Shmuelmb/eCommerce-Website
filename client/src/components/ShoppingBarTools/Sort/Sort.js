@@ -39,8 +39,6 @@ const Sort = () => {
 
   return (
     <div className="collection-sort">
-      <InputLabel>Sort by price:</InputLabel>
-
       <Slider
         value={value} // הערך שכרגע אני נמצא שם
         onChange={(event) => {
@@ -56,9 +54,9 @@ const Sort = () => {
       <p>
         from price:{value[0]}$ to price:{value[1]}$
       </p>
-      <Button onClick={handleToggleChoosenSort}>
+      <button className="button-6" onClick={handleToggleChoosenSort}>
         {isChoosenSortH2L === false ? "High to Low" : "Low to High"}
-      </Button>
+      </button>
     </div>
   );
 };
