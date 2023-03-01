@@ -3,6 +3,37 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  width: 90%;
-  margin: 15px auto;
+  width: 100%;
+
+}
+
+.hero-comp{
+  color:#0050B6;
+  height: 70vh;
+  width: 100%;
+  background-color: #F1F3F2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.hero-content{
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 7%;
+
+}
+
+.hero-img{
+
+
+
+}
+
+.hero-img > img{
+  width: 100%;
+
 }

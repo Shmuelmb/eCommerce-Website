@@ -1,11 +1,12 @@
 .Nav{
-  height: 80px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   text-align: center;
-  box-shadow: #000000 0px 0px 2px;
+  color:#0050B6;
+  width: 100%;
+  background-color: #F1F3F2;
 
 }
 

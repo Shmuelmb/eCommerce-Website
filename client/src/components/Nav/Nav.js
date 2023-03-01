@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./Nav.css";
 import { useNavigate } from "react-router-dom";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
-import SearchBar from "../ShoppingBarTools/SearchBar/SearchBar";
+import SearchBar from "./SearchBar/SearchBar";
 import Button from "@mui/material/Button";
 import { useState, useContext } from "react";
 import Drawer from "@mui/material/Drawer";

@@ -1,5 +1,6 @@
 
 .footer-container{
+    height: 200px;
     display: flex;
     font-size: 0.9rem;
     background-color: #DC1A22;

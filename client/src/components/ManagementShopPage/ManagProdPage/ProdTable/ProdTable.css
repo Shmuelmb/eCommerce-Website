@@ -2,9 +2,10 @@
 .data-table{
     margin-top: 15px;
     overflow: auto;
-    height: 80%;
+    height: 50%;
     width: 60%;
     border: 5px solid black;
+    
 
   }
 
