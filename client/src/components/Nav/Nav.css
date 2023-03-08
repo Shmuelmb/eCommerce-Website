@@ -6,29 +6,40 @@
   justify-content: center;
   z-index: 9;
 
-  
 }
+
 .nav{
+  padding: 1%;
+  margin-bottom: auto;
+  margin-top: 0.2%;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   color:#0050B6;
-  width: 75%;
+  width: 80%;
 
+}
+.nav > h1{
+  font-size: 2.2rem;
 }
 
 
-  .nav-context{
+
+
+  .nav-icon{
     display: flex;
-    justify-content: space-evenly;
+
   }
   .btn-navigate{
     display: flex;
+    justify-content: space-around;
+    
+
   }
   .btn-nav{
     border: 0px;
     color: black;
+    font-size: 1.2rem;
   }
 
   .btn-nav:hover{

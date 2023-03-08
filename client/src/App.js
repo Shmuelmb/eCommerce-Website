@@ -30,10 +30,10 @@ function App() {
 
   // func
   const onFilterChange = (e) => {
-    if (e.target.value === "All categories") {
+    if (e.target.innerText === "New Arrivals") {
       setProducts(allProducts);
     } else {
-      setProducts(allProducts.filter((p) => p.category === e.target.value));
+      setProducts(allProducts.filter((p) => p.category === e.target.innerText));
     }
   };
 
@@ -63,7 +63,7 @@ function App() {
       .filter((value, index, array) => array.indexOf(value) === index);
 
   const categories = createListOfKey(allProducts, "category");
-  categories.unshift("All categories");
+  categories.unshift("New Arrivals");
 
   return (
     <BrowserRouter>

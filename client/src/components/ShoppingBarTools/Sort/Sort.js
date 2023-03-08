@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import MyContext from "../../../MyContext";
 import "./Sort.css";
 import Slider from "@mui/material/Slider";
-import InputLabel from "@mui/material/InputLabel";
-import Button from "@mui/material/Button";
 
 // l2h === false
 // h2l === true
@@ -27,18 +25,18 @@ const Sort = () => {
   //actions
   const priceList = createListOfKey(products, "price");
   priceList.sort((a, b) => a - b);
-  const marks = [];
-  priceList.map((price) => {
-    marks.push({
-      value: price,
-    });
-  });
+  // const marks = []; marks on input range
+  // priceList.map((price) => { marks on input range
+  //   marks.push({
+  //     value: price,
+  //   });
+  // });
   const minDistance = priceList[0];
   const maxDistance = priceList[priceList.length - 1];
   const [value, setValue] = useState([0, 9999]);
 
   return (
-    <div className="collection-sort">
+    <div className="sort">
       <Slider
         value={value} // הערך שכרגע אני נמצא שם
         onChange={(event) => {
@@ -48,14 +46,16 @@ const Sort = () => {
         valueLabelDisplay="auto" // מראה את המספר שאני נמצא בו
         min={minDistance}
         max={maxDistance}
-        step={null}
-        marks={marks}
+        // step={null}  marks on input range
+        // marks={marks}marks on input range
       />
-      <p>
-        from price:{value[0]}$ to price:{value[1]}$
-      </p>
+      <div className="price-view">
+        <p>{value[0]}$</p>
+        <p>{value[1]}$</p>
+      </div>
+
       <button className="button-6" onClick={handleToggleChoosenSort}>
-        {isChoosenSortH2L === false ? "High to Low" : "Low to High"}
+        {isChoosenSortH2L === false ? "HIGH TO LOW" : "LOW TO HIGH"}
       </button>
     </div>
   );

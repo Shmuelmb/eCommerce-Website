@@ -78,6 +78,7 @@ const Register = () => {
     <div className="register-container">
       <div className="register-box">
         <TextField
+          className="register-input"
           onChange={(event) => {
             setObj({ ...obj, email: event.target.value });
           }}
@@ -94,6 +95,7 @@ const Register = () => {
         />
 
         <TextField
+          className="register-input"
           onChange={(event) => {
             setObj({ ...obj, username: event.target.value });
           }}
@@ -110,6 +112,7 @@ const Register = () => {
         />
 
         <TextField
+          className="register-input"
           onChange={(e) => {
             isPassBiggerThenEight(e.target.value);
             setObj({ ...obj, password: e.target.value });

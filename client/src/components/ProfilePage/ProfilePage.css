@@ -1,0 +1,19 @@
+.profile-page{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.profile-btn{
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}
+.profile-btn > button{
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+}

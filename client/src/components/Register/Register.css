@@ -2,19 +2,23 @@
 
 
 .register-container{
-    width: 50%;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 10% 0 13% 0;
+
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .register-box{
     width: 30%;
-    padding: 3% 7%;
     display: flex;
-    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 5%;
     align-items: center;
     flex-direction: column;
     gap: 20px;
 
+}
+.register-input{
+width: 70% ;
 }

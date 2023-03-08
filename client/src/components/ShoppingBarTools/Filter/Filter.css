@@ -1,11 +1,24 @@
-.filter-container{
+.filter{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  
+  width: 100%;
+  gap: 5px;
 
 }
 
-.filter{
-  width: 200px;
+
+
+.filter > button {
+  background-color: #ffff;
+  font-size: 1.1rem;
+  border: 0;
+  display: flex;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.463);
+  transition: ease-in-out all 0.3s;
 }
+
+.filter > button:hover, .filter > button:active, .filter > button:focus {
+  color: black;
+}
+

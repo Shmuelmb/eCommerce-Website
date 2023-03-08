@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import "./Nav.css";
 import { useNavigate } from "react-router-dom";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
+import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import SearchBar from "./SearchBar/SearchBar";
-import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
-import Person3OutlinedIcon from "@mui/icons-material/Person3Outlined";
+import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import { useState, useContext } from "react";
 import Drawer from "@mui/material/Drawer";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
@@ -45,7 +45,7 @@ const Nav = () => {
             navigate("/");
           }}
         >
-          ClickFashion
+          CLICK FASHION
         </h1>
         <div className="btn-navigate">
           <button className="button-6 btn-nav">Home</button>
@@ -55,22 +55,21 @@ const Nav = () => {
           <button className="button-6 btn-nav">About Us</button>
         </div>
 
-        <div className="nav-context">
+        <div className="nav-icon">
           {/* <SearchBar /> */}
           <IconButton>
             <SearchOutlinedIcon fontSize="large" />
           </IconButton>
-          <IconButton>
-            <Person3OutlinedIcon
-              fontSize="large"
-              onClick={() => {
-                navigate("/login");
-              }}
-            />
+          <IconButton
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            <PermIdentityOutlinedIcon fontSize="large" />
           </IconButton>
           <IconButton>
             <Badge badgeContent={ItemsAmounts} color="error">
-              <LocalMallOutlinedIcon
+              <ShoppingBagOutlinedIcon
                 fontSize="large"
                 onClick={toggleDrawer("right", true)}
               />

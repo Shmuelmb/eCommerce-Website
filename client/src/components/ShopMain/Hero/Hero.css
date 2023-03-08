@@ -1,8 +1,8 @@
 .hero-comp{
     color:#0050B6;
-    height: 80vh;
+    height: 95vh;
     width: 100%;
-    background-color: #ffffff;
+    background-color: #F1F3F2;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -10,12 +10,11 @@
   }
   
   .hero-content > h1{
+
     font-size: 5.625rem;
     text-align: left; 
     display: flex;
     margin: 0;
-    font-family: Archivo;
-  
   }
   .hero-content{
     width: 30%;

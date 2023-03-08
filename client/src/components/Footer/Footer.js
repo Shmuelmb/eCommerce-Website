@@ -8,30 +8,41 @@ const Footer = () => {
 
   return (
     <footer className="footer-container">
-      <div className="logo">
-        <h1
-          onClick={() => {
-            navigate("/");
-          }}
-        >
-          ClickFashion
-        </h1>
-      </div>
       <div className="footer-content">
-        <div className="links">
-          <h3>Links</h3>
-          <p>Sign in</p>
-          <p>Our services</p>
+        <div className="footer-header">
+          <h1
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            CLICK FASHION
+          </h1>
         </div>
-        <div className="contact-me">
-          <h3>Contact us</h3>
-          <p>shmuel.cohen0@gmail.com</p>
+        <div className="footer-nav">
+          <div className="footer-links">
+            <h3>SHOP</h3>
+            <p>Register</p>
+            <p>Log in</p>
+            <p>My account</p>
+          </div>
+          <div className="footer-links">
+            <h3>SHOP</h3>
+            <p>Register</p>
+            <p>Log in</p>
+            <p>My account</p>
+          </div>
+          <div className="footer-links">
+            <h3>SHOP</h3>
+            <p>Register</p>
+            <p>Log in</p>
+            <p>My account</p>
+          </div>
         </div>
-
-        <div className="follow-me">
-          <h3>Follow me</h3>
+        <div className="social-m">
+          <h2>JOIN OUR NEWSLETTERS</h2>
+          <input />
           <IconContext.Provider value={{ size: "2rem" }}>
-            <div>
+            <div className="social-m-icons">
               <AiOutlineLinkedin />
               <AiOutlineGithub />
             </div>
