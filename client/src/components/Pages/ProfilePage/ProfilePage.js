@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import NotFound from "../NotFound/NotFound";
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import Cookies from "universal-cookie";
-import MyContext from "../../MyContext";
+import MyContext from "../../../MyContext";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import "./ProfilePage.css";
 import Modal from "@mui/material/Modal";
@@ -72,7 +72,7 @@ const ProfilePage = () => {
         </Modal>
       </div>
     ) : (
-      <NotFound />
+      <NotFoundPage />
     )
   ) : (
     <LoadingPage />

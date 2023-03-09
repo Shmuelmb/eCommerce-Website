@@ -1,7 +1,7 @@
 import React from "react";
 
-const AboutMe = () => {
+const AboutMePage = () => {
   return <div>awdawf segsedgsegd</div>;
 };
 
-export default AboutMe;
+export default AboutMePage;

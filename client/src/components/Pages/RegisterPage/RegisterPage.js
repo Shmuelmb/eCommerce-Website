@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./Register.css";
+import "./RegisterPage.css";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -14,7 +14,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useNavigate } from "react-router-dom";
 
-const Register = () => {
+const RegisterPage = () => {
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -166,4 +166,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterPage;

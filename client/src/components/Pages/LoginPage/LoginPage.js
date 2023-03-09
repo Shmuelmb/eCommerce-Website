@@ -10,10 +10,10 @@ import SendIcon from "@mui/icons-material/Send";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import loginImg from "../../images/login-img.png";
+import loginImg from "../../../images/login-img.png";
 import Modal from "@mui/material/Modal";
 import Cookies from "universal-cookie";
-import MyContext from "../../MyContext";
+import MyContext from "../../../MyContext";
 
 const LoginPage = () => {
   const { setIsAtuh } = useContext(MyContext);

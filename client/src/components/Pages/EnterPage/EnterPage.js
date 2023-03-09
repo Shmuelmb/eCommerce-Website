@@ -1,11 +1,11 @@
 import React from "react";
-import "./ShopMain.css";
-import Products from "../Products/Products";
-import ShoppingBarTools from "../ShoppingBarTools/ShoppingBarTools";
-import MyContext from "../../MyContext";
+import "./EnterPage.css";
+import Products from "./Products/Products";
+import ShoppingBarTools from "./ShoppingBarTools/ShoppingBarTools";
+import MyContext from "../../../MyContext";
 import { useContext, useEffect } from "react";
 import Hero from "./Hero/Hero";
-const ShopMain = () => {
+const EnterPage = () => {
   const {
     setLoading,
     setAllProducts,
@@ -47,4 +47,4 @@ const ShopMain = () => {
   );
 };
 
-export default ShopMain;
+export default EnterPage;

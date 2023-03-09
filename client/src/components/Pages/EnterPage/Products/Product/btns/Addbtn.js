@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import MyContext from "../../../../MyContext";
+import MyContext from "../../../../../../MyContext";
 import "./btn.css";
 import Button from "@mui/material/Button";
 
@@ -24,7 +24,7 @@ const Addbtn = ({ id }) => {
       onClick={(event) => {
         addAmount(cartList, setCartList, event);
       }}
-      >
+    >
       Add to cart
     </Button>
   );

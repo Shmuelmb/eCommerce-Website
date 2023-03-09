@@ -1,6 +1,6 @@
 import React from "react";
-import "./NotFound.css";
-const NotFound = () => {
+import "./NotFoundPage.css";
+const NotFoundPage = () => {
   return (
     <div className="NotFound">
       <h1>Oops, this page not exists</h1>
@@ -8,4 +8,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default NotFoundPage;

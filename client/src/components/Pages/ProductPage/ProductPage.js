@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./ProductPage.css";
 import { useParams, useNavigate } from "react-router-dom";
-import Addbtn from "../Products/Product/btns/Addbtn";
+import Addbtn from "../EnterPage/Products/Product/btns/Addbtn";
 import Grow from "@mui/material/Grow";
 
 const ProductPage = () => {

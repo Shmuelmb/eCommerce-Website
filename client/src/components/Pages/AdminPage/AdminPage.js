@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-const ManagementShopPage = () => {
+const AdminPage = () => {
   const navigate = useNavigate("");
   return (
     <div>
@@ -16,4 +16,4 @@ const ManagementShopPage = () => {
   );
 };
 
-export default ManagementShopPage;
+export default AdminPage;

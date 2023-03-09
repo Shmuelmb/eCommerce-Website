@@ -4,7 +4,7 @@ import Buybtn from "./btns/Buybtn.js";
 import Addbtn from "./btns/Addbtn.js";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import MyContext from "../../../MyContext";
+import MyContext from "../../../../../MyContext";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";

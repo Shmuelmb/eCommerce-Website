@@ -2,18 +2,17 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import MyContext from "./MyContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ShopMain from "./components/ShopMain/ShopMain";
-import NotFound from "./components/NotFound/NotFound";
-import AboutMe from "./components/AboutMe/AboutMe";
+import EnterPage from "./components/Pages/EnterPage/EnterPage";
+import NotFoundPage from "./components/Pages/NotFoundPage/NotFoundPage";
+import AboutMePage from "./components/Pages/AboutMePage/AboutMePage";
 import Nav from "./components/Nav/Nav";
-import ProductPage from "./components/ProductPage/ProductPage";
-import LoginPage from "./components/LoginPage/LoginPage";
-import Register from "./components/Register/Register";
-import ManagementShopPage from "./components/ManagementShopPage/ManagementShopPage";
-import ManagProdPage from "./components/ManagementShopPage/ManagProdPage/ManagProdPage";
+import RegisterPage from "./components/Pages/RegisterPage/RegisterPage";
+import AdminPage from "./components/Pages/AdminPage/AdminPage";
+import ManagProdPage from "./components/Pages/AdminPage/ManagProdPage/ManagProdPage";
 import Footer from "./components/Footer/Footer";
-import ProfilePage from "./components/ProfilePage/ProfilePage";
-import Loading from "./components/LoadingPage/LoadingPage";
+import LoginPage from "./components/Pages/LoginPage/LoginPage";
+import ProfilePage from "./components/Pages/ProfilePage/ProfilePage";
+import ProductPage from "./components/Pages/ProductPage/ProductPage";
 
 function App() {
   // useState object
@@ -99,18 +98,18 @@ function App() {
         <Nav />
         <div className="main">
           <Routes>
-            <Route path="/" element={<ShopMain />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/" element={<EnterPage />} />
+            <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/admin" element={<ManagementShopPage />} />
+            <Route path="/admin" element={<AdminPage />} />
             <Route
               path="/admin/product-management"
               element={<ManagProdPage />}
             />
-            <Route path="/about" element={<AboutMe />} />
+            <Route path="/about" element={<AboutMePage />} />
             <Route path="/products/:productid" element={<ProductPage />} />
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
         <Footer />

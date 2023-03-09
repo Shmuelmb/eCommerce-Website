@@ -1,6 +1,6 @@
 import React from "react";
 import "./Filter.css";
-import MyContext from "../../../MyContext";
+import MyContext from "../../../../../MyContext";
 import { useContext, useState } from "react";
 
 const Filter = () => {
