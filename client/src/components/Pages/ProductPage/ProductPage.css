@@ -1,4 +1,4 @@
-.container{
+.producd-page-container{
     width: 100%;
     padding:  10% 0 7% 0;
     display: flex;
@@ -9,7 +9,7 @@
 
 
 
-.card{
+.prod-page-card{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background-color: white;
     display: flex;
@@ -20,7 +20,7 @@
     transition: all ease-in-out 0.5s !important;
 }
 
-.card > img{
+.prod-page-card > img{
     width: 400px;
     height: 400px;
 }

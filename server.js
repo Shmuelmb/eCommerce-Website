@@ -19,6 +19,7 @@ import {
 import { validateToken } from "./Users/JWT.js";
 import { Products } from "./Products/ProductsSchema.js";
 import cookiesMiddleware from "universal-cookie-express";
+import { productsByCategoryController } from "./SheinProducts/SheinServices.js";
 
 //dotenv
 dotenv.config();
@@ -50,6 +51,11 @@ app.get("/api/products/getProduct/:id", getProductController);
 app.post("/api/products/addProduct", addProductController);
 
 app.delete("/api/products/deleteProduct/:id", deleteProductController);
+
+app.get(
+  "/api/prods/productsByCategoryController/:category",
+  productsByCategoryController
+);
 
 // app.post("/api/products/addProducts", async (req, res) => {
 //   try {

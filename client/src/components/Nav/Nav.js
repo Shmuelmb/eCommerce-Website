@@ -40,19 +40,48 @@ const Nav = () => {
   return (
     <div className="nav-container">
       <div className="nav">
-        <h1
-          onClick={() => {
-            navigate("/");
-          }}
-        >
-          CLICK FASHION
-        </h1>
+        <h1>CLICK FASHION</h1>
         <div className="btn-navigate">
-          <button className="button-6 btn-nav">Home</button>
-          <button className="button-6 btn-nav">Men</button>
-          <button className="button-6 btn-nav">Woman</button>
-          <button className="button-6 btn-nav">Jewelery</button>
-          <button className="button-6 btn-nav">About Us</button>
+          <button
+            className="button-6 btn-nav"
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            HOME
+          </button>
+          <button
+            className="button-6 btn-nav"
+            onClick={() => {
+              navigate("/category/men");
+            }}
+          >
+            MEN
+          </button>
+          <button
+            className="button-6 btn-nav"
+            onClick={() => {
+              navigate("/category/women");
+            }}
+          >
+            WOMEN
+          </button>
+          <button
+            className="button-6 btn-nav"
+            onClick={() => {
+              navigate("/category/jewelery");
+            }}
+          >
+            JEWELERY
+          </button>
+          <button
+            className="button-6 btn-nav"
+            onClick={() => {
+              navigate("/about");
+            }}
+          >
+            ABOUT US
+          </button>
         </div>
 
         <div className="nav-icon">

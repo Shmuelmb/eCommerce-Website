@@ -24,9 +24,9 @@ const ProductPage = () => {
   }, [productid]);
 
   return (
-    <div className="container">
+    <div className="producd-page-container">
       <Grow in={true}>
-        <div className="card">
+        <div className="prod-page-card">
           <img src={product.image} alt={product.title} />
           <div className="detlais">
             <div className="text">

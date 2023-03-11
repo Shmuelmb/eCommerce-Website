@@ -13,6 +13,7 @@ import Footer from "./components/Footer/Footer";
 import LoginPage from "./components/Pages/LoginPage/LoginPage";
 import ProfilePage from "./components/Pages/ProfilePage/ProfilePage";
 import ProductPage from "./components/Pages/ProductPage/ProductPage";
+import CategoryPage from "./components/Pages/CategoryPage/CategoryPage";
 
 function App() {
   // useState object
@@ -64,6 +65,25 @@ function App() {
   const categories = createListOfKey(allProducts, "category");
   categories.unshift("New Arrivals");
 
+  const getData = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:8000/api/products/getAllProducts"
+      );
+      const data = await response.json();
+      setAllProducts(data);
+      setProducts(data);
+      addKeyForObjState(setCartList, "Amount", 0, data);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setTimeout(() => setLoading(false), 2000);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <BrowserRouter>
       <MyContext.Provider
@@ -110,6 +130,7 @@ function App() {
             <Route path="/products/:productid" element={<ProductPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="*" element={<NotFoundPage />} />
+            <Route path="/category/:category" element={<CategoryPage />} />
           </Routes>
         </div>
         <Footer />

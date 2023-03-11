@@ -1,0 +1,30 @@
+.CategoryPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+
+  }
+
+  .CategoryPage > h1{
+    font-size: 3rem;
+    letter-spacing: 10px;
+    text-align: center;
+    color: black;
+    width: 100%;
+    padding: 9% 0 10% 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.103);
+  }
+
+  .productss{
+        padding-top: 3%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        width: 70%;
+        justify-content: center;
+    
+      }
+  

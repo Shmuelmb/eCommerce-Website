@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import MyContext from "../../../../../../MyContext";
-import "./btn.css";
-import Button from "@mui/material/Button";
+import "./prod-btns.css";
 
 const Addbtn = ({ id }) => {
   const { setCartList, cartList } = useContext(MyContext);
@@ -18,15 +17,16 @@ const Addbtn = ({ id }) => {
   };
 
   return (
-    <Button
-      color="success"
+    <button
+      className="product-card-btn button-6"
       id={id}
       onClick={(event) => {
         addAmount(cartList, setCartList, event);
+        event.stopPropagation();
       }}
     >
-      Add to cart
-    </Button>
+      ADD TO CART
+    </button>
   );
 };
 

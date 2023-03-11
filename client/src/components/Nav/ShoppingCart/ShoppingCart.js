@@ -52,7 +52,8 @@ const ShoppingCart = () => {
             color="error"
             variant="contained"
             id={item._id}
-            onClick={(event) => removeAmount(cartList, setCartList, event)}>
+            onClick={(event) => removeAmount(cartList, setCartList, event)}
+          >
             -
           </Button>
           <Button
@@ -60,7 +61,8 @@ const ShoppingCart = () => {
             color="error"
             variant="contained"
             id={item._id}
-            onClick={(event) => addAmount(cartList, setCartList, event)}>
+            onClick={(event) => addAmount(cartList, setCartList, event)}
+          >
             +
           </Button>
         </div>
