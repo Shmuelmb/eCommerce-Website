@@ -6,11 +6,9 @@ const ShoppingBarTools = () => {
   return (
     <div className="ShoppingBarTools">
       <div className="shoptools-container">
-        <Filter />
-
-        <div className="br"></div>
         <h3>PRICE RANGE</h3>
         <Sort />
+        <div className="br"></div>
       </div>
     </div>
   );

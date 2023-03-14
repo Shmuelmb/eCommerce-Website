@@ -27,6 +27,7 @@ function App() {
   const [productID, setProductID] = useState("");
   const [productsFilter, setProductsFilter] = useState([]);
   const [isAuth, setIsAuth] = useState(false);
+  const [listCategoryProducts, setListCategoryProducts] = useState([]);
 
   // func
   const onFilterChange = (e) => {
@@ -73,6 +74,20 @@ function App() {
       const data = await response.json();
       setAllProducts(data);
       setProducts(data);
+      // addKeyForObjState(setCartList, "Amount", 0, data);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setTimeout(() => setLoading(false), 2000);
+    }
+  };
+
+  const getDataa = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:8000/api/prods/productsByCategoryController/WOMEN"
+      );
+      const data = await response.json();
       addKeyForObjState(setCartList, "Amount", 0, data);
     } catch (err) {
       console.log(err);
@@ -83,11 +98,14 @@ function App() {
 
   useEffect(() => {
     getData();
+    getDataa();
   }, []);
   return (
     <BrowserRouter>
       <MyContext.Provider
         value={{
+          listCategoryProducts,
+          setListCategoryProducts,
           setIsAuth,
           isAuth,
           createListOfKey,

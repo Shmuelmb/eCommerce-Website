@@ -41,11 +41,10 @@ const Sort = () => {
         value={value} // הערך שכרגע אני נמצא שם
         onChange={(event) => {
           setValue(event.target.value); // משנה כל רגע את הערך לפי הלחיצות שלי
-          setChoosenSortPrice(event.target.value);
         }}
         valueLabelDisplay="auto" // מראה את המספר שאני נמצא בו
-        min={minDistance}
-        max={maxDistance}
+        min={1}
+        max={20}
         // step={null}  marks on input range
         // marks={marks}marks on input range
       />
@@ -53,10 +52,7 @@ const Sort = () => {
         <p>{value[0]}$</p>
         <p>{value[1]}$</p>
       </div>
-
-      <button className="button-6" onClick={handleToggleChoosenSort}>
-        {isChoosenSortH2L === false ? "HIGH TO LOW" : "LOW TO HIGH"}
-      </button>
+      <button onClick={() => setChoosenSortPrice(value)}>Filter</button>
     </div>
   );
 };

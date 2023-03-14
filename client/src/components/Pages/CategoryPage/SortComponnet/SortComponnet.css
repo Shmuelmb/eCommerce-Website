@@ -1,0 +1,24 @@
+
+.products-sort{
+    display:flex;
+    justify-content: flex-end;
+    gap: 5px;
+  }
+
+
+    .products-sort > select {
+      margin: 0 !important;
+      margin-bottom: 1em;
+      border: 0;
+      border-bottom: 2px solid currentcolor; 
+      font-weight: bold;
+      font-size: 1.1rem;
+      letter-spacing: .15em;
+      border-radius: 0;
+    }
+
+    .products-sort>select:focus, .products-sort>select:active {
+        outline: 0;
+        border-bottom-color: red;
+      }
+    

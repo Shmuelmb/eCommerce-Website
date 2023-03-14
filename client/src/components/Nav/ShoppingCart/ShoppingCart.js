@@ -43,9 +43,9 @@ const ShoppingCart = () => {
     <div className="shoppingCart">
       {cartListCopy.map((item, index) => (
         <div key={index} className="itemInCart">
-          <img src={item.image} alt={item.title} />
-          <h5>{item.title}</h5>
-          <p className="p2">Price: {item.price * item.Amount}</p>
+          <img src={item.goods_img} alt={item.goods_name} />
+          <h5>{item.goods_name}</h5>
+          <p className="p2">Price: {item.retailPrice.amount * item.Amount}</p>
           <p className="p2"> Amount: {item.Amount}</p>
           <Button
             size="small"

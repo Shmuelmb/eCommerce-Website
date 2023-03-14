@@ -22,6 +22,7 @@ const Addbtn = ({ id }) => {
       id={id}
       onClick={(event) => {
         addAmount(cartList, setCartList, event);
+
         event.stopPropagation();
       }}
     >

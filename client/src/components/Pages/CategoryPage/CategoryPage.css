@@ -9,12 +9,12 @@
   }
 
   .CategoryPage > h1{
+    width: 100%;
+    text-align: center;
     font-size: 3rem;
     letter-spacing: 10px;
-    text-align: center;
     color: black;
-    width: 100%;
-    padding: 9% 0 10% 0;
+    padding: 13% 0 10% 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.103);
   }
 
@@ -49,37 +49,3 @@
     display: flex;
     justify-content: space-around;
   }
-
-  .products-sort{
-    display:flex;
-    justify-content: flex-end;
-    gap: 5px;
-  }
-
-  /* .products-sort>select {
-      background-color: white ;
-      width: 100%;
-      border: none;
-    
-    }
-
-    .products-sort>select:focus-visible{
-      outline: none;
-    
-    } */
-
-    .products-sort>select {
-      margin-bottom: 1em;
-      padding: .25em;
-      border: 0;
-      border-bottom: 2px solid currentcolor; 
-      font-weight: bold;
-      letter-spacing: .15em;
-      border-radius: 0;
-    }
-
-    .products-sort>select:focus, .products-sort>select:active {
-        outline: 0;
-        border-bottom-color: red;
-      }
-    

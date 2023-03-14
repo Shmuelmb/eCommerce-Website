@@ -6,7 +6,9 @@
 
 }
 
-
+.filter > h3{
+  margin-top: 0;
+}
 
 .filter > button {
   background-color: #ffff;
