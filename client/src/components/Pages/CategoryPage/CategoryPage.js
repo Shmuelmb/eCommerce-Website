@@ -33,10 +33,11 @@ const CategoryPage = () => {
   //listCategoryProcuts - רשימת המוצרים לפי קטגוריה בסדר המקורי שלה ללא מניפולציות, נוצר ממנה העתק ללוקאל ליסט
   //listFilter - רשימה שעליה בפועל מובצעות המניפולציות
   const [localList, setLocalList] = useState([]);
-  const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState(true);
   const { category } = useParams();
   const Category = category.toUpperCase();
   const {
+    setIsChoosenSortH2L,
     isChoosenSortH2L,
     setListCategoryProducts,
     listCategoryProducts,
@@ -54,26 +55,28 @@ const CategoryPage = () => {
     } catch (e) {
       console.log(e);
     } finally {
-      setTimeout(() => setLoading(false), 2000);
+      setLoading(false);
     }
   };
   useEffect(() => {
-    getProducts();
-  }, [Category]);
+    getProducts(); // נועד לייבא את המוצרים מהשרת בכל פעם שיוצאים או מרעננים את הדף
+    setIsChoosenSortH2L(); // נועד לאפס את אפשרות סידור המוצרים בכל פעם שיוצאים או מרעננים את הדף
+    setLoading(true); //  נועד לרנדר את כל הקומפוננטות בכל פעם שעוברים קטגרויה
+  }, [category]);
 
   useEffect(() => {
     const listFilter = listCategoryProducts.filter(
       (ev) =>
         Number(ev.retailPrice.amount) >= choosenSortPrice[0] &&
         Number(ev.retailPrice.amount) <= choosenSortPrice[1]
-    );
+    ); // מפלטר את המוצרים שנמצאים בטווח המחירים שנבחר
 
+    setLocalList(listFilter);
     if (isChoosenSortH2L) {
       filterProductsPriceHigh2Low(listFilter);
     } else {
       filterProductsPriceLow2High(listFilter);
     }
-    setLocalList(listFilter);
   }, [choosenSortPrice, isChoosenSortH2L]);
 
   return !loading ? (

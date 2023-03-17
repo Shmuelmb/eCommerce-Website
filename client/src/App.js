@@ -18,8 +18,8 @@ import CategoryPage from "./components/Pages/CategoryPage/CategoryPage";
 function App() {
   // useState object
   const [searchValue, setSearchValue] = useState("");
-  const [choosenSortPrice, setChoosenSortPrice] = useState([0, 999.99]);
-  const [isChoosenSortH2L, setIsChoosenSortH2L] = useState();
+  const [choosenSortPrice, setChoosenSortPrice] = useState([0, 20]);
+  const [isChoosenSortH2L, setIsChoosenSortH2L] = useState("");
   const [products, setProducts] = useState([]); // המוצרים עם השינויים שלהם
   const [allProducts, setAllProducts] = useState([1, 2]); // רשימת המוצרים ללא שינוים עליהם
   const [loading, setLoading] = useState(true);
