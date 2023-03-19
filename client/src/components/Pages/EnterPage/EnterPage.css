@@ -1,8 +1,9 @@
-.ShopMain{
+.enter-page{
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+
 
 }
 
@@ -14,4 +15,76 @@
   display: flex;
   flex-direction: row;
 
+}
+.enter-page-carrousel{
+  width: 90%;
+  text-align: center;
+  padding: 3% 0 3% 0;
+}
+
+.enter-page-carrousel > h1{
+  padding-bottom: 2%;
+}
+.enter-page-carrousel-prods{
+  display: flex;
+  justify-content: space-between;
+}
+.enter-page-category-link{
+  padding: 3% 0 7% 0;
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+
+.cat{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 47%;
+}
+.img-cat{
+  width: 100%;
+
+ 
+}
+
+.enter-page-jewelery-link{
+  width: 90%;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 3%;
+}
+.jewelery-img{
+  width: 50%;
+}
+
+
+.jewelery-img-text{
+  color: white;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../../images/jewelery-img.png");
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+
+}
+
+
+.img-cat-jewelery{
+  width: 100%;
+}
+.jewelery-text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%
 }

@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 const Products = mongoose.model("prods", {});
 
+export const getAllProducts = () => {
+  return Products.find({});
+};
 const getProductsByCategory = (category) => {
   return Products.find({ category: category });
 };

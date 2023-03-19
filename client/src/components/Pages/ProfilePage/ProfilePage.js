@@ -5,9 +5,11 @@ import MyContext from "../../../MyContext";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import "./ProfilePage.css";
 import Modal from "@mui/material/Modal";
+import { useNavigate } from "react-router-dom";
 
 const ProfilePage = () => {
   const cookies = new Cookies();
+  const navigate = useNavigate();
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
   const [openModal, setOpenModal] = useState(false);
@@ -60,7 +62,18 @@ const ProfilePage = () => {
           </button>
           <button className="button-6">Change Password</button>
           <button className="button-6">Delete Account</button>
+          <button
+            onClick={() => {
+              setIsAuth(false);
+              cookies.remove("TOKEN");
+              navigate("/login");
+            }}
+            className="button-6"
+          >
+            Log Out
+          </button>
         </div>
+
         <Modal className="modal-box" open={openModal} onClose={handleClose}>
           <div className="modal-message">
             <h4>Personal Information</h4>

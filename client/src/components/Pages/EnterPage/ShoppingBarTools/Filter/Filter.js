@@ -1,28 +1,59 @@
-import React from "react";
-import "./Filter.css";
+import React, { useContext, useEffect, useState } from "react";
 import MyContext from "../../../../../MyContext";
-import { useContext, useState } from "react";
+import "./Filter.css";
+import Slider from "@mui/material/Slider";
 
+// l2h === false
+// h2l === true
 const Filter = () => {
-  const { onFilterChange, categories, setSearchValue, setChoosenSortPrice } =
-    useContext(MyContext);
+  const {
+    products,
+    createListOfKey,
+    setChoosenSortPrice,
+    isChoosenSortH2L,
+    setIsChoosenSortH2L,
+    listCategoryProducts,
+  } = useContext(MyContext);
+
+  //func
+  const handleToggleChoosenSort = () => {
+    isChoosenSortH2L === false
+      ? setIsChoosenSortH2L(true)
+      : setIsChoosenSortH2L(false);
+  };
+
+  //actions
+  const priceList = listCategoryProducts
+    .map((p) => p.retailPrice.amount)
+    .filter((value, index, array) => array.indexOf(value) === index);
+  priceList.sort((a, b) => a - b);
+
+  const minDistance = Number(priceList[0]);
+  const maxDistance = Number(priceList[priceList.length - 1]);
+  const [value, setValue] = useState([minDistance, maxDistance]);
 
   return (
-    <div className="filter">
-      <h3>CATEGORIES</h3>
-      {categories.map((i, index) => (
-        <button
-          onClick={(event) => {
-            onFilterChange(event);
-            setSearchValue("");
-            setChoosenSortPrice([0, 999.99]);
-          }}
-          key={index + 10}
-        >
-          {i}
-        </button>
-      ))}
+    <div className="sort">
+      <Slider
+        value={value} // הערך שכרגע אני נמצא שם
+        onChange={(event) => {
+          setValue(event.target.value); // משנה כל רגע את הערך לפי הלחיצות שלי
+        }}
+        valueLabelDisplay="auto" // מראה את המספר שאני נמצא בו
+        min={minDistance}
+        max={maxDistance}
+        // step={null}  marks on input range
+        // marks={marks}marks on input range
+      />
+      <div className="price-view">
+        <p>${value[0]}</p>
+        <p>${value[1]}</p>
+      </div>
+      <button className="button-6" onClick={() => setChoosenSortPrice(value)}>
+        FILTER
+      </button>
     </div>
   );
 };
+
 export default Filter;

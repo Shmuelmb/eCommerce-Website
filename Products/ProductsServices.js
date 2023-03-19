@@ -1,9 +1,5 @@
 import { Products } from "./ProductsSchema.js";
 
-export const getAllProducts = () => {
-  return Products.find({});
-};
-
 export const getProduct = (id) => {
   return Products.findOne({ _id: id });
 };

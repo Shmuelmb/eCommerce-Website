@@ -13,7 +13,7 @@ import Badge from "@mui/material/Badge";
 import MyContext from "../../MyContext";
 
 const Nav = () => {
-  const { cartList } = useContext(MyContext);
+  const { cartList, isAuth } = useContext(MyContext);
 
   // state obj
   const [state, setState] = useState({ right: false });
@@ -91,7 +91,7 @@ const Nav = () => {
           </IconButton>
           <IconButton
             onClick={() => {
-              navigate("/login");
+              isAuth ? navigate("/profile") : navigate("/login");
             }}
           >
             <PermIdentityOutlinedIcon fontSize="large" />

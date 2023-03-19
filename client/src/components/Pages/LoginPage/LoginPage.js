@@ -16,7 +16,7 @@ import Cookies from "universal-cookie";
 import MyContext from "../../../MyContext";
 
 const LoginPage = () => {
-  const { setIsAtuh } = useContext(MyContext);
+  const { setIsAuth } = useContext(MyContext);
   //init package
   const cookies = new Cookies();
   //useState
@@ -76,6 +76,7 @@ const LoginPage = () => {
         setIsLogin(false);
       } else {
         setIsLogin(true);
+        setIsAuth(true);
         cookies.set("TOKEN", user.accessToken, {
           expires: expriesDate(),
         });

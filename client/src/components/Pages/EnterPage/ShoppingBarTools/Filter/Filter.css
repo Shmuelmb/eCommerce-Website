@@ -1,26 +1,27 @@
-.filter{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 5px;
+.sort {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 
-}
+  }
 
-.filter > h3{
-  margin-top: 0;
-}
 
-.filter > button {
-  background-color: #ffff;
-  font-size: 1.1rem;
-  border: 0;
-  display: flex;
-  cursor: pointer;
-  color: rgba(0, 0, 0, 0.463);
-  transition: ease-in-out all 0.3s;
-}
-
-.filter > button:hover, .filter > button:active, .filter > button:focus {
+.sort > button{
   color: black;
+  border: 0;
 }
+
+
+
+  .price-view{
+    width: 100%;
+    font-size: small;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
 

@@ -10,7 +10,7 @@
 .profile-btn{
     display: flex;
     justify-content: space-between;
-    width: 30%;
+    width: 35%;
 }
 .profile-btn > button{
     border-radius: 50%;

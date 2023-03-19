@@ -2,7 +2,7 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
-import { productsAllowedUpdates } from "./data/data.js";
+// import { productsAllowedUpdates } from "./data/data.js";
 import dotenv from "dotenv";
 import {
   allProductsController,
@@ -68,31 +68,31 @@ app.get(
 //   }
 // });
 
-app.put("/api/products/updateProduct/:id", async (req, res) => {
-  const { id } = req.params;
+// app.put("/api/products/updateProduct/:id", async (req, res) => {
+//   const { id } = req.params;
 
-  const updates = Object.keys(req.body);
-  const isValidOperation = updates.every((update) =>
-    productsAllowedUpdates.includes(update)
-  );
+//   const updates = Object.keys(req.body);
+//   const isValidOperation = updates.every((update) =>
+//     productsAllowedUpdates.includes(update)
+//   );
 
-  if (!isValidOperation) {
-    res.status(400).send({ message: "Invalid updates" });
-  }
+//   if (!isValidOperation) {
+//     res.status(400).send({ message: "Invalid updates" });
+//   }
 
-  try {
-    const product = await Products.findOne({ id: id });
-    if (!product) {
-      res.status(404).send({ message: "product does not exist" });
-    }
-    updates.forEach((update) => (product[update] = req.body[update]));
-    await product.save();
-    res.status(200).send(product);
-  } catch (e) {
-    console.log(e);
-    res.status(500).send({ message: e });
-  }
-});
+//   try {
+//     const product = await Products.findOne({ id: id });
+//     if (!product) {
+//       res.status(404).send({ message: "product does not exist" });
+//     }
+//     updates.forEach((update) => (product[update] = req.body[update]));
+//     await product.save();
+//     res.status(200).send(product);
+//   } catch (e) {
+//     console.log(e);
+//     res.status(500).send({ message: e });
+//   }
+// });
 
 //users route
 app.post("/api/users/register", registerController);

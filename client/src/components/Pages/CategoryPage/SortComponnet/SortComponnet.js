@@ -7,9 +7,11 @@ const SortComponnet = () => {
     <div className="products-sort">
       <select
         onChange={(event) => {
-          event.target.value === "HIGH TO LOW"
-            ? setIsChoosenSortH2L(true)
-            : setIsChoosenSortH2L(false);
+          if (event.target.value === "HIGH TO LOW") {
+            setIsChoosenSortH2L(event.target.value);
+          } else if (event.target.value === "LOW TO HIGH") {
+            setIsChoosenSortH2L(event.target.value);
+          }
         }}
       >
         <option hidden={true}>SORT</option>

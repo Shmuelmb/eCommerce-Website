@@ -38,9 +38,9 @@ h1{
 }
 
 .modal-message{
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 2%;
-  background-color: #DC1A22;
+  background-color: white;
   font-family: Arial, Helvetica, sans-serif;
   border-radius: 15px;
 }

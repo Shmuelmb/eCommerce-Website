@@ -1,10 +1,5 @@
-import {
-  getAllProducts,
-  getProduct,
-  addProduct,
-  deleteProduct,
-} from "./ProductsServices.js";
-
+import { getProduct, addProduct, deleteProduct } from "./ProductsServices.js";
+import { getAllProducts } from "../SheinProducts/SheinServices.js";
 export const allProductsController = async (req, res) => {
   try {
     const allProducts = await getAllProducts();

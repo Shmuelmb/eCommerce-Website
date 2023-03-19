@@ -37,6 +37,7 @@ const CategoryPage = () => {
   const { category } = useParams();
   const Category = category.toUpperCase();
   const {
+    setChoosenSortPrice,
     setIsChoosenSortH2L,
     isChoosenSortH2L,
     setListCategoryProducts,
@@ -62,6 +63,7 @@ const CategoryPage = () => {
     getProducts(); // נועד לייבא את המוצרים מהשרת בכל פעם שיוצאים או מרעננים את הדף
     setIsChoosenSortH2L(); // נועד לאפס את אפשרות סידור המוצרים בכל פעם שיוצאים או מרעננים את הדף
     setLoading(true); //  נועד לרנדר את כל הקומפוננטות בכל פעם שעוברים קטגרויה
+    setChoosenSortPrice([0, 999]);
   }, [category]);
 
   useEffect(() => {
@@ -71,13 +73,15 @@ const CategoryPage = () => {
         Number(ev.retailPrice.amount) <= choosenSortPrice[1]
     ); // מפלטר את המוצרים שנמצאים בטווח המחירים שנבחר
 
-    setLocalList(listFilter);
-    if (isChoosenSortH2L) {
+    if (isChoosenSortH2L === "HIGH TO LOW") {
       filterProductsPriceHigh2Low(listFilter);
-    } else {
+    } else if (isChoosenSortH2L === "LOW TO HIGH") {
       filterProductsPriceLow2High(listFilter);
     }
+    setLocalList(listFilter);
   }, [choosenSortPrice, isChoosenSortH2L]);
+
+  useEffect(() => {}, [isChoosenSortH2L]);
 
   return !loading ? (
     <div className="CategoryPage">

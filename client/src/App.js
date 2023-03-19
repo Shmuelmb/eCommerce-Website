@@ -18,10 +18,10 @@ import CategoryPage from "./components/Pages/CategoryPage/CategoryPage";
 function App() {
   // useState object
   const [searchValue, setSearchValue] = useState("");
-  const [choosenSortPrice, setChoosenSortPrice] = useState([0, 20]);
+  const [choosenSortPrice, setChoosenSortPrice] = useState([0, 999]);
   const [isChoosenSortH2L, setIsChoosenSortH2L] = useState("");
   const [products, setProducts] = useState([]); // המוצרים עם השינויים שלהם
-  const [allProducts, setAllProducts] = useState([1, 2]); // רשימת המוצרים ללא שינוים עליהם
+  const [allProducts, setAllProducts] = useState([]); // רשימת המוצרים ללא שינוים עליהם
   const [loading, setLoading] = useState(true);
   const [cartList, setCartList] = useState([]);
   const [productID, setProductID] = useState("");
@@ -57,14 +57,13 @@ function App() {
     newArr.map((ev) => (ev[key] = value));
     setArr(newArr);
   };
-
-  const createListOfKey = (arrayOfProcuts, key) =>
-    arrayOfProcuts
-      .map((p) => p[key])
+  const key = "retailPrice";
+  const createListOfKey = (arrayOfProcuts, key) => {
+    const x = arrayOfProcuts
+      .map((p) => console.log(p.retailPrice.amount))
       .filter((value, index, array) => array.indexOf(value) === index);
-
-  const categories = createListOfKey(allProducts, "category");
-  categories.unshift("New Arrivals");
+    return x;
+  };
 
   const getData = async () => {
     try {
@@ -73,32 +72,16 @@ function App() {
       );
       const data = await response.json();
       setAllProducts(data);
-      setProducts(data);
-      // addKeyForObjState(setCartList, "Amount", 0, data);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setTimeout(() => setLoading(false), 2000);
-    }
-  };
-
-  const getDataa = async () => {
-    try {
-      const response = await fetch(
-        "http://localhost:8000/api/prods/productsByCategoryController/WOMEN"
-      );
-      const data = await response.json();
       addKeyForObjState(setCartList, "Amount", 0, data);
     } catch (err) {
       console.log(err);
     } finally {
-      setTimeout(() => setLoading(false), 2000);
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     getData();
-    getDataa();
   }, []);
   return (
     <BrowserRouter>
@@ -126,7 +109,6 @@ function App() {
           loading,
           cartList,
           setCartList,
-          categories,
           choosenSortPrice,
           onFilterChange,
           setChoosenSortPrice,
