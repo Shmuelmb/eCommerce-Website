@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const Products = mongoose.model("prods", {});
+const Products = mongoose.model("products", {});
 
 export const getAllProducts = () => {
   return Products.find({});

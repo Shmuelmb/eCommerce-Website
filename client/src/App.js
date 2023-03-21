@@ -23,7 +23,9 @@ function App() {
   const [products, setProducts] = useState([]); // המוצרים עם השינויים שלהם
   const [allProducts, setAllProducts] = useState([]); // רשימת המוצרים ללא שינוים עליהם
   const [loading, setLoading] = useState(true);
-  const [cartList, setCartList] = useState([]);
+  const [cartList, setCartList] = useState(
+    localStorage.getItem("userList") || []
+  );
   const [productID, setProductID] = useState("");
   const [productsFilter, setProductsFilter] = useState([]);
   const [isAuth, setIsAuth] = useState(false);
@@ -57,13 +59,13 @@ function App() {
     newArr.map((ev) => (ev[key] = value));
     setArr(newArr);
   };
-  const key = "retailPrice";
-  const createListOfKey = (arrayOfProcuts, key) => {
-    const x = arrayOfProcuts
-      .map((p) => console.log(p.retailPrice.amount))
-      .filter((value, index, array) => array.indexOf(value) === index);
-    return x;
-  };
+  // const key = "retailPrice";
+  // const createListOfKey = (arrayOfProcuts, key) => {
+  //   const x = arrayOfProcuts
+  //     .map((p) => console.log(p.retailPrice.amount))
+  //     .filter((value, index, array) => array.indexOf(value) === index);
+  //   return x;
+  // };
 
   const getData = async () => {
     try {
@@ -91,7 +93,6 @@ function App() {
           setListCategoryProducts,
           setIsAuth,
           isAuth,
-          createListOfKey,
           productsFilter,
           setProductsFilter,
           onSearchClick,

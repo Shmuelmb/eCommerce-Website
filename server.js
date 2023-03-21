@@ -53,7 +53,7 @@ app.post("/api/products/addProduct", addProductController);
 app.delete("/api/products/deleteProduct/:id", deleteProductController);
 
 app.get(
-  "/api/prods/productsByCategoryController/:category",
+  "/api/products/productsByCategoryController/:category",
   productsByCategoryController
 );
 

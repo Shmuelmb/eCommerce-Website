@@ -40,24 +40,40 @@
 
 
 .cat{
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 47%;
-}
-.img-cat{
-  width: 100%;
 
- 
+  
+
+}
+
+.img-cat{
+  overflow: hidden;
+
+
+}
+
+.img-cat > img{
+  transition: all 1s ease-in-out;
+
+  width: 100%;
+}
+ .img-cat>img:hover{
+  transform: scale(1.9);
 }
 
 .enter-page-jewelery-link{
+  cursor: pointer;
   width: 90%;
   justify-content: center;
   display: flex;
   flex-direction: row;
   padding-bottom: 3%;
 }
+
 .jewelery-img{
   width: 50%;
 }

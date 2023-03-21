@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 
 const ShoppingCart = () => {
   const { cartList, setCartList } = useContext(MyContext);
+
   const addAmount = (arr, setArr, eventOfClick) => {
     const newArr = [...arr];
     const clickID = eventOfClick.target.id;
@@ -14,6 +15,7 @@ const ShoppingCart = () => {
       }
     });
     setArr(newArr);
+    localStorage.setItem("usersList", JSON.stringify(cartList));
   };
   const removeAmount = (arr, setArr, eventOfClick) => {
     const newArr = [...arr];
@@ -32,20 +34,21 @@ const ShoppingCart = () => {
   cartList.map((i) => {
     if (i.Amount > 0) {
       cartListCopy.push(i);
+      localStorage.setItem("usersList", JSON.stringify(cartListCopy));
+
       if (i.DateCreated === 0) {
         i.DateCreated = Date.now();
       }
     }
   });
-  cartListCopy.sort((a, b) => a.DateCreated - b.DateCreated);
 
   return (
     <div className="shoppingCart">
       {cartListCopy.map((item, index) => (
         <div key={index} className="itemInCart">
-          <img src={item.goods_img} alt={item.goods_name} />
+          <img src={item.url_img} alt={item.title} />
           <h5>{item.goods_name}</h5>
-          <p className="p2">Price: {item.retailPrice.amount * item.Amount}</p>
+          <p className="p2">Price: {(item.price * item.Amount).toFixed(2)}</p>
           <p className="p2"> Amount: {item.Amount}</p>
           <Button
             size="small"

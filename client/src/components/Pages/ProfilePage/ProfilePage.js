@@ -85,7 +85,7 @@ const ProfilePage = () => {
         </Modal>
       </div>
     ) : (
-      <NotFoundPage />
+      navigate("/login")
     )
   ) : (
     <LoadingPage />

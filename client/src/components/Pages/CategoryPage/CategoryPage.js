@@ -48,7 +48,7 @@ const CategoryPage = () => {
   const getProducts = async () => {
     try {
       const response = await fetch(
-        `http://localhost:8000/api/prods/productsByCategoryController/${Category}`
+        `http://localhost:8000/api/products/productsByCategoryController/${Category}`
       );
       const data = await response.json();
       setListCategoryProducts(data);
@@ -69,8 +69,8 @@ const CategoryPage = () => {
   useEffect(() => {
     const listFilter = listCategoryProducts.filter(
       (ev) =>
-        Number(ev.retailPrice.amount) >= choosenSortPrice[0] &&
-        Number(ev.retailPrice.amount) <= choosenSortPrice[1]
+        Number(ev.price) >= choosenSortPrice[0] &&
+        Number(ev.price) <= choosenSortPrice[1]
     ); // מפלטר את המוצרים שנמצאים בטווח המחירים שנבחר
 
     if (isChoosenSortH2L === "HIGH TO LOW") {
@@ -96,10 +96,10 @@ const CategoryPage = () => {
                 <ProductCard
                   category={event.category}
                   key={index + 10}
-                  Urlimage={event.goods_img}
+                  Urlimage={event.url_img}
                   id={event._id}
-                  title={event.goods_name}
-                  price={event.retailPrice.amount}
+                  title={event.title}
+                  price={event.price}
                 />
               );
             })}

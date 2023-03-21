@@ -8,7 +8,7 @@ import Slider from "@mui/material/Slider";
 const Filter = () => {
   const {
     products,
-    createListOfKey,
+
     setChoosenSortPrice,
     isChoosenSortH2L,
     setIsChoosenSortH2L,
@@ -24,7 +24,7 @@ const Filter = () => {
 
   //actions
   const priceList = listCategoryProducts
-    .map((p) => p.retailPrice.amount)
+    .map((p) => p.price)
     .filter((value, index, array) => array.indexOf(value) === index);
   priceList.sort((a, b) => a - b);
 

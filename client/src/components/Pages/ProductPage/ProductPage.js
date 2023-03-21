@@ -27,7 +27,7 @@ const ProductPage = () => {
     <div className="producd-page-container">
       <Grow in={true}>
         <div className="prod-page-card">
-          <img src={product.image} alt={product.title} />
+          <img src={product.url_img} alt={product.title} />
           <div className="detlais">
             <div className="text">
               <h4>{product.title}</h4>
