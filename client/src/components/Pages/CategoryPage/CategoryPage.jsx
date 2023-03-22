@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import MyContext from "../../../MyContext";
+import MyContext from "../../../.js/MyContext";
 import ShoppingBarTools from "../EnterPage/ShoppingBarTools/ShoppingBarTools";
 import "./CategoryPage.css";
 import ProductCard from "./ProductCard/ProductCard";
-import SortComponnet from "./SortComponnet/SortComponnet.js";
+import SortComponnet from "./SortComponnet/SortComponnet";
 import LoadingPage from "../LoadingPage/LoadingPage";
 
 const CategoryPage = () => {

@@ -13,7 +13,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import loginImg from "../../../images/login-img.png";
 import Modal from "@mui/material/Modal";
 import Cookies from "universal-cookie";
-import MyContext from "../../../MyContext";
+import MyContext from "../../../.js/MyContext";
 
 const LoginPage = () => {
   const { setIsAuth } = useContext(MyContext);

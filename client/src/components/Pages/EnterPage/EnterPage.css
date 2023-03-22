@@ -58,11 +58,10 @@
 
 .img-cat > img{
   transition: all 1s ease-in-out;
-
   width: 100%;
 }
  .img-cat>img:hover{
-  transform: scale(1.9);
+  transform: scale(1.2);
 }
 
 .enter-page-jewelery-link{

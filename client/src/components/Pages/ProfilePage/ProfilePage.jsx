@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import Cookies from "universal-cookie";
-import MyContext from "../../../MyContext";
+import MyContext from "../../../.js/MyContext";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import "./ProfilePage.css";
 import Modal from "@mui/material/Modal";

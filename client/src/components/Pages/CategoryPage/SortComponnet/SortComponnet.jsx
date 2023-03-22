@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import MyContext from "../../../../MyContext";
+import MyContext from "../../../../.js/MyContext";
 import "./SortComponnet.css";
 const SortComponnet = () => {
   const { setIsChoosenSortH2L } = useContext(MyContext);

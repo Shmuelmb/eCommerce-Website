@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
 import { CardActionArea } from "@mui/material";
-import MyContext from "../../../MyContext";
+import MyContext from "../../../.js/MyContext";
 
 const SearchBar = () => {
   const { setSearchValue } = useContext(MyContext);

@@ -1,6 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import MyContext from "./MyContext";
+import MyContext from "./.js/MyContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import EnterPage from "./components/Pages/EnterPage/EnterPage";
 import NotFoundPage from "./components/Pages/NotFoundPage/NotFoundPage";

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import MyContext from "../../../../../MyContext";
+import MyContext from "../../../../../.js/MyContext";
 import "./Filter.css";
 import Slider from "@mui/material/Slider";
 

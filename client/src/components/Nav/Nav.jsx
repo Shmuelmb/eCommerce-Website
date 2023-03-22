@@ -10,7 +10,7 @@ import Drawer from "@mui/material/Drawer";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
-import MyContext from "../../MyContext";
+import MyContext from "../../.js/MyContext";
 
 const Nav = () => {
   const { cartList, isAuth } = useContext(MyContext);

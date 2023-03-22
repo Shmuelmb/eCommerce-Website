@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./EnterPage.css";
 import Hero from "./Hero/Hero";
-import MyContext from "../../../MyContext";
-import { getMultipleRandom } from "../../../functions/functions.js";
+import MyContext from "../../../.js/MyContext";
+import { getMultipleRandom } from "../../../.js/functions.js";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import menCatImg from "../../../images/men-category.png";
 import womanCatImg from "../../../images/women-category.png";
