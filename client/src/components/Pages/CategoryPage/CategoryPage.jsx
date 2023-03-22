@@ -11,18 +11,18 @@ const CategoryPage = () => {
   //func
   const filterProductsPriceHigh2Low = (x) => {
     x.sort((p1, p2) =>
-      Number(p1.retailPrice.amount) < Number(p2.retailPrice.amount)
+      Number(p1.price) < Number(p2.price)
         ? 1
-        : Number(p1.retailPrice.amount) > Number(p2.retailPrice.amount)
+        : Number(p1.price) > Number(p2.price)
         ? -1
         : 0
     );
   };
   const filterProductsPriceLow2High = (x) => {
     x.sort((p1, p2) =>
-      Number(p1.retailPrice.amount) < Number(p2.retailPrice.amount)
+      Number(p1.price) < Number(p2.price)
         ? -1
-        : Number(p1.retailPrice.amount) > Number(p2.retailPrice.amount)
+        : Number(p1.price) > Number(p2.price)
         ? 1
         : 0
     );
