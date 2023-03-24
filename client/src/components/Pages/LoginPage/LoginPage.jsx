@@ -152,7 +152,7 @@ const LoginPage = () => {
             Already have an account? Click Here
           </p>
         </div>
-        <img className="img2" src={loginImg} alt="s" />
+        {/* <img className="img2" src={loginImg} alt="s" /> */}
       </div>
       <Modal className="modal-box" open={openModal} onClose={handleClose}>
         <div className="modal-message">

@@ -16,6 +16,7 @@ import ProductPage from "./components/Pages/ProductPage/ProductPage";
 import CategoryPage from "./components/Pages/CategoryPage/CategoryPage";
 
 function App() {
+  const localCartList = JSON.parse(localStorage.getItem("userList"));
   // useState object
   const [searchValue, setSearchValue] = useState("");
   const [choosenSortPrice, setChoosenSortPrice] = useState([0, 999]);
@@ -23,13 +24,12 @@ function App() {
   const [products, setProducts] = useState([]); // המוצרים עם השינויים שלהם
   const [allProducts, setAllProducts] = useState([]); // רשימת המוצרים ללא שינוים עליהם
   const [loading, setLoading] = useState(true);
-  const [cartList, setCartList] = useState(
-    localStorage.getItem("userList") || []
-  );
+  const [cartList, setCartList] = useState(localCartList || []);
   const [productID, setProductID] = useState("");
   const [productsFilter, setProductsFilter] = useState([]);
   const [isAuth, setIsAuth] = useState(false);
   const [listCategoryProducts, setListCategoryProducts] = useState([]);
+  const [userCartList, setUserCartList] = useState([]);
 
   // func
   const onFilterChange = (e) => {
@@ -89,6 +89,8 @@ function App() {
     <BrowserRouter>
       <MyContext.Provider
         value={{
+          userCartList,
+          setUserCartList,
           listCategoryProducts,
           setListCategoryProducts,
           setIsAuth,

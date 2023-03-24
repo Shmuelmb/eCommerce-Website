@@ -1,5 +1,5 @@
 import React from "react";
-import Addbtn from "../../EnterPage/Products/Product/btns/Addbtn";
+import Addbtn from "./Addbtn/Addbtn.jsx";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import MyContext from "../../../../.js/MyContext.js";

@@ -1,20 +1,10 @@
 import React, { useContext } from "react";
-import MyContext from "../../../../../../.js/MyContext";
+import MyContext from "../../../../../.js/MyContext";
 import "./prod-btns.css";
-
+import { upDateUserCartList, addAmount } from "../../../../../.js/functions";
 const Addbtn = ({ id }) => {
-  const { setCartList, cartList } = useContext(MyContext);
-
-  const addAmount = (arr, setArr, eventOfClick) => {
-    const newArr = [...arr];
-    const clickID = eventOfClick.target.id;
-    newArr.map((ev) => {
-      if (ev._id === clickID) {
-        ev.Amount++;
-      }
-    });
-    setArr(newArr);
-  };
+  const { setCartList, cartList, setUserCartList, userCartList } =
+    useContext(MyContext);
 
   return (
     <button
@@ -22,7 +12,7 @@ const Addbtn = ({ id }) => {
       id={id}
       onClick={(event) => {
         addAmount(cartList, setCartList, event);
-
+        upDateUserCartList(cartList, setUserCartList);
         event.stopPropagation();
       }}
     >
