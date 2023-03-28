@@ -17,7 +17,6 @@ import {
   profileController,
 } from "./Users/UsersControllers.js";
 import { validateToken } from "./Users/JWT.js";
-import cookiesMiddleware from "universal-cookie-express";
 import { productsByCategoryController } from "./SheinProducts/SheinServices.js";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
@@ -32,7 +31,6 @@ const { PORT, DB_PASS, DB_USER, DB_HOST, DB_NAME } = process.env;
 //express and cors
 const app = express();
 app.use(express.json());
-app.use(cookiesMiddleware());
 app.use(cors());
 app.use(express.static("client/dist"));
 

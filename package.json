@@ -7,20 +7,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": " nodemon server.js",
-    "render-postbuild": "cd client && npm run build"
+    "render-postbuild": "cd client && sudo npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
-    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.8.4",
-    "universal-cookie": "^4.0.4",
-    "universal-cookie-express": "^4.0.3"
+    "universal-cookie": "^4.0.4"
   }
 }
