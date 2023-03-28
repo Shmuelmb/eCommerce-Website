@@ -17,7 +17,6 @@ import {
   profileController,
 } from "./Users/UsersControllers.js";
 import { validateToken } from "./Users/JWT.js";
-import { Products } from "./Products/ProductsSchema.js";
 import cookiesMiddleware from "universal-cookie-express";
 import { productsByCategoryController } from "./SheinProducts/SheinServices.js";
 
@@ -30,6 +29,7 @@ const app = express();
 app.use(express.json());
 app.use(cookiesMiddleware());
 app.use(cors());
+app.use(express.static("client/build"));
 
 //mongoose
 mongoose.set("strictQuery", false);
@@ -56,17 +56,6 @@ app.get(
   "/api/products/productsByCategoryController/:category",
   productsByCategoryController
 );
-
-// app.post("/api/products/addProducts", async (req, res) => {
-//   try {
-//     const productsList = req.body;
-//     const newProducts = await Products.insertMany(productsList);
-//     res.status(200).send(newProducts);
-//   } catch (e) {
-//     console.log(e);
-//     res.status(500).send({ message: e });
-//   }
-// });
 
 // app.put("/api/products/updateProduct/:id", async (req, res) => {
 //   const { id } = req.params;
@@ -101,6 +90,11 @@ app.get("/api/users/profile", validateToken, profileController);
 // app.get("/api/users/auth", validateToken, (req, res) => {
 //   res.json("profile");
 // });
+
+//build route
+app.get("*", (req, res) =>
+  res.sendFile(__dirname + "/client/build/index.html")
+);
 
 mongoose.connect(
   `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`,
