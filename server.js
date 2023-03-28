@@ -92,9 +92,7 @@ app.get("/api/users/profile", validateToken, profileController);
 // });
 
 //build route
-app.get("*", (req, res) =>
-  res.sendFile(__dirname + "/client/build/index.html")
-);
+app.get("*", (req, res) => res.sendFile(__dirname + "/client/dist/index.html"));
 
 mongoose.connect(
   `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`,
