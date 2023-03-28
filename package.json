@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": " nodemon server.js",
-    "render-postbuild": "cd client && yarn install && yarn build"
+    "render-postbuild": "cd client && yarn install && yarn dist"
   },
   "keywords": [],
   "author": "",
