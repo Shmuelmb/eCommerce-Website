@@ -12,7 +12,9 @@ const ShoppingCart = () => {
     useContext(MyContext);
 
   useEffect(() => {
-    console.log(JSON.parse(sessionStorage.getItem("userList")));
+    const localCartList = localStorage.getItem("userList");
+
+    console.log(localCartList);
   });
   return (
     <div className="shoppingCart">

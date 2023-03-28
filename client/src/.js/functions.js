@@ -15,7 +15,6 @@ export const upDateUserCartList = (cartList, setUserCartList) => {
   });
   localStorage.setItem("usersList", JSON.stringify(arr));
   setUserCartList(arr);
-  console.log(arr);
 };
 
 export const addAmount = (arr, setArr, eventOfClick) => {
