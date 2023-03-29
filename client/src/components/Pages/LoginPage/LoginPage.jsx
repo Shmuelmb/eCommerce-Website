@@ -14,6 +14,7 @@ import loginImg from "../../../images/login-img.png";
 import Modal from "@mui/material/Modal";
 import Cookies from "universal-cookie";
 import MyContext from "../../../.js/MyContext";
+import { BASE_URL } from "../../../.js/constant-vars";
 
 const LoginPage = () => {
   const { setIsAuth } = useContext(MyContext);
@@ -62,7 +63,7 @@ const LoginPage = () => {
   const login = async (checkUser) => {
     try {
       const newUser = JSON.stringify(checkUser);
-      const response = await fetch("http://localhost:8000/api/users/login", {
+      const response = await fetch(`http://${BASE_URL}/api/users/login`, {
         method: "POST",
         headers: {
           Accept: "application/json",

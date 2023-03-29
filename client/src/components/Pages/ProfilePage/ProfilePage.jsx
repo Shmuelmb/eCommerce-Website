@@ -6,6 +6,7 @@ import LoadingPage from "../LoadingPage/LoadingPage";
 import "./ProfilePage.css";
 import Modal from "@mui/material/Modal";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../../.js/constant-vars";
 
 const ProfilePage = () => {
   const cookies = new Cookies();
@@ -19,7 +20,7 @@ const ProfilePage = () => {
 
   const auth = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/users/profile", {
+      const response = await fetch(`http://${BASE_URL}/api/users/profile`, {
         method: "GET",
         headers: {
           Accept: "application/json",

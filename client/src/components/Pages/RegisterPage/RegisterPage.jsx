@@ -13,6 +13,7 @@ import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../../.js/constant-vars";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -53,7 +54,7 @@ const RegisterPage = () => {
   const register = async (user) => {
     try {
       const newUser = JSON.stringify(user);
-      const response = await fetch("http://localhost:8000/api/users/register", {
+      const response = await fetch(`http://${BASE_URL}/api/users/register`, {
         method: "POST",
         headers: {
           Accept: "application/json",

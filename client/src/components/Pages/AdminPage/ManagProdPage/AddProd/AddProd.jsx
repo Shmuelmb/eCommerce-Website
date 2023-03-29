@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./AddProd.css";
+import { BASE_URL } from "../../../../../.js/constant-vars";
 const AddProd = () => {
   const [obj, setObj] = useState({
     title: "",
@@ -48,7 +49,7 @@ const AddProd = () => {
     try {
       const prod = JSON.stringify(product);
       const response = await fetch(
-        "http://localhost:8000/api/products/addProduct",
+        `http://${BASE_URL}/api/products/addProduct`,
         {
           method: "POST",
           headers: {

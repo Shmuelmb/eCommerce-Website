@@ -14,7 +14,7 @@ import LoginPage from "./components/Pages/LoginPage/LoginPage";
 import ProfilePage from "./components/Pages/ProfilePage/ProfilePage";
 import ProductPage from "./components/Pages/ProductPage/ProductPage";
 import CategoryPage from "./components/Pages/CategoryPage/CategoryPage";
-
+import { BASE_URL } from "./.js/constant-vars";
 function App() {
   const localCartList = JSON.parse(localStorage.getItem("userList"));
   // useState object
@@ -70,7 +70,7 @@ function App() {
   const getData = async () => {
     try {
       const response = await fetch(
-        "http://localhost:8000/api/products/getAllProducts"
+        `http://${BASE_URL}/api/products/getAllProducts`
       );
       const data = await response.json();
       setAllProducts(data);

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BASE_URL } from "../../../../../.js/constant-vars";
 import "./ProdTable.css";
 const ProdTable = () => {
   const [state, setState] = useState([]);
@@ -6,7 +7,7 @@ const ProdTable = () => {
   const getData = async () => {
     try {
       const response = await fetch(
-        "http://localhost:8000/api/products/getAllProducts"
+        `http://${BASE_URL}/api/products/getAllProducts`
       );
       const data = await response.json();
       setState(data);
@@ -17,7 +18,7 @@ const ProdTable = () => {
   const removeItem = async (id) => {
     try {
       const req = await fetch(
-        `http://localhost:8000/api/products/deleteProduct/${id}`,
+        `http://${BASE_URL}/api/products/deleteProduct/${id}`,
         { method: "DELETE" }
       );
     } catch (err) {
