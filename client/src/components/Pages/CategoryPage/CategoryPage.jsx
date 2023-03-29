@@ -6,6 +6,7 @@ import "./CategoryPage.css";
 import ProductCard from "./ProductCard/ProductCard";
 import SortComponnet from "./SortComponnet/SortComponnet";
 import LoadingPage from "../LoadingPage/LoadingPage";
+import { BASE_URL } from "../../../.js/constant-vars";
 
 const CategoryPage = () => {
   //func
@@ -48,7 +49,7 @@ const CategoryPage = () => {
   const getProducts = async () => {
     try {
       const response = await fetch(
-        `http://localhost:8000/api/products/productsByCategoryController/${Category}`
+        `${BASE_URL}/api/products/productsByCategoryController/${Category}`
       );
       const data = await response.json();
       setListCategoryProducts(data);

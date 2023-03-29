@@ -20,7 +20,7 @@ const ProfilePage = () => {
 
   const auth = async () => {
     try {
-      const response = await fetch(`http://${BASE_URL}/api/users/profile`, {
+      const response = await fetch(`${BASE_URL}/api/users/profile`, {
         method: "GET",
         headers: {
           Accept: "application/json",

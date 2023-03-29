@@ -7,9 +7,7 @@ const ManagProdPage = () => {
 
   const getData = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:8000/api/products/getAllProducts"
-      );
+      const response = await fetch("${BASE_URL}/api/products/getAllProducts");
       const data = await response.json();
       setState(data);
     } catch (err) {
@@ -18,10 +16,9 @@ const ManagProdPage = () => {
   };
   const removeItem = async (id) => {
     try {
-      const req = await fetch(
-        `http://localhost:8000/api/products/deleteProduct/${id}`,
-        { method: "DELETE" }
-      );
+      const req = await fetch(`${BASE_URL}/api/products/deleteProduct/${id}`, {
+        method: "DELETE",
+      });
     } catch (err) {
       console.log(err);
     }

@@ -48,17 +48,14 @@ const AddProd = () => {
     if (product.image === "") return delete product.image; // נועד לוודא שלא הוכנסה כתובת ויגרום לכך שתיכנס כתובת לתמונה דיפולטיבית
     try {
       const prod = JSON.stringify(product);
-      const response = await fetch(
-        `http://${BASE_URL}/api/products/addProduct`,
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: prod,
-        }
-      );
+      const response = await fetch(`${BASE_URL}/api/products/addProduct`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: prod,
+      });
       const req = await response.json();
       console.log(req);
     } catch (e) {

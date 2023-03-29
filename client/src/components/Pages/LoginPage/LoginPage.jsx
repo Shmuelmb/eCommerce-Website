@@ -63,7 +63,7 @@ const LoginPage = () => {
   const login = async (checkUser) => {
     try {
       const newUser = JSON.stringify(checkUser);
-      const response = await fetch(`http://${BASE_URL}/api/users/login`, {
+      const response = await fetch(`${BASE_URL}/api/users/login`, {
         method: "POST",
         headers: {
           Accept: "application/json",

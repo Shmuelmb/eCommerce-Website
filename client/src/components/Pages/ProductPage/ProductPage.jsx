@@ -11,7 +11,7 @@ const ProductPage = () => {
   const getData = async () => {
     try {
       const response = await fetch(
-        `http://${BASE_URL}/api/products/getProduct/${productid}`
+        `${BASE_URL}/api/products/getProduct/${productid}`
       );
       const data = await response.json();
       setProduct(data);

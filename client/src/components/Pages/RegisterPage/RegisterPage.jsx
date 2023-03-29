@@ -54,7 +54,7 @@ const RegisterPage = () => {
   const register = async (user) => {
     try {
       const newUser = JSON.stringify(user);
-      const response = await fetch(`http://${BASE_URL}/api/users/register`, {
+      const response = await fetch(`${BASE_URL}/api/users/register`, {
         method: "POST",
         headers: {
           Accept: "application/json",
