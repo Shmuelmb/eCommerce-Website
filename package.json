@@ -7,7 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "render-postbuild": "cd client && npm install && npm run build"
+    "render-postbuild": "cd client && npm install && npm run build",
+    "dev": "concurrently \"nodemon server.js\" \"cd client && npm start\""
   },
   "keywords": [],
   "author": "",
@@ -20,5 +21,8 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.8.4",
     "universal-cookie": "^4.0.4"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1"
   }
 }

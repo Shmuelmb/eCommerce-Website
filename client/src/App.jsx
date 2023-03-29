@@ -70,7 +70,7 @@ function App() {
   const getData = async () => {
     try {
       const response = await fetch(
-        `http://${BASE_URL}/api/products/getAllProducts`
+        `${BASE_URL}/api/products/getAllProducts`
       );
       const data = await response.json();
       setAllProducts(data);
