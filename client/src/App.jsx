@@ -16,20 +16,21 @@ import ProductPage from "./components/Pages/ProductPage/ProductPage";
 import CategoryPage from "./components/Pages/CategoryPage/CategoryPage";
 import { BASE_URL } from "./.js/constant-vars";
 function App() {
-  const localCartList = JSON.parse(localStorage.getItem("userList"));
   // useState object
   const [searchValue, setSearchValue] = useState("");
   const [choosenSortPrice, setChoosenSortPrice] = useState([0, 999]);
   const [isChoosenSortH2L, setIsChoosenSortH2L] = useState("");
   const [products, setProducts] = useState([]); // המוצרים עם השינויים שלהם
   const [allProducts, setAllProducts] = useState([]); // רשימת המוצרים ללא שינוים עליהם
-  const [loading, setLoading] = useState(true);
-  const [cartList, setCartList] = useState(localCartList || []);
+  const [loadingAppData, setLoadingAppData] = useState(true);
+  const [cartList, setCartList] = useState([]);
   const [productID, setProductID] = useState("");
   const [productsFilter, setProductsFilter] = useState([]);
   const [isAuth, setIsAuth] = useState(false);
   const [listCategoryProducts, setListCategoryProducts] = useState([]);
-  const [userCartList, setUserCartList] = useState([]);
+  const [userCartList, setUserCartList] = useState(
+    JSON.parse(localStorage.getItem("userList")) || []
+  );
 
   // func
   const onFilterChange = (e) => {
@@ -69,16 +70,14 @@ function App() {
 
   const getData = async () => {
     try {
-      const response = await fetch(
-        `${BASE_URL}/api/products/getAllProducts`
-      );
+      const response = await fetch(`${BASE_URL}/api/products/getAllProducts`);
       const data = await response.json();
       setAllProducts(data);
       addKeyForObjState(setCartList, "Amount", 0, data);
     } catch (err) {
       console.log(err);
     } finally {
-      setLoading(false);
+      setLoadingAppData(false);
     }
   };
 
@@ -105,11 +104,11 @@ function App() {
           addKeyForObjState,
           setProducts,
           setAllProducts,
-          setLoading,
-          productID,
+          setLoadingAppData,
+          loadingAppData,
           setProductID,
+          productID,
           products,
-          loading,
           cartList,
           setCartList,
           choosenSortPrice,

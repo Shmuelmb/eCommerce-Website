@@ -5,7 +5,6 @@ const Hero = () => {
   return (
     <div className="hero-comp">
       <div className="hero-content">
-        <h2>New Arrival</h2>
         <h1>THE SPRING COLLECTION</h1>
         <button className="button-6 ">SHOP NOW</button>
       </div>

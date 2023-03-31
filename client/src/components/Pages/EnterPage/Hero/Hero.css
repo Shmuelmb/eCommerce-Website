@@ -1,6 +1,6 @@
 .hero-comp{
     color:#0050B6;
-    height: 95vh;
+    padding-top: 10%;
     width: 100%;
     background-color: #F1F3F2;
     display: flex;
@@ -17,7 +17,8 @@
     margin: 0;
   }
   .hero-content{
-    width: 30%;
+    padding-bottom:5% ;
+    width: 34%;
     display: flex;
     flex-direction: column;
   

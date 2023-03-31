@@ -11,11 +11,6 @@ const ShoppingCart = () => {
   const { cartList, setCartList, setUserCartList, userCartList } =
     useContext(MyContext);
 
-  useEffect(() => {
-    const localCartList = localStorage.getItem("userList");
-
-    console.log(localCartList);
-  });
   return (
     <div className="shoppingCart">
       {userCartList &&

@@ -11,13 +11,20 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
 import MyContext from "../../.js/MyContext";
+import { upDateUserCartListAfterRealod } from "../../.js/functions";
 
 const Nav = () => {
-  const { cartList, isAuth } = useContext(MyContext);
-
+  const {
+    loadingAppData,
+    cartList,
+    isAuth,
+    userCartList,
+    setUserCartList,
+    setCartList,
+  } = useContext(MyContext);
   // state obj
   const [state, setState] = useState({ right: false });
-  const [ItemsAmounts, setItemsAmounts] = useState(0);
+  const [ItemsAmounts, setItemsAmounts] = useState();
   const navigate = useNavigate();
 
   //func
@@ -31,12 +38,15 @@ const Nav = () => {
 
     setState({ ...state, [anchor]: open });
   };
+  useEffect(() => {
+    upDateUserCartListAfterRealod(cartList, setCartList);
+  }, [loadingAppData]);
 
   useEffect(() => {
     let y = 0;
-    cartList.forEach((x) => (y += x.Amount));
+    userCartList.forEach((x) => (y += x.Amount));
     setItemsAmounts(y);
-  }, [cartList]);
+  }, [userCartList]);
   return (
     <div className="nav-container">
       <div className="nav">
