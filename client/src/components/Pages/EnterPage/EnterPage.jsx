@@ -55,7 +55,6 @@ const EnterPage = () => {
           <p>as people say, good things come in small packages</p>
         </div>
       </div>
-      <div className="enter-page-shop-on-instagram"></div>
     </div>
   ) : (
     <LoadingPage />

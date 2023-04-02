@@ -57,7 +57,7 @@
 }
 
 .img-cat > img{
-  transition: all 1s ease-in-out;
+  transition:all 0.7s ;
   width: 100%;
 }
  .img-cat>img:hover{
@@ -75,8 +75,8 @@
 
 .jewelery-img{
   width: 50%;
+  
 }
-
 
 .jewelery-img-text{
   color: white;
@@ -85,15 +85,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow:hidden;
   background-image: url("../../../images/jewelery-img.png");
+  background-size: 100%;
   background-position: center; 
   background-repeat: no-repeat; 
-  background-size: cover; 
+  transition:all 0.7s ;
 
+}
+.jewelery-img-text:hover{
+  background-size: 130%;
 }
 
 
 .img-cat-jewelery{
+  
   width: 100%;
 }
 .jewelery-text{
