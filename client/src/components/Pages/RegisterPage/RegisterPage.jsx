@@ -103,6 +103,7 @@ const RegisterPage = () => {
           placeholder="User name"
           variant="standard"
           helperText="please enter your username"
+          type="email"
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">

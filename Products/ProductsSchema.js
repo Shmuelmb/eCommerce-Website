@@ -16,14 +16,11 @@ const ProductsSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  image: {
+  url_img: {
     type: String,
-    default: "https://www.azharpark.com/assets/imgs/default.jpg",
+    default: "https://www.salonlfc.com/en/image-not-found/#top_of_page",
   },
-  rating: {
-    rate: { type: Number, default: 0 },
-    count: { type: Number, default: 0 },
-  },
+
   dateCreated: {
     type: Date,
     default: Date.now(),

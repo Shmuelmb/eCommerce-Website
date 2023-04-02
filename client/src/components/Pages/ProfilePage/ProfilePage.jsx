@@ -14,7 +14,11 @@ const ProfilePage = () => {
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
   const [openModal, setOpenModal] = useState(false);
-  const handleClose = () => setOpenModal(false);
+  const [openModalDelete, setOpenModalDelete] = useState(false);
+  const handleClose = () => {
+    setOpenModal(false);
+    setOpenModalDelete(false);
+  };
 
   const { isAuth, setIsAuth } = useContext(MyContext);
 
@@ -42,6 +46,17 @@ const ProfilePage = () => {
       setTimeout(() => setLoading(false), 2000);
     }
   };
+  const deleteUser = async (id) => {
+    try {
+      const response = await fetch(`${BASE_URL}/api/users/deleteUser/${id}`, {
+        method: "delete",
+      });
+      const msg = await response.json();
+      console.log(msg);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   useEffect(() => {
     auth();
   }, []);
@@ -61,8 +76,9 @@ const ProfilePage = () => {
           >
             My User
           </button>
-          <button className="button-6">Change Password</button>
-          <button className="button-6">Delete Account</button>
+          <button className="button-6" onClick={() => setOpenModalDelete(true)}>
+            Delete Account
+          </button>
           <button
             onClick={() => {
               setIsAuth(false);
@@ -82,6 +98,31 @@ const ProfilePage = () => {
             <p>Your email: {user.Email}</p>
             <p>Your ID: {user._id}</p>
             <p>do you admin ?: {user.isAdmin ? "yes" : "no"}</p>
+          </div>
+        </Modal>
+        <Modal
+          className="modal-box"
+          open={openModalDelete}
+          onClose={handleClose}
+        >
+          <div className="modal-message">
+            <h4>ARE YOU SURE YOU WANT TO DELETE YOUR ACCOUNT ?</h4>
+            <div className="delete-user-btn-modal">
+              <button
+                className="button-6"
+                onClick={() => {
+                  deleteUser(user._id);
+                  setIsAuth(false);
+                  cookies.remove("TOKEN");
+                  navigate("/login");
+                }}
+              >
+                YES
+              </button>
+              <button className="button-6" onClick={handleClose}>
+                NO
+              </button>
+            </div>
           </div>
         </Modal>
       </div>

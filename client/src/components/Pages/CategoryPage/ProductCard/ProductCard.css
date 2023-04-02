@@ -30,6 +30,8 @@
 }
 
 .card-hover{
+  transition: all 0.3s ease-in-out;
+
   height: 350px;
   width: 250px;
 cursor: pointer;

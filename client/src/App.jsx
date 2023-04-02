@@ -9,6 +9,7 @@ import Nav from "./components/Nav/Nav";
 import RegisterPage from "./components/Pages/RegisterPage/RegisterPage";
 import AdminPage from "./components/Pages/AdminPage/AdminPage";
 import ManagProdPage from "./components/Pages/AdminPage/ManagProdPage/ManagProdPage";
+import ManagUsers from "./components/Pages/AdminPage/ManagUsers/ManagUsers";
 import Footer from "./components/Footer/Footer";
 import LoginPage from "./components/Pages/LoginPage/LoginPage";
 import ProfilePage from "./components/Pages/ProfilePage/ProfilePage";
@@ -128,6 +129,7 @@ function App() {
               path="/admin/product-management"
               element={<ManagProdPage />}
             />
+            <Route path="/admin/users-management" element={<ManagUsers />} />
             <Route path="/about" element={<AboutMePage />} />
             <Route path="/products/:productid" element={<ProductPage />} />
             <Route path="/profile" element={<ProfilePage />} />

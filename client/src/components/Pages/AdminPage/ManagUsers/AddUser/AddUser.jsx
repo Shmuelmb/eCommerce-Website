@@ -1,56 +1,49 @@
 import React, { useState } from "react";
-import "./AddProd.css";
 import { BASE_URL } from "../../../../../.js/constant-vars";
-const AddProd = () => {
+
+const AddUser = () => {
   const [obj, setObj] = useState({
-    title: "",
-    price: "",
-    description: "",
-    category: "",
-    url_image: "",
+    username: "",
+    password: "",
+    email: "",
+    isAdmin: "",
   });
 
   const inputs = [
     {
       type: "text",
-      name: "title",
-      placeholder: "enter title",
+      name: "username",
+      placeholder: "enter user name",
     },
     {
       type: "number",
-      name: "price",
-      placeholder: "enter price",
+      name: "password",
+      placeholder: "enter password",
     },
     {
       type: "text",
-      name: "description",
-      placeholder: "enter description",
+      name: "email",
+      placeholder: "enter email",
     },
     {
       type: "text",
-      name: "category",
-      placeholder: "enter category",
-    },
-    {
-      type: "text",
-      name: "url_image",
-      placeholder: "enter image",
+      name: "isAdmin",
+      placeholder: "is admin ?",
     },
   ];
 
   //func
 
-  const addProduct = async (product) => {
-    if (product.image === "") return delete product.image; // נועד לוודא שלא הוכנסה כתובת ויגרום לכך שתיכנס כתובת לתמונה דיפולטיבית
+  const addUser = async (user) => {
     try {
-      const prod = JSON.stringify(product);
-      const response = await fetch(`${BASE_URL}/api/products/addProduct`, {
+      const newUser = JSON.stringify(user);
+      const response = await fetch(`${BASE_URL}/api/users/addUser`, {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: prod,
+        body: newUser,
       });
       const req = await response.json();
       console.log(req);
@@ -60,7 +53,7 @@ const AddProd = () => {
   };
   return (
     <div className="add-prod">
-      <h1>Add product manually</h1>
+      <h1>Add user manually</h1>
       {inputs.map((input, index) => (
         <input
           type={input.type}
@@ -74,7 +67,8 @@ const AddProd = () => {
       ))}
       <button
         onClick={() => {
-          addProduct(obj);
+          console.log(obj);
+          addUser(obj);
         }}
       >
         Submit
@@ -83,4 +77,4 @@ const AddProd = () => {
   );
 };
 
-export default AddProd;
+export default AddUser;

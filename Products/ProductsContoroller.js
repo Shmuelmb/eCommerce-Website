@@ -1,8 +1,26 @@
-import { getProduct, addProduct, deleteProduct } from "./ProductsServices.js";
-import { getAllProducts } from "../SheinProducts/SheinServices.js";
+import {
+  getProduct,
+  addProduct,
+  deleteProduct,
+  getProductsByCategory,
+  getAllProducts,
+} from "./ProductsServices.js";
+
 export const allProductsController = async (req, res) => {
   try {
     const allProducts = await getAllProducts();
+    res.status(200).send(allProducts);
+  } catch (e) {
+    console.log(e);
+    res.status(500).send({ message: e });
+  }
+};
+
+export const productsByCategoryController = async (req, res) => {
+  const { category } = req.params;
+
+  try {
+    const allProducts = await getProductsByCategory(category);
     res.status(200).send(allProducts);
   } catch (e) {
     console.log(e);
@@ -32,7 +50,6 @@ export const addProductController = async (req, res) => {
     res.status(200).send(newProduct);
   } catch (e) {
     const newProduct = await addProduct(product);
-
     console.log(newProduct);
     res.status(400).send({ error: e });
   }

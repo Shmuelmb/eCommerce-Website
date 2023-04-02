@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 // import { productsAllowedUpdates } from "./data/data.js";
 import dotenv from "dotenv";
 import {
+  productsByCategoryController,
   allProductsController,
   getProductController,
   addProductController,
@@ -15,9 +16,11 @@ import {
   registerController,
   loginController,
   profileController,
+  deleteUserController,
+  allUsersController,
+  addUserController,
 } from "./Users/UsersControllers.js";
 import { validateToken } from "./Users/JWT.js";
-import { productsByCategoryController } from "./SheinProducts/SheinServices.js";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
@@ -37,10 +40,6 @@ app.use(express.static("client/dist"));
 //mongoose
 mongoose.set("strictQuery", false);
 
-//schemas
-
-//routes
-
 //get - fetch data from db -- mongo function findOne({condition:condition}) \ find({condition:condition}) or find({})
 //post - add an item to the db -- new Model({paramters:parmeters}) --> model.save()
 //put - edit an item inside the db --> valid operations --> findOne({condition:condition}) --> model.save()
@@ -59,7 +58,6 @@ app.get(
   "/api/products/productsByCategoryController/:category",
   productsByCategoryController
 );
-
 // app.put("/api/products/updateProduct/:id", async (req, res) => {
 //   const { id } = req.params;
 
@@ -86,13 +84,13 @@ app.get(
 //   }
 // });
 
-//users route
+//users
 app.post("/api/users/register", registerController);
 app.post("/api/users/login", loginController);
+app.delete("/api/users/deleteUser/:id", deleteUserController);
 app.get("/api/users/profile", validateToken, profileController);
-// app.get("/api/users/auth", validateToken, (req, res) => {
-//   res.json("profile");
-// });
+app.get("/api/users/getAllUsers", allUsersController);
+app.post("/api/users/addUser", addUserController);
 
 //build route
 app.get("*", (req, res) => {

@@ -17,3 +17,14 @@
     width: 120px;
     height: 120px;
 }
+
+.delete-user-btn-modal > button{
+	color: inherit;
+	border: none;
+}
+
+.delete-user-btn-modal{
+    display: flex;
+    justify-content: space-evenly;
+
+}

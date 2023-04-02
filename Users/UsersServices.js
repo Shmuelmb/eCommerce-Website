@@ -4,7 +4,7 @@ import { createTokens } from "./JWT.js";
 import { TOKEN_SECRET } from "./JWT.js";
 import JWT from "jsonwebtoken";
 
-const { sign, verify } = JWT;
+const { verify } = JWT;
 
 export const register = async (username, password, email, isadmin) => {
   let hash = await bcrypt.hash(password, 10);
@@ -55,3 +55,9 @@ export const profile = async (token) => {
     return false;
   }
 };
+
+export const deleteUser = (id) => {
+  return Users.findOneAndDelete({ _id: id });
+};
+
+export const getAllUsers = () => Users.find({});
