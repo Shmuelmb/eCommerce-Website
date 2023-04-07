@@ -1,7 +1,7 @@
 .nav-container{
   position: fixed;
   background-color: #F1F3F2;
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: center;
   z-index: 9;
@@ -13,7 +13,6 @@
 
 .nav{
   padding: 1%;
-  margin-bottom: auto;
   margin-top: 0.2%;
   display: flex;
   align-items: center;
@@ -22,8 +21,22 @@
   width: 80%;
 
 }
+
+.responsive{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color:#0050B6;
+  width: 100%;
+
+}
+
+.responsive > h1{
+  font-size: 2vw;
+
+}
 .nav > h1{
-  font-size: 2.2rem;
+  font-size: 2vw;
 }
 
 
@@ -32,6 +45,10 @@
   .nav-icon{
     display: flex;
 
+  }
+
+  .i-icon{
+    width: 100%;
   }
   .btn-navigate{
     display: flex;
@@ -42,7 +59,7 @@
   .btn-nav{
     border: 0px;
     color: black;
-    font-size: 1.2rem;
+    font-size: 1.3vw;
   }
 
   .btn-nav:hover{
@@ -50,13 +67,36 @@
 
   }
 
+  .collapse{
+    display: none;
+  }
+  .responsive h1:not(:first-child){
+    display: flex;
+    flex-direction: column;
+  }
   @keyframes slideInFromLeft {
     0% {
-      transform: translateX(-100%);
+      transform: translateY(-100%);
     }
     100% {
-      transform: translateX(0);
+      transform: translateY(0);
     }
   }
   
-  
+  @media screen and (max-width: 900px) {
+    .nav button , .nav-icon  {
+      display: none;
+    }
+    .btn-navigate{
+      display: flex;
+      flex-direction: column;
+    }
+    .collapse{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #0050B6;
+    }
+
+
+  }

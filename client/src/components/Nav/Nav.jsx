@@ -28,6 +28,13 @@ const Nav = () => {
   const navigate = useNavigate();
 
   //func
+  const toggle = () => {
+    const nav = document.getElementById("nav");
+    nav.className === "nav"
+      ? (nav.className = " responsive")
+      : (nav.className = "nav");
+  };
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event.type === "keydown" &&
@@ -47,9 +54,10 @@ const Nav = () => {
     userCartList.forEach((x) => (y += x.Amount));
     setItemsAmounts(y);
   }, [userCartList]);
+
   return (
     <div className="nav-container">
-      <div className="nav">
+      <div className="nav" id="nav">
         <h1>CLICK FASHION</h1>
         <div className="btn-navigate">
           <button
@@ -121,6 +129,14 @@ const Nav = () => {
           >
             <ShoppingCart />
           </Drawer>
+        </div>
+        <div
+          className="collapse"
+          onClick={() => {
+            toggle();
+          }}
+        >
+          <i className="fa fa-bars"></i>
         </div>
       </div>
     </div>

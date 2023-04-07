@@ -7,7 +7,7 @@ body {
   background-color: #ffffff;
 
   font-family: 'Roboto ', sans-serif;
-  max-width: 100vw;
+
   min-height:100vh ;
   display: flex;
   flex-direction: column;
@@ -48,15 +48,13 @@ h1{
 .button-6 {
   align-items: center;
   background-color:unset;
-  border: 1px solid #0050B6;
   color:#0050B6;
   border-radius: .25rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
   cursor: pointer;
   display: inline-flex;
   font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 16px;
+  font-size: 1vw;
   font-weight: 600;
   justify-content: center;
   line-height: 1.25;
