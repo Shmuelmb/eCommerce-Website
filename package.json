@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
     "render-postbuild": "cd client && npm install && npm run build",
-    "dev": "concurrently \"nodemon server.js\" \"cd client && npm start\""
+    "dev": "concurrently \"nodemon server.js\" \"cd client && npm run host\""
   },
   "keywords": [],
   "author": "",

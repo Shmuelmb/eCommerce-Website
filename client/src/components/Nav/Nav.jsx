@@ -30,9 +30,13 @@ const Nav = () => {
   //func
   const toggle = () => {
     const nav = document.getElementById("nav");
-    nav.className === "nav"
-      ? (nav.className = " responsive")
-      : (nav.className = "nav");
+    if (nav.className === "nav") {
+      nav.className = "responsive";
+      nav.style.animation = "1.2s ease-out 0s 1 slideIn";
+    } else {
+      nav.className = "nav";
+      nav.style.animation = "1.2s ease-out 0s 1 slideIn";
+    }
   };
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -48,26 +52,15 @@ const Nav = () => {
   useEffect(() => {
     upDateUserCartListAfterRealod(cartList, setCartList);
   }, [loadingAppData]);
-
   useEffect(() => {
     let y = 0;
     userCartList.forEach((x) => (y += x.Amount));
     setItemsAmounts(y);
   }, [userCartList]);
-
   return (
     <div className="nav-container">
       <div className="nav" id="nav">
-        <h1>CLICK FASHION</h1>
         <div className="btn-navigate">
-          <button
-            className="button-6 btn-nav"
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            HOME
-          </button>
           <button
             className="button-6 btn-nav"
             onClick={() => {
@@ -92,15 +85,14 @@ const Nav = () => {
           >
             JEWELERY
           </button>
-          <button
-            className="button-6 btn-nav"
-            onClick={() => {
-              navigate("/about");
-            }}
-          >
-            ABOUT US
-          </button>
         </div>
+        <h1
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          BOTTEGA VENETA
+        </h1>
 
         <div className="nav-icon">
           {/* <SearchBar /> */}
@@ -114,14 +106,11 @@ const Nav = () => {
           >
             <PermIdentityOutlinedIcon fontSize="large" />
           </IconButton>
-          <IconButton>
-            <Badge badgeContent={ItemsAmounts} color="error">
-              <ShoppingBagOutlinedIcon
-                fontSize="large"
-                onClick={toggleDrawer("right", true)}
-              />
-            </Badge>
-          </IconButton>
+          <i
+            class="fa-sharp fa-light fa-bag-shopping"
+            onClick={toggleDrawer("right", true)}
+          ></i>
+
           <Drawer
             anchor={"right"}
             open={state["right"]}

@@ -1,49 +1,41 @@
 .nav-container{
-  position: fixed;
+  text-align: center;
   background-color: #F1F3F2;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
-  z-index: 9;
-  animation: 1.2s ease-out 0s 1 slideInFromLeft;
-    
+	position: sticky;
+	top: 0;
+  height: 90px;
+  animation: 1.2s ease-out 0s 1 slideIn;
+
    
 
 }
 
 .nav{
-  padding: 1%;
-  margin-top: 0.2%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   color:#0050B6;
   width: 80%;
 
 }
 
-.responsive{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  color:#0050B6;
-  width: 100%;
-
+.nav > h1 {
+  font-family: 'Forum', cursive;
+  font-size: 3vw;
+  letter-spacing: 5px;
+  width: 40%;
+  
 }
-
-.responsive > h1{
-  font-size: 2vw;
-
-}
-.nav > h1{
-  font-size: 2vw;
-}
-
 
 
 
   .nav-icon{
+    width: 30%;
     display: flex;
+    justify-content: center;
 
   }
 
@@ -51,6 +43,7 @@
     width: 100%;
   }
   .btn-navigate{
+    width: 30%;
     display: flex;
     justify-content: space-around;
     
@@ -67,36 +60,101 @@
 
   }
 
-  .collapse{
+.collapse{
     display: none;
+    justify-content: center;
+    align-items: center;
+    color: #0050B6;
+    font-size: 20px;
+
+}
+  .responsive{
+    position: absolute;
+    background-color: #F1F3F2;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column-reverse;
+    text-align: left;
+
   }
-  .responsive h1:not(:first-child){
+  .responsive  .btn-navigate{
+    width: 100%;
     display: flex;
     flex-direction: column;
   }
-  @keyframes slideInFromLeft {
+  .responsive .btn-nav{
+    padding-left: 3%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 0px;
+    border-bottom: 0.6px rgba(0, 0, 0, 0.267) solid;
+    color: black;
+    font-size:5vw;
+
+   
+  }
+
+  .responsive .nav-icon{
+    display: flex;
+  }
+  .responsive > h1{
+   display: none;
+  }
+ 
+  @keyframes slideIn {
     0% {
       transform: translateY(-100%);
+      
+
     }
     100% {
       transform: translateY(0);
     }
   }
+@keyframes slideOut {
+  100%{
+    transform: translateY(-100%);
+
+  }   
+  0% {
+    transform: translateX(0%);
+    
+
+  }
+}
+  
   
   @media screen and (max-width: 900px) {
-    .nav button , .nav-icon  {
+
+    .btn-navigate, .nav-icon{
       display: none;
     }
-    .btn-navigate{
-      display: flex;
-      flex-direction: column;
-    }
+   
+
     .collapse{
       display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #0050B6;
+
     }
-
-
+    .nav{
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+    }
+    
+    .btn-nav::after {
+      display: flex;
+      justify-content: flex-end;
+      margin-left: auto;
+      content: '>'
+    }
+    
+    .nav > h1{
+      width: auto;
+      letter-spacing: 2vw;
+      font-size: 5vw;
+    }
   }

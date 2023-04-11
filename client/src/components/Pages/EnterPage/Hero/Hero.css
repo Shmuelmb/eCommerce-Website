@@ -1,38 +1,32 @@
 .hero-comp{
     color:#0050B6;
-    padding-top: 10%;
     width: 100%;
     background-color: #F1F3F2;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+   
   
   }
   
   .hero-content > h1{
-
     font-size: 6vw;
     text-align: left; 
     display: flex;
-    margin: 0;
   }
   .hero-content{
     padding-bottom:5% ;
-    width: 40%;
+    width: 45%;
     display: flex;
     flex-direction: column;
   
   }
-  
-  .hero-content > button{
-    width: 30%;
-  }
+
   
   .hero-img {
     width: 40%;
-    height: 100%;
     display: flex;
-  justify-content: center;
+    justify-content: center;
     margin-top: auto;
 
   }

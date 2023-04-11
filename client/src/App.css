@@ -106,9 +106,7 @@ h1{
       }
       
       @media (max-width: 480px) {
-        h1 {
-          margin-bottom: 20px;
-        }
+       
       
         .product-filter {
           flex-direction: column;
