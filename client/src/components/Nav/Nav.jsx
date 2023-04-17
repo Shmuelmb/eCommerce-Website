@@ -11,7 +11,7 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
 import MyContext from "../../.js/MyContext";
-import { upDateUserCartListAfterRealod } from "../../.js/functions";
+import { upDateUserCartListAfterReload } from "../../.js/functions";
 
 const Nav = () => {
   const {
@@ -32,10 +32,8 @@ const Nav = () => {
     const nav = document.getElementById("nav");
     if (nav.className === "nav") {
       nav.className = "responsive";
-      nav.style.animation = "1.2s ease-out 0s 1 slideIn";
     } else {
       nav.className = "nav";
-      nav.style.animation = "1.2s ease-out 0s 1 slideIn";
     }
   };
 
@@ -50,7 +48,7 @@ const Nav = () => {
     setState({ ...state, [anchor]: open });
   };
   useEffect(() => {
-    upDateUserCartListAfterRealod(cartList, setCartList);
+    upDateUserCartListAfterReload(cartList, setCartList);
   }, [loadingAppData]);
   useEffect(() => {
     let y = 0;
@@ -80,10 +78,10 @@ const Nav = () => {
           <button
             className="button-6 btn-nav"
             onClick={() => {
-              navigate("/category/jewelery");
+              navigate("/category/jewellery");
             }}
           >
-            JEWELERY
+            JEWELLERY
           </button>
         </div>
         <h1
@@ -106,10 +104,14 @@ const Nav = () => {
           >
             <PermIdentityOutlinedIcon fontSize="large" />
           </IconButton>
-          <i
-            class="fa-sharp fa-light fa-bag-shopping"
-            onClick={toggleDrawer("right", true)}
-          ></i>
+          <IconButton>
+            <Badge badgeContent={ItemsAmounts} color="error">
+              <ShoppingBagOutlinedIcon
+                fontSize="large"
+                onClick={toggleDrawer("right", true)}
+              />
+            </Badge>
+          </IconButton>
 
           <Drawer
             anchor={"right"}

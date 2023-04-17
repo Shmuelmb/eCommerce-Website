@@ -88,31 +88,3 @@ h1{
   color:#0050B6;
   transform: translateY(0);
 }
-    @media (max-width: 920px) {
-        .product-card {
-          flex: 1 21%;
-        }
-      
-        .products .product-card:first-child,
-        .products .product-card:nth-child(2) {
-          flex: 2 46%;
-        }
-      }
-      
-      @media (max-width: 600px) {
-        .product-card {
-          flex: 1 46%;
-        }
-      }
-      
-      @media (max-width: 480px) {
-       
-      
-        .product-filter {
-          flex-direction: column;
-        }
-      
-        .sort {
-          align-self: flex-start;
-        }
-      }

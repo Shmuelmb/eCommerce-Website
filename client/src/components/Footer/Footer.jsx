@@ -7,39 +7,38 @@ const Footer = () => {
   const navigate = useNavigate();
 
   return (
-    <footer className="footer-container">
-      <div className="footer-content">
-        <div className="footer-header">
-          <h1
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            CLICK FASHION
-          </h1>
+    <footer>
+      <div className="footer-container">
+        <div className="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li>about us</li>
+            <li>our services</li>
+            <li>privacy policy</li>
+            <li>affiliate program</li>
+          </ul>
         </div>
-        <div className="footer-nav">
-          <div className="footer-links">
-            <h3>SHOP</h3>
-            <p>Register</p>
-            <p>Log in</p>
-            <p>My account</p>
-          </div>
-          <div className="footer-links">
-            <h3>SHOP</h3>
-            <p>Register</p>
-            <p>Log in</p>
-            <p>My account</p>
-          </div>
-          <div className="footer-links">
-            <h3>SHOP</h3>
-            <p>Register</p>
-            <p>Log in</p>
-            <p>My account</p>
-          </div>
+        <div className="footer-links">
+          <h4>get help</h4>
+          <ul>
+            <li>FAQ</li>
+            <li>shipping</li>
+            <li>returns</li>
+            <li>order status</li>
+            <li>payment options</li>
+          </ul>
         </div>
-        <div className="social-m">
-          <h2>JOIN OUR NEWSLETTERS</h2>
+        <div className="footer-links ">
+          <h4>online shop</h4>
+          <ul>
+            <li>watch</li>
+            <li>bag</li>
+            <li>shoes</li>
+            <li>dress</li>
+          </ul>
+        </div>
+        <div className="footer-links">
+          <h4>JOIN OUR NEWSLETTERS</h4>
           <input />
           <IconContext.Provider value={{ size: "2rem" }}>
             <div className="social-m-icons">

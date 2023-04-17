@@ -8,17 +8,19 @@
 	top: 0;
   height: 90px;
   animation: 1.2s ease-out 0s 1 slideIn;
-
+  z-index: 9;
    
 
 }
 
 .nav{
+  
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   color:#0050B6;
   width: 80%;
+
 
 }
 
@@ -78,6 +80,7 @@
     justify-content: flex-end;
     flex-direction: column-reverse;
     text-align: left;
+    transition: 1s ease-in-out;
 
   }
   .responsive  .btn-navigate{
