@@ -1,164 +1,139 @@
-.nav-container{
+.nav-container {
   text-align: center;
-  background-color: #F1F3F2;
+  background-color: #f1f3f2;
   width: 100%;
   display: flex;
   justify-content: center;
-	position: sticky;
-	top: 0;
+  position: sticky;
+  top: 0;
   height: 90px;
   animation: 1.2s ease-out 0s 1 slideIn;
   z-index: 9;
 }
 
-.nav{
+.nav {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color:#0050B6;
+  color: #0050b6;
   width: 80%;
 }
 
 .nav > h2 {
-  font-family: 'Forum', cursive;
+  font-family: "Forum", cursive;
   font-size: 3vw;
   letter-spacing: 5px;
-  width: 40%; 
+  width: 40%;
 }
 
-.nav-icon{
+.nav-icon {
   width: 30%;
   display: flex;
   justify-content: center;
+}
+
+.i-icon {
+  width: 100%;
+}
+
+.btn-navigate {
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+}
+.btn-nav {
+  border: 0px;
+  color: black;
+  font-size: 1.5vw;
+}
+
+.btn-nav:hover {
+  border-bottom: 1px #0050b6 solid;
+}
+
+.collapse {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color: #0050b6;
+  font-size: 3vw;
+}
+.responsive {
+  position: absolute;
+  background-color: #f1f3f2;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column-reverse;
+  text-align: left;
+  transition: 0.3s ease-in-out;
+}
+.responsive .btn-navigate {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.responsive .btn-nav {
+  padding-left: 3%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border: 0px;
+  border-bottom: 0.6px rgba(0, 0, 0, 0.267) solid;
+  color: black;
+  font-size: 5vw;
+}
+
+.responsive .nav-icon {
+  display: flex;
+}
+.responsive > h2 {
+  display: none;
+}
+.exit-btn-close {
+  display: none !important;
+}
+#exit-btn {
+  margin-top: 10%;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .btn-navigate,
+  .nav-icon {
+    display: none;
   }
 
-  .i-icon{
-    width: 100%;
+  .collapse {
+    display: flex;
+    font-size: 1.5rem;
   }
-
-  .btn-navigate{
-    width: 30%;
+  .nav {
     display: flex;
     justify-content: space-around;
-    
-
-  }
-  .btn-nav{
-    border: 0px;
-    color: black;
-    font-size: 1.5vw;
-  }
-
-  .btn-nav:hover{
-    border-bottom: 1px #0050B6 solid;
-
-  }
-
-.collapse{
-    display: none;
-    justify-content: center;
-    align-items: center;
-    color: #0050B6;
-    font-size: 3vw;
-
-}
-  .responsive{
-    position: absolute;
-    background-color: #F1F3F2;
-    height: 100vh;
     width: 100%;
+  }
+
+  .btn-nav::after {
     display: flex;
-    align-items: center;
     justify-content: flex-end;
-    flex-direction: column-reverse;
-    text-align: left;
-    transition: 0.3s ease-in-out;
-
-  }
-  .responsive  .btn-navigate{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  .responsive .btn-nav{
-    padding-left: 3%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    border: 0px;
-    border-bottom: 0.6px rgba(0, 0, 0, 0.267) solid;
-    color: black;
-    font-size:5vw;
-
-   
+    margin-left: auto;
+    content: ">";
   }
 
-  .responsive .nav-icon{
-    display: flex;
-  }
-  .responsive > h2{
-   display: none;
-  }
-  .exit-btn-close{
-    display: none !important;
-  }
- #exit-btn{
-      margin-top: 10%;
-
- }
- 
-  @keyframes slideIn {
-    0% {
-      transform: translateY(-100%);
-      
-
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-@keyframes slideOut {
-  100%{
-    transform: translateY(-100%);
-
-  }   
-  0% {
-    transform: translateX(0%);
-    
-
+  .nav > h2 {
+    width: auto;
+    letter-spacing: 2vw;
+    font-size: 5vw;
   }
 }
-  
-  
-  @media screen and (max-width: 1000px) {
-
-    .btn-navigate, .nav-icon{
-      display: none;
-    }
-   
-
-    .collapse{
-      display: flex;
-      font-size: 1.5rem;
-
-    }
-    .nav{
-      display: flex;
-      justify-content: space-around;
-      width: 100%;
-    }
-    
-    .btn-nav::after {
-      display: flex;
-      justify-content: flex-end;
-      margin-left: auto;
-      content: '>'
-    }
-    
-    .nav > h2{
-      width: auto;
-      letter-spacing: 2vw;
-      font-size: 5vw;
-    }
-   
-  }
