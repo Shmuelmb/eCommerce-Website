@@ -3,6 +3,7 @@ import "./Nav.css";
 import { useNavigate } from "react-router-dom";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+import KeyboardBackspaceOutlinedIcon from "@mui/icons-material/KeyboardBackspaceOutlined";
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import SearchBar from "./SearchBar/SearchBar";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
@@ -135,7 +136,7 @@ const Nav = () => {
             onClose={toggleDrawer("right", false)}
           >
             <IconButton onClick={() => setState(false)}>
-              <ExitToAppOutlinedIcon fontSize="large" />
+              <KeyboardBackspaceOutlinedIcon fontSize="large" />
             </IconButton>
             <ShoppingCart />
           </Drawer>

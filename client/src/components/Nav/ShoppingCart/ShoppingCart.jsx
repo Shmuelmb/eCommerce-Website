@@ -25,6 +25,7 @@ const ShoppingCart = () => {
             <p className="p2"> Amount: {item.Amount}</p>
 
             <AddOutlinedIcon
+              fontSize="large"
               id={item._id}
               onClick={(event) => {
                 addAmount(cartList, setCartList, event);
@@ -32,6 +33,7 @@ const ShoppingCart = () => {
               }}
             />
             <DeleteForeverOutlinedIcon
+              fontSize="large"
               id={item._id}
               onClick={(event) => {
                 removeAmount(cartList, setCartList, event);
