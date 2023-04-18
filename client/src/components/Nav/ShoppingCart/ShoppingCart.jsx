@@ -1,12 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import MyContext from "../../../.js/MyContext";
 import "./ShoppingCart.css";
 import Button from "@mui/material/Button";
+import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 import {
   upDateUserCartList,
   addAmount,
   removeAmount,
 } from "../../../.js/functions";
+
 const ShoppingCart = () => {
   const { cartList, setCartList, setUserCartList, userCartList } =
     useContext(MyContext);
@@ -20,30 +23,21 @@ const ShoppingCart = () => {
             <h5>{item.title}</h5>
             <p className="p2">Price: {(item.price * item.Amount).toFixed(2)}</p>
             <p className="p2"> Amount: {item.Amount}</p>
-            <Button
-              size="small"
-              color="error"
-              variant="contained"
-              id={item._id}
-              onClick={(event) => {
-                removeAmount(cartList, setCartList, event);
-                upDateUserCartList(cartList, setUserCartList);
-              }}
-            >
-              -
-            </Button>
-            <Button
-              size="small"
-              color="error"
-              variant="contained"
+
+            <AddOutlinedIcon
               id={item._id}
               onClick={(event) => {
                 addAmount(cartList, setCartList, event);
                 upDateUserCartList(cartList, setUserCartList);
               }}
-            >
-              +
-            </Button>
+            />
+            <DeleteForeverOutlinedIcon
+              id={item._id}
+              onClick={(event) => {
+                removeAmount(cartList, setCartList, event);
+                upDateUserCartList(cartList, setUserCartList);
+              }}
+            />
           </div>
         ))}
     </div>

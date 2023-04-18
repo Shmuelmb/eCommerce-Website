@@ -9,41 +9,33 @@
   height: 90px;
   animation: 1.2s ease-out 0s 1 slideIn;
   z-index: 9;
-   
-
 }
 
 .nav{
-  
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   color:#0050B6;
   width: 80%;
-
-
 }
 
-.nav > h1 {
+.nav > h2 {
   font-family: 'Forum', cursive;
   font-size: 3vw;
   letter-spacing: 5px;
-  width: 40%;
-  
+  width: 40%; 
 }
 
-
-
-  .nav-icon{
-    width: 30%;
-    display: flex;
-    justify-content: center;
-
+.nav-icon{
+  width: 30%;
+  display: flex;
+  justify-content: center;
   }
 
   .i-icon{
     width: 100%;
   }
+
   .btn-navigate{
     width: 30%;
     display: flex;
@@ -54,7 +46,7 @@
   .btn-nav{
     border: 0px;
     color: black;
-    font-size: 1.3vw;
+    font-size: 1.5vw;
   }
 
   .btn-nav:hover{
@@ -67,7 +59,7 @@
     justify-content: center;
     align-items: center;
     color: #0050B6;
-    font-size: 20px;
+    font-size: 3vw;
 
 }
   .responsive{
@@ -80,7 +72,7 @@
     justify-content: flex-end;
     flex-direction: column-reverse;
     text-align: left;
-    transition: 1s ease-in-out;
+    transition: 0.3s ease-in-out;
 
   }
   .responsive  .btn-navigate{
@@ -104,9 +96,16 @@
   .responsive .nav-icon{
     display: flex;
   }
-  .responsive > h1{
+  .responsive > h2{
    display: none;
   }
+  .exit-btn-close{
+    display: none !important;
+  }
+ #exit-btn{
+      margin-top: 10%;
+
+ }
  
   @keyframes slideIn {
     0% {
@@ -131,7 +130,7 @@
 }
   
   
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1000px) {
 
     .btn-navigate, .nav-icon{
       display: none;
@@ -140,6 +139,7 @@
 
     .collapse{
       display: flex;
+      font-size: 1.5rem;
 
     }
     .nav{
@@ -155,9 +155,10 @@
       content: '>'
     }
     
-    .nav > h1{
+    .nav > h2{
       width: auto;
       letter-spacing: 2vw;
       font-size: 5vw;
     }
+   
   }

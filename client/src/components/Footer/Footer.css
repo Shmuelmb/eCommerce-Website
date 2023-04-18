@@ -19,6 +19,7 @@ footer{
 }
 
 .footer-links {
+    width: 24%;
     font-size: 1.2rem;
     text-transform: capitalize;
     transition: all 0.3s ease;
@@ -30,7 +31,7 @@ footer{
 }
 
 .footer-links li{
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s;
 
 }
 .footer-links li:not(:last-child){
@@ -41,14 +42,25 @@ footer{
     font-weight: bold;
     cursor: pointer;
 }
+.footer-icon{
+    transition:all 0.2s ;
+    
+}
+.footer-icon:hover{
+    transform: scale(1.2);
+}
 
 
 
 
-@media screen and (max-width: 1083px) {
+@media screen and (max-width: 750px) {
  
     .footer-container{
         flex-direction: column;
+       
+    }
+    .footer-links{
+        width: 100%;
     }
 
 }
