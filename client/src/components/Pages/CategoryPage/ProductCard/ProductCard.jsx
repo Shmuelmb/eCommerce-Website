@@ -11,14 +11,14 @@ const ProductCard = ({ id, Urlimage, title, price }) => {
   return (
     <Zoom in={true}>
       <div className="product-card">
-        <div className="cardImage">
-          <div
-            className="card-overlay"
-            onClick={() => {
-              navigate(`/products/${id}`);
-              setProductID(id);
-            }}
-          >
+        <div
+          className="cardImage"
+          onClick={() => {
+            navigate(`/products/${id}`);
+            setProductID(id);
+          }}
+        >
+          <div className="card-overlay">
             <Addbtn id={id} />
           </div>
           <img src={Urlimage} alt={title} />

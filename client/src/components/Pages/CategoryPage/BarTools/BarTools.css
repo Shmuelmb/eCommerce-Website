@@ -16,3 +16,8 @@
   width: 100%;
   border: 1px #d9d9d9 solid;
 }
+@media screen and (max-width: 1000px) {
+  .BarTools {
+    display: none;
+  }
+}

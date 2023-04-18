@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MyContext from "../../../.js/MyContext";
-import BarToolss from "../EnterPage/BarToolss/BarToolss";
+import BarTools from "./BarTools/BarTools.jsx";
 import "./CategoryPage.css";
 import ProductCard from "./ProductCard/ProductCard";
 import SortComponnet from "./SortComponnet/SortComponnet";
@@ -88,7 +88,7 @@ const CategoryPage = () => {
     <div className="CategoryPage">
       <h1>{Category}'S COLLECTION</h1>
       <div className="products-container">
-        <BarToolss />
+        <BarTools />
         <div className="p">
           <SortComponnet />
           <div className="products-list">

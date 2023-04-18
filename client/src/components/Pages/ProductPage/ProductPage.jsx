@@ -25,21 +25,19 @@ const ProductPage = () => {
   }, [productid]);
 
   return (
-    <div className="producd-page-container">
+    <div className="product-page-container">
       <Grow in={true}>
-        <div className="prod-page-card">
+        <figure className="prod-page-card">
           <img src={product.url_img} alt={product.title} />
-          <div className="detlais">
-            <div className="text">
-              <h4>{product.title}</h4>
-              <p>{product.description}</p>
+          <figcaption className="details">
+            <h4>{product.title}</h4>
+            <p>{product.description}</p>
 
-              <h3>${product.price}</h3>
-            </div>
+            <h3>${product.price}</h3>
 
             <Addbtn id={product._id} />
-          </div>
-        </div>
+          </figcaption>
+        </figure>
       </Grow>
     </div>
   );

@@ -1,16 +1,3 @@
-/* .product {  
-    width: 15%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    padding: 2%;
-    flex: 1 12%;
-    background-color: rgb(254, 254, 254);
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
-    align-items: center;
-    transition: all ease-in-out  .3s;
-  } */
-
 .product-card {
   width: 16vw;
   display: flex;
@@ -61,8 +48,12 @@
   margin-top: 10px;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1000px) {
   .card-overlay {
     display: none;
+  }
+  .product-card {
+    cursor: pointer;
+    width: 40vw;
   }
 }

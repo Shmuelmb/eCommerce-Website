@@ -137,3 +137,9 @@
     font-size: 5vw;
   }
 }
+
+@media screen and (min-width: 1001px) {
+  .collapse {
+    display: none !important;
+  }
+}

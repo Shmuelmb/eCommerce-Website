@@ -124,7 +124,7 @@ const Nav = () => {
             <PermIdentityOutlinedIcon fontSize="large" />
           </IconButton>
           <IconButton onClick={toggleDrawer("right", true)}>
-            <Badge badgeContent={ItemsAmounts}>
+            <Badge badgeContent={ItemsAmounts} color="error">
               <ShoppingBagOutlinedIcon fontSize="large" />
             </Badge>
           </IconButton>
@@ -140,7 +140,7 @@ const Nav = () => {
             <ShoppingCart />
           </Drawer>
         </div>
-        <Badge badgeContent={ItemsAmounts}>
+        <Badge className="collapse" badgeContent={ItemsAmounts} color="error">
           <div
             className="collapse"
             onClick={() => {
