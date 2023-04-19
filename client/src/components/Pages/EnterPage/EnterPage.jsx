@@ -7,10 +7,17 @@ import menCatImg from "../../../images/men-category.png";
 import womanCatImg from "../../../images/women-category.png";
 import CarrouselProducts from "./CarrouselProducts/CarrouselProducts";
 import { useNavigate } from "react-router-dom";
+import { scrollToTop } from "../../../.js/functions";
+import { useLocation } from "react-router-dom";
 
 const EnterPage = () => {
   const { allProducts, loading } = useContext(MyContext);
   const navigate = useNavigate();
+
+  //scroll the component to top when you enter to the page from route
+  useEffect(() => {
+    scrollToTop();
+  }, []);
 
   return !loading ? (
     <div className="enter-page">

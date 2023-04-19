@@ -61,3 +61,10 @@ export const removeAmount = (arr, setArr, eventOfClick) => {
   });
   setArr(newArr);
 };
+
+export const scrollToTop = () =>
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });

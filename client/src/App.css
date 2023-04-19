@@ -19,14 +19,18 @@ body {
   align-items: center;
   width: 100%;
 }
-p {
+li,
+p,
+h1,
+ul {
   margin: 0;
+}
+ul {
+  padding: 0;
 }
 
 h1 {
   font-family: "Archivo Black", sans-serif;
-
-  margin: 0;
 }
 .modal-box {
   display: flex !important;
@@ -52,7 +56,7 @@ h1 {
   display: inline-flex;
   font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
     Arial, sans-serif;
-  font-size: 1.4vw;
+  font-size: 1.2rem;
   font-weight: 600;
   justify-content: center;
   line-height: 1.25;

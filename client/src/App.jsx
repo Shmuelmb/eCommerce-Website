@@ -16,6 +16,7 @@ import ProfilePage from "./components/Pages/ProfilePage/ProfilePage";
 import ProductPage from "./components/Pages/ProductPage/ProductPage";
 import CategoryPage from "./components/Pages/CategoryPage/CategoryPage";
 import { BASE_URL } from "./.js/constant-vars";
+
 function App() {
   // useState object
   const [searchValue, setSearchValue] = useState("");
@@ -32,7 +33,6 @@ function App() {
   const [userCartList, setUserCartList] = useState(
     JSON.parse(localStorage.getItem("userList")) || []
   );
-
   // func
   const onFilterChange = (e) => {
     if (e.target.innerText === "New Arrivals") {
@@ -85,6 +85,7 @@ function App() {
   useEffect(() => {
     getData();
   }, []);
+
   return (
     <BrowserRouter>
       <MyContext.Provider

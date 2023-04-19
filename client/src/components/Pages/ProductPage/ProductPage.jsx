@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Addbtn from "../CategoryPage/ProductCard/Addbtn/Addbtn";
 import Grow from "@mui/material/Grow";
 import { BASE_URL } from "../../../.js/constant-vars";
+import { scrollToTop } from "../../../.js/functions";
 
 const ProductPage = () => {
   const { productid } = useParams();
@@ -23,6 +24,11 @@ const ProductPage = () => {
   useEffect(() => {
     getData();
   }, [productid]);
+
+  //scroll the component to top when you enter to the page from route
+  useEffect(() => {
+    scrollToTop();
+  }, []);
 
   return (
     <div className="product-page-container">

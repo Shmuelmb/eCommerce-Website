@@ -14,6 +14,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../../.js/constant-vars";
+import { scrollToTop } from "../../../.js/functions";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -36,6 +37,10 @@ const RegisterPage = () => {
       setDisButton(true);
     }
   }, [obj]);
+
+  useEffect(() => {
+    scrollToTop();
+  }, []);
 
   //func
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -84,6 +89,7 @@ const RegisterPage = () => {
             setObj({ ...obj, email: event.target.value });
           }}
           placeholder="Email"
+          type="email"
           variant="standard"
           helperText="please enter your email address"
           InputProps={{

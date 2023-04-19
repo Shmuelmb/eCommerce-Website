@@ -10,11 +10,11 @@ import SendIcon from "@mui/icons-material/Send";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import loginImg from "../../../images/login-img.png";
 import Modal from "@mui/material/Modal";
 import Cookies from "universal-cookie";
 import MyContext from "../../../.js/MyContext";
 import { BASE_URL } from "../../../.js/constant-vars";
+import { scrollToTop } from "../../../.js/functions";
 
 const LoginPage = () => {
   const { setIsAuth } = useContext(MyContext);
@@ -44,6 +44,9 @@ const LoginPage = () => {
     }
   }, [obj]);
 
+  useEffect(() => {
+    scrollToTop();
+  }, []);
   //func
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event) => {
@@ -98,6 +101,7 @@ const LoginPage = () => {
             onChange={(event) => {
               setObj({ ...obj, username: event.target.value });
             }}
+            type="text"
             placeholder="User name"
             variant="standard"
             helperText="please enter your username"
