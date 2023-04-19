@@ -7,8 +7,9 @@ import "./ProfilePage.css";
 import Modal from "@mui/material/Modal";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../../.js/constant-vars";
-import { scrollToTop } from "../../../.js/functions";
+import { scrollToTop, toggleDrawer } from "../../../.js/functions";
 import ShoppingCart from "../../Nav/ShoppingCart/ShoppingCart";
+
 const ProfilePage = () => {
   const cookies = new Cookies();
   const navigate = useNavigate();
@@ -21,9 +22,10 @@ const ProfilePage = () => {
     setOpenModalDelete(false);
   };
 
-  const { isAuth, setIsAuth } = useContext(MyContext);
+  const { isAuth, setIsAuth, setStateDrawer, stateDrawer } =
+    useContext(MyContext);
 
-  const auth = async () => {
+  const getProfile = async () => {
     try {
       const response = await fetch(`${BASE_URL}/api/users/profile`, {
         method: "GET",
@@ -58,8 +60,9 @@ const ProfilePage = () => {
       console.log(e);
     }
   };
+
   useEffect(() => {
-    auth();
+    getProfile();
     //scroll the component to top when you enter to the page from route
     scrollToTop();
   }, []);
@@ -80,11 +83,16 @@ const ProfilePage = () => {
           </div>
         </div>
         <div className="profile-btn">
-          <button className="product-card-btn button-6">My Cart</button>
+          <button
+            className="product-card-btn button-6"
+            onClick={toggleDrawer("right", true, setStateDrawer, stateDrawer)}
+          >
+            My Cart
+          </button>
           <button
             onClick={() => {
-              setIsAuth(false);
               cookies.remove("TOKEN");
+              setIsAuth(false);
               navigate("/login");
             }}
             className="product-card-btn button-6"

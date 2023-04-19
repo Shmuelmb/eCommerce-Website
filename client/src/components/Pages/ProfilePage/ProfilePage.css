@@ -56,6 +56,10 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.profile-btn button:first-child {
+  display: none;
+}
 .delete-user-btn-modal > button {
   color: inherit;
   border: none;
@@ -95,5 +99,8 @@
   }
   .personal-cart {
     display: none;
+  }
+  .profile-btn button:first-child {
+    display: block;
   }
 }

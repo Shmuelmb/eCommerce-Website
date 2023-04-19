@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./NotFoundPage.css";
 import { scrollToTop } from "../../../.js/functions";
+
 const NotFoundPage = () => {
   //scroll the component to top when you enter to the page from route
   useEffect(() => {

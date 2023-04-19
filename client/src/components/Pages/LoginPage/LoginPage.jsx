@@ -54,12 +54,12 @@ const LoginPage = () => {
   };
   const isPassBiggerThenEight = (pass) =>
     pass.length < 8
-      ? setError("The Password must contain at least eigth digits")
+      ? setError("The Password must contain at least eight digits")
       : setError(" ");
 
-  const expriesDate = () => {
+  const expiresDate = () => {
     const d = new Date();
-    d.setDate(d.getDate() + 1);
+    d.setDate(d.getDate() + 30);
     return d;
   };
   //api func
@@ -82,11 +82,10 @@ const LoginPage = () => {
         setIsLogin(true);
         setIsAuth(true);
         cookies.set("TOKEN", user.accessToken, {
-          expires: expriesDate(),
+          expires: expiresDate(),
         });
         setTimeout(() => navigate(user.navigate), 3000);
       }
-
       setOpenModal(true);
     } catch (e) {
       console.log(e);

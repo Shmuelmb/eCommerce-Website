@@ -15,10 +15,11 @@ import LoginPage from "./components/Pages/LoginPage/LoginPage";
 import ProfilePage from "./components/Pages/ProfilePage/ProfilePage";
 import ProductPage from "./components/Pages/ProductPage/ProductPage";
 import CategoryPage from "./components/Pages/CategoryPage/CategoryPage";
+import Cookies from "universal-cookie";
 import { BASE_URL } from "./.js/constant-vars";
-
+import { addKeyForObjState } from "./.js/functions";
 function App() {
-  // useState object
+  // init seState object
   const [searchValue, setSearchValue] = useState("");
   const [choosenSortPrice, setChoosenSortPrice] = useState([0, 999]);
   const [isChoosenSortH2L, setIsChoosenSortH2L] = useState("");
@@ -29,10 +30,16 @@ function App() {
   const [productID, setProductID] = useState("");
   const [productsFilter, setProductsFilter] = useState([]);
   const [isAuth, setIsAuth] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [listCategoryProducts, setListCategoryProducts] = useState([]);
   const [userCartList, setUserCartList] = useState(
     JSON.parse(localStorage.getItem("userList")) || []
   );
+  const [stateDrawer, setStateDrawer] = useState({ right: false });
+
+  //init const var
+  const cookies = new Cookies();
+
   // func
   const onFilterChange = (e) => {
     if (e.target.innerText === "New Arrivals") {
@@ -56,19 +63,6 @@ function App() {
     }
   };
 
-  const addKeyForObjState = (setArr, key, value, data) => {
-    const newArr = [...data];
-    newArr.map((ev) => (ev[key] = value));
-    setArr(newArr);
-  };
-  // const key = "retailPrice";
-  // const createListOfKey = (arrayOfProcuts, key) => {
-  //   const x = arrayOfProcuts
-  //     .map((p) => console.log(p.retailPrice.amount))
-  //     .filter((value, index, array) => array.indexOf(value) === index);
-  //   return x;
-  // };
-
   const getData = async () => {
     try {
       const response = await fetch(`${BASE_URL}/api/products/getAllProducts`);
@@ -82,14 +76,41 @@ function App() {
     }
   };
 
+  const auth = async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/api/users/profile`, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: ` ${cookies.get("TOKEN")}`,
+        },
+      });
+      const data = await response.json();
+      if (data.success) {
+        setIsAuth(true);
+      } else {
+        setIsAuth(false);
+        console.log(data);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   useEffect(() => {
     getData();
+    auth();
   }, []);
 
   return (
     <BrowserRouter>
       <MyContext.Provider
         value={{
+          isAdmin,
+          setIsAdmin,
+          stateDrawer,
+          setStateDrawer,
           userCartList,
           setUserCartList,
           listCategoryProducts,

@@ -11,7 +11,7 @@ import { scrollToTop } from "../../../.js/functions";
 import { useLocation } from "react-router-dom";
 
 const EnterPage = () => {
-  const { allProducts, loading } = useContext(MyContext);
+  const { loading } = useContext(MyContext);
   const navigate = useNavigate();
 
   //scroll the component to top when you enter to the page from route

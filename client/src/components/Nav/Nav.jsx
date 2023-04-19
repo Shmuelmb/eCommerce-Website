@@ -13,10 +13,15 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
 import MyContext from "../../.js/MyContext";
-import { upDateUserCartListAfterReload } from "../../.js/functions";
+import {
+  upDateUserCartListAfterReload,
+  toggleDrawer,
+} from "../../.js/functions";
 
 const Nav = () => {
   const {
+    stateDrawer,
+    setStateDrawer,
     loadingAppData,
     cartList,
     isAuth,
@@ -25,7 +30,6 @@ const Nav = () => {
     setCartList,
   } = useContext(MyContext);
   // state obj
-  const [state, setState] = useState({ right: false });
   const [ItemsAmounts, setItemsAmounts] = useState();
   const navigate = useNavigate();
 
@@ -46,20 +50,10 @@ const Nav = () => {
     }
   };
 
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-
-    setState({ ...state, [anchor]: open });
-  };
-
   useEffect(() => {
     upDateUserCartListAfterReload(cartList, setCartList);
   }, [loadingAppData]);
+
   useEffect(() => {
     let y = 0;
     userCartList.forEach((x) => (y += x.Amount));
@@ -124,7 +118,9 @@ const Nav = () => {
           >
             <PermIdentityOutlinedIcon fontSize="large" />
           </IconButton>
-          <IconButton onClick={toggleDrawer("right", true)}>
+          <IconButton
+            onClick={toggleDrawer("right", true, setStateDrawer, stateDrawer)}
+          >
             <Badge badgeContent={ItemsAmounts} color="error">
               <ShoppingBagOutlinedIcon fontSize="large" />
             </Badge>
@@ -132,10 +128,10 @@ const Nav = () => {
 
           <Drawer
             anchor={"right"}
-            open={state["right"]}
-            onClose={toggleDrawer("right", false)}
+            open={stateDrawer["right"]}
+            onClose={toggleDrawer("right", false, setStateDrawer, stateDrawer)}
           >
-            <IconButton onClick={() => setState(false)}>
+            <IconButton onClick={() => setStateDrawer(false)}>
               <KeyboardBackspaceOutlinedIcon fontSize="large" />
             </IconButton>
             <ShoppingCart />
