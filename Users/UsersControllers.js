@@ -4,6 +4,7 @@ import {
   profile,
   deleteUser,
   getAllUsers,
+  admin,
 } from "./UsersServices.js";
 
 export const registerController = async (req, res) => {
@@ -49,6 +50,17 @@ export const profileController = async (req, res) => {
   } catch (e) {
     console.log(e);
 
+    res.status(400).send({ error: e, success: false });
+  }
+};
+
+export const adminController = async (req, res) => {
+  const token = req.headers.authorization;
+  try {
+    const user = await admin(token);
+    res.status(200).send({ massage: user, success: true });
+  } catch (e) {
+    console.log(e);
     res.status(400).send({ error: e, success: false });
   }
 };

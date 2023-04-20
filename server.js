@@ -16,6 +16,7 @@ import {
   registerController,
   loginController,
   profileController,
+  adminController,
   deleteUserController,
   allUsersController,
   addUserController,
@@ -89,6 +90,7 @@ app.post("/api/users/register", registerController);
 app.post("/api/users/login", loginController);
 app.delete("/api/users/deleteUser/:id", deleteUserController);
 app.get("/api/users/profile", validateToken, profileController);
+app.get("/api/users/admin", validateToken, adminController);
 app.get("/api/users/getAllUsers", allUsersController);
 app.post("/api/users/addUser", addUserController);
 
