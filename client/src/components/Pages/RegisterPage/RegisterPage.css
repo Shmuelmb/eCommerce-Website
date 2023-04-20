@@ -1,24 +1,23 @@
-
-
-
-.register-container{
-    padding: 10% 0 13% 0;
-
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.register-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
 }
-.register-box{
-    width: 30%;
-    display: flex;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+.register-box {
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 3%;
+}
+.register-input {
+  width: 70%;
+}
+@media screen and (max-width: 1000px) {
+  .register-box {
     padding: 5%;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-
-}
-.register-input{
-width: 70% ;
+  }
 }

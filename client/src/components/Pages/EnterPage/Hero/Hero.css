@@ -9,7 +9,7 @@
   
   }
   
-  .hero-content > h1{
+  .hero-content h1{
     font-size: 6vw;
     text-align: left; 
     display: flex;
@@ -28,9 +28,28 @@
     display: flex;
     justify-content: center;
     margin-top: auto;
-
   }
   .hero-img > img{
     width: 50%;
   
+  }
+
+  @media screen and (max-width: 1000px) {
+    .hero-content h1{
+      line-height: 1.6;
+      font-size: 7.5vw;
+    }
+    .hero-img > img{
+      width: 100%;
+    }
+    
+    .hero-content{
+      width: 49%;
+    }
+    .hero-img{
+      width: 48%;
+    }
+    .hero-img > img{
+      width: 100%;
+    }
   }

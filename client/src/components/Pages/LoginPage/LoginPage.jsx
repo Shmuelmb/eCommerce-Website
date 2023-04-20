@@ -10,11 +10,11 @@ import SendIcon from "@mui/icons-material/Send";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import loginImg from "../../../images/login-img.png";
 import Modal from "@mui/material/Modal";
 import Cookies from "universal-cookie";
 import MyContext from "../../../.js/MyContext";
 import { BASE_URL } from "../../../.js/constant-vars";
+import { scrollToTop } from "../../../.js/functions";
 
 const LoginPage = () => {
   const { setIsAuth } = useContext(MyContext);
@@ -44,6 +44,9 @@ const LoginPage = () => {
     }
   }, [obj]);
 
+  useEffect(() => {
+    scrollToTop();
+  }, []);
   //func
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event) => {
@@ -51,12 +54,12 @@ const LoginPage = () => {
   };
   const isPassBiggerThenEight = (pass) =>
     pass.length < 8
-      ? setError("The Password must contain at least eigth digits")
+      ? setError("The Password must contain at least eight digits")
       : setError(" ");
 
-  const expriesDate = () => {
+  const expiresDate = () => {
     const d = new Date();
-    d.setDate(d.getDate() + 1);
+    d.setDate(d.getDate() + 30);
     return d;
   };
   //api func
@@ -79,11 +82,10 @@ const LoginPage = () => {
         setIsLogin(true);
         setIsAuth(true);
         cookies.set("TOKEN", user.accessToken, {
-          expires: expriesDate(),
+          expires: expiresDate(),
         });
         setTimeout(() => navigate(user.navigate), 3000);
       }
-
       setOpenModal(true);
     } catch (e) {
       console.log(e);
@@ -98,6 +100,7 @@ const LoginPage = () => {
             onChange={(event) => {
               setObj({ ...obj, username: event.target.value });
             }}
+            type="text"
             placeholder="User name"
             variant="standard"
             helperText="please enter your username"

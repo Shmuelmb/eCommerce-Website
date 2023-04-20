@@ -1,49 +1,50 @@
-.login-container{
-        padding: 15% 0 12% 0;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-      
+.login-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
 }
 
-.login-box{
-    padding: 1% 0 1% 0;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    justify-content: center;
-    width: 30%;
-    background-color: rgb(255, 255, 255);
+.login-box {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  padding: 5%;
 }
 
-.img2{
-    width: 500px;
-
+.img2 {
+  width: 500px;
 }
 
-.login{
-    text-align: center;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    
-    }
+.login {
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-    .login >p{
-        font-size: 0.7rem;
-        color: grey;
-        transition: all ease-in-out 0.2s;
-        font-weight: bold;
-        
-    }
+.login > p {
+  font-size: 0.7rem;
+  color: grey;
+  transition: all ease-in-out 0.2s;
+  font-weight: bold;
+}
 
-    .login >p:hover{
-        cursor: pointer;
-        color: black;
-        
-    }
+.login > p:hover {
+  cursor: pointer;
+  color: black;
+}
 
+@media screen and (max-width: 1000px) {
+  .login-container {
+    height: 50vh;
+  }
+  .login-box {
+    padding: 5%;
+  }
+}

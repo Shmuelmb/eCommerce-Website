@@ -12,15 +12,17 @@ const ProductCard = ({ id, Urlimage, title, price }) => {
     <Zoom in={true}>
       <div className="product-card">
         <div
-          className="card-hover"
+          className="cardImage"
           onClick={() => {
             navigate(`/products/${id}`);
             setProductID(id);
           }}
         >
-          <Addbtn id={id} />
+          <div className="card-overlay">
+            <Addbtn id={id} />
+          </div>
+          <img src={Urlimage} alt={title} />
         </div>
-        <img className="cardImage" src={Urlimage} alt={title} />
         <div className="card-content">
           <span className="ty">{title}</span>
           <span> ${price}</span>

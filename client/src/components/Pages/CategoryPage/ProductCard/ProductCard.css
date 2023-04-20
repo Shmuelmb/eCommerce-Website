@@ -1,64 +1,39 @@
-/* .product {  
-    width: 15%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    padding: 2%;
-    flex: 1 12%;
-    background-color: rgb(254, 254, 254);
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
-    align-items: center;
-    transition: all ease-in-out  .3s;
-  } */
-
-
-
-  
-
-
-
-
-
-.product-card{
-  width: 20%;
+.product-card {
+  width: 16vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.card-hover{
+.card-overlay {
   transition: all 0.3s ease-in-out;
-
-  height: 350px;
-  width: 250px;
-cursor: pointer;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-position: absolute;
-opacity: 0;
-
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
 }
 
-.card-hover:hover{
-opacity: 1;
-
+.card-overlay:hover {
+  opacity: 1;
 }
-.cardImage{
-  height: 85%;
-
+.cardImage {
+  position: relative;
 }
-.card-content{
+.cardImage img {
+  width: 100%;
+}
+.card-content {
   display: flex;
   flex-direction: column;
   text-align: left;
-  
 }
 
-.ty{
+.ty {
   color: gray;
   font-weight: bold;
   font-size: 0.9rem;
@@ -67,8 +42,18 @@ opacity: 1;
   text-overflow: ellipsis;
 }
 
-.ty + span{
+.ty + span {
   font-weight: bold;
   font-size: 0.8rem;
   margin-top: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+  .card-overlay {
+    display: none;
+  }
+  .product-card {
+    cursor: pointer;
+    width: 40vw;
+  }
 }
