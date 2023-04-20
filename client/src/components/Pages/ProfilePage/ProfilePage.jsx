@@ -7,6 +7,8 @@ import "./ProfilePage.css";
 import Modal from "@mui/material/Modal";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../../.js/constant-vars";
+import { scrollToTop, toggleDrawer } from "../../../.js/functions";
+import ShoppingCart from "../../Nav/ShoppingCart/ShoppingCart";
 
 const ProfilePage = () => {
   const cookies = new Cookies();
@@ -20,9 +22,10 @@ const ProfilePage = () => {
     setOpenModalDelete(false);
   };
 
-  const { isAuth, setIsAuth } = useContext(MyContext);
+  const { isAuth, setIsAuth, setStateDrawer, stateDrawer } =
+    useContext(MyContext);
 
-  const auth = async () => {
+  const getProfile = async () => {
     try {
       const response = await fetch(`${BASE_URL}/api/users/profile`, {
         method: "GET",
@@ -57,49 +60,52 @@ const ProfilePage = () => {
       console.log(e);
     }
   };
+
   useEffect(() => {
-    auth();
+    getProfile();
+    //scroll the component to top when you enter to the page from route
+    scrollToTop();
   }, []);
 
   return !loading ? (
     isAuth ? (
       <div className="profile-page">
-        <h3>Hello {user.UserName}</h3>
-        <h4>What do you wanna do ?</h4>
-
+        <h1>Hello {user.UserName}</h1>
+        <div className="profile-page-content">
+          <div className="personal-info">
+            <h2>Personal Info</h2>
+            <p>Email: {user.Email} </p>
+            <p>Your ID: {user._id}</p>
+          </div>
+          <div className="personal-cart">
+            <h2>My Cart</h2>
+            <ShoppingCart />
+          </div>
+        </div>
         <div className="profile-btn">
           <button
-            className="button-6"
-            onClick={() => {
-              setOpenModal(true);
-            }}
+            className="product-card-btn button-6"
+            onClick={toggleDrawer("right", true, setStateDrawer, stateDrawer)}
           >
-            My User
-          </button>
-          <button className="button-6" onClick={() => setOpenModalDelete(true)}>
-            Delete Account
+            My Cart
           </button>
           <button
             onClick={() => {
-              setIsAuth(false);
               cookies.remove("TOKEN");
+              setIsAuth(false);
               navigate("/login");
             }}
-            className="button-6"
+            className="product-card-btn button-6"
           >
             Log Out
           </button>
+          <button
+            className="product-card-btn button-6"
+            onClick={() => setOpenModalDelete(true)}
+          >
+            Delete Account
+          </button>
         </div>
-
-        <Modal className="modal-box" open={openModal} onClose={handleClose}>
-          <div className="modal-message">
-            <h4>Personal Information</h4>
-            <p>Your Username: {user.UserName} </p>
-            <p>Your email: {user.Email}</p>
-            <p>Your ID: {user._id}</p>
-            <p>do you admin ?: {user.isAdmin ? "yes" : "no"}</p>
-          </div>
-        </Modal>
         <Modal
           className="modal-box"
           open={openModalDelete}

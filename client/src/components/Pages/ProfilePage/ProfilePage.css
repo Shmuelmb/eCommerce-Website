@@ -1,30 +1,106 @@
-.profile-page{
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
+.profile-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  font-size: 1.3rem;
+  padding: 5% 0 5% 0;
+}
+.profile-page h1 {
+  align-self: center;
+}
+
+.profile-page-content {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10% 0 10% 0;
+}
+
+.personal-info {
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 2rem;
+}
+
+.personal-info h2,
+.personal-cart h2 {
+  margin-top: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+  text-align: center;
+}
+.personal-cart {
+  height: 30vh;
+  overflow: scroll;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  line-height: 2rem;
+}
+.personal-cart h2 {
+  top: 0;
+  position: sticky;
+  background-color: white;
+}
+
+.personal-cart li:nth-child(even) {
+  background-color: #f1f3f2;
+}
+
+.profile-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-btn button:first-child {
+  display: none;
+}
+.delete-user-btn-modal > button {
+  color: inherit;
+  border: none;
+}
+
+.delete-user-btn-modal {
+  display: flex;
+  justify-content: space-evenly;
+}
+@media only screen and (max-width: 1400px) and (min-width: 1000px) {
+  .profile-page-content {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .profile-page {
+    padding: 10% 0 10% 0;
     width: 100%;
-}
+  }
 
-.profile-btn{
-    display: flex;
-    justify-content: space-between;
-    width: 35%;
-}
-.profile-btn > button{
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-}
+  .profile-page-content {
+    flex-direction: column-reverse;
+  }
+  .buffer {
+    display: none;
+  }
+  .personal-info {
+    height: auto;
+    border-top: 1px solid rgba(0, 0, 0, 0.637);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.637);
+    padding: 20% 0 20% 0;
+  }
 
-.delete-user-btn-modal > button{
-	color: inherit;
-	border: none;
-}
-
-.delete-user-btn-modal{
-    display: flex;
-    justify-content: space-evenly;
-
+  .personal-info h2 {
+    border-bottom: 0;
+  }
+  .personal-cart {
+    display: none;
+  }
+  .profile-btn button:first-child {
+    display: block;
+  }
 }

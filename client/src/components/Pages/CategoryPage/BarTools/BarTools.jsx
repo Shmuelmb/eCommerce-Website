@@ -1,10 +1,10 @@
 import React from "react";
 import Filter from "./Filter/Filter";
-import "./ShoppingBarTools.css";
-const ShoppingBarTools = () => {
+import "./BarTools.css";
+const BarTools = () => {
   return (
-    <div className="ShoppingBarTools">
-      <div className="shoptools-container">
+    <div className="BarTools">
+      <div className="BarTools-container">
         <h3>PRICE RANGE</h3>
         <Filter />
         <div className="br"></div>
@@ -13,4 +13,4 @@ const ShoppingBarTools = () => {
   );
 };
 
-export default ShoppingBarTools;
+export default BarTools;

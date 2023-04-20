@@ -12,7 +12,11 @@ import { unionBy } from "lodash";
 //     )(new Set())
 //   );
 // }
-
+export const addKeyForObjState = (setArr, key, value, data) => {
+  const newArr = [...data];
+  newArr.map((ev) => (ev[key] = value));
+  setArr(newArr);
+};
 function mergeTwoArrays(_arrayA, _arrayB) {
   const orders = unionBy(_arrayA, _arrayB, "_id");
   return orders;
@@ -60,4 +64,22 @@ export const removeAmount = (arr, setArr, eventOfClick) => {
     }
   });
   setArr(newArr);
+};
+
+export const scrollToTop = () =>
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
+
+export const toggleDrawer = (anchor, open, setState, state) => (event) => {
+  if (
+    event.type === "keydown" &&
+    (event.key === "Tab" || event.key === "Shift")
+  ) {
+    return;
+  }
+
+  setState({ ...state, [anchor]: open });
 };

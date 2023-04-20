@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { scrollToTop } from "../../../.js/functions";
 const AdminPage = () => {
   const navigate = useNavigate("");
+
+  useEffect(() => {
+    scrollToTop();
+  }, []);
+
   return (
     <div>
       <h1>Hello there &#128075;</h1>

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Addbtn from "../CategoryPage/ProductCard/Addbtn/Addbtn";
 import Grow from "@mui/material/Grow";
 import { BASE_URL } from "../../../.js/constant-vars";
+import { scrollToTop } from "../../../.js/functions";
 
 const ProductPage = () => {
   const { productid } = useParams();
@@ -24,22 +25,25 @@ const ProductPage = () => {
     getData();
   }, [productid]);
 
-  return (
-    <div className="producd-page-container">
-      <Grow in={true}>
-        <div className="prod-page-card">
-          <img src={product.url_img} alt={product.title} />
-          <div className="detlais">
-            <div className="text">
-              <h4>{product.title}</h4>
-              <p>{product.description}</p>
+  //scroll the component to top when you enter to the page from route
+  useEffect(() => {
+    scrollToTop();
+  }, []);
 
-              <h3>${product.price}</h3>
-            </div>
+  return (
+    <div className="product-page-container">
+      <Grow in={true}>
+        <figure className="prod-page-card">
+          <img src={product.url_img} alt={product.title} />
+          <figcaption className="details">
+            <h4>{product.title}</h4>
+            <p>{product.description}</p>
+
+            <h3>${product.price}</h3>
 
             <Addbtn id={product._id} />
-          </div>
-        </div>
+          </figcaption>
+        </figure>
       </Grow>
     </div>
   );

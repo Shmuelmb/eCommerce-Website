@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Footer.css";
 import { AiOutlineLinkedin, AiOutlineGithub } from "react-icons/ai";
+import Link from "@mui/material/Link";
 import { IconContext } from "react-icons";
 const Footer = () => {
   const navigate = useNavigate();
@@ -38,12 +39,27 @@ const Footer = () => {
           </ul>
         </div>
         <div className="footer-links">
-          <h4>JOIN OUR NEWSLETTERS</h4>
-          <input />
+          <h4>follow us</h4>
           <IconContext.Provider value={{ size: "2rem" }}>
             <div className="social-m-icons">
-              <AiOutlineLinkedin />
-              <AiOutlineGithub />
+              <Link
+                href="https://www.linkedin.com/in/shmuel-cohen-b59501228/"
+                target="_blank"
+                rel="noopener"
+                color="inherit"
+                underline="none"
+              >
+                <AiOutlineLinkedin className="footer-icon" />
+              </Link>
+              <Link
+                href="https://github.com/Shmuelmb"
+                target="_blank"
+                rel="noopener"
+                color="inherit"
+                underline="none"
+              >
+                <AiOutlineGithub className="footer-icon" />
+              </Link>
             </div>
           </IconContext.Provider>
         </div>
