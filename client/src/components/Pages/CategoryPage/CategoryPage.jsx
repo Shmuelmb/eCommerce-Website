@@ -65,6 +65,8 @@ const CategoryPage = () => {
     setIsChoosenSortH2L(); // נועד לאפס את אפשרות סידור המוצרים בכל פעם שיוצאים או מרעננים את הדף
     setLoading(true); //  נועד לרנדר את כל הקומפוננטות בכל פעם שעוברים קטגרויה
     setChoosenSortPrice([0, 999]);
+
+    scrollToTop(); //scroll the component to top when you enter to the page from route
   }, [category]);
 
   useEffect(() => {
@@ -81,11 +83,6 @@ const CategoryPage = () => {
     }
     setLocalList(listFilter);
   }, [choosenSortPrice, isChoosenSortH2L]);
-
-  useEffect(() => {
-    //scroll the component to top when you enter to the page from route
-    scrollToTop();
-  }, []);
 
   return !loading ? (
     <div className="CategoryPage">

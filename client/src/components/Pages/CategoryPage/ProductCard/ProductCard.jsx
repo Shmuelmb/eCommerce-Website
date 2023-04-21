@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Addbtn from "./Addbtn/Addbtn.jsx";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import { GlobalContext } from "../../../GlobalContext/GlobalContext.jsx";
 import Zoom from "@mui/material/Zoom";
 import "./ProductCard.css";
 const ProductCard = ({ id, Urlimage, title, price }) => {
   const navigate = useNavigate("products");
   const { setProductID } = useContext(GlobalContext);
+
   return (
     <Zoom in={true}>
       <div className="product-card">
