@@ -26,29 +26,6 @@ function App() {
   //init const var
   const cookies = new Cookies();
 
-  // // func
-  // const onFilterChange = (e) => {
-  //   if (e.target.innerText === "New Arrivals") {
-  //     setProducts(allProducts);
-  //   } else {
-  //     setProducts(allProducts.filter((p) => p.category === e.target.innerText));
-  //   }
-  // };
-
-  // const onSearchClick = (e) => {
-  //   if (e.target.value.length > 0) {
-  //     products.map((item) => {
-  //       if (item.title.includes(e.target.value)) {
-  //         setProducts(
-  //           [...products].filter((p) => p.title.includes(e.target.value))
-  //         );
-  //       }
-  //     });
-  //   } else {
-  //     setProducts(allProducts);
-  //   }
-  // };
-
   const getData = async () => {
     try {
       const response = await fetch(`${BASE_URL}/api/products/getAllProducts`);
@@ -88,7 +65,6 @@ function App() {
         </Routes>
       </div>
       <Footer />
-      {/* </MyContext.Provider> */}
     </BrowserRouter>
   );
 }

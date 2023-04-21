@@ -15,9 +15,10 @@ import Cookies from "universal-cookie";
 import { GlobalContext } from "../../GlobalContext/GlobalContext";
 import { BASE_URL } from "../../../.js/constant-vars";
 import { scrollToTop } from "../../../.js/functions";
+import LoadingPage from "../LoadingPage/LoadingPage";
 
 const LoginPage = () => {
-  const { setIsAuth, setLoadingAppData } = useContext(GlobalContext);
+  const { setIsAuth } = useContext(GlobalContext);
   //init package
   const cookies = new Cookies();
   //useState
@@ -31,6 +32,7 @@ const LoginPage = () => {
   const [disButton, setDisButton] = useState(true);
   const [isLogin, setIsLogin] = useState(true);
   const [openModal, setOpenModal] = useState(false);
+  const [loading, setLoaidng] = useState(false);
   const handleClose = () => setOpenModal(false);
 
   //useEffect
@@ -65,6 +67,7 @@ const LoginPage = () => {
   //api func
   const login = async (checkUser) => {
     try {
+      setLoaidng(true);
       const newUser = JSON.stringify(checkUser);
       const response = await fetch(`${BASE_URL}/api/users/login`, {
         method: "POST",
@@ -81,20 +84,20 @@ const LoginPage = () => {
       } else {
         setIsLogin(true);
         setIsAuth(true);
-        setLoadingAppData(true);
-
         cookies.set("TOKEN", user.accessToken, {
           expires: expiresDate(),
         });
-        setTimeout(() => navigate(user.navigate), 3000);
+        navigate(user.navigate);
       }
       setOpenModal(true);
     } catch (e) {
       console.log(e);
+    } finally {
+      setLoaidng(false);
     }
   };
 
-  return (
+  return !loading ? (
     <div className="login-container">
       <div className="login-box">
         <div className="login">
@@ -171,6 +174,8 @@ const LoginPage = () => {
         </div>
       </Modal>
     </div>
+  ) : (
+    <LoadingPage />
   );
 };
 
