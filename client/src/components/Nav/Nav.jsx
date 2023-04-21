@@ -12,7 +12,7 @@ import Drawer from "@mui/material/Drawer";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
-import MyContext from "../../.js/MyContext";
+import { GlobalContext } from "../GlobalContext/GlobalContext";
 import {
   upDateUserCartListAfterReload,
   toggleDrawer,
@@ -28,7 +28,7 @@ const Nav = () => {
     userCartList,
     setUserCartList,
     setCartList,
-  } = useContext(MyContext);
+  } = useContext(GlobalContext);
   // state obj
   const [ItemsAmounts, setItemsAmounts] = useState();
   const navigate = useNavigate();

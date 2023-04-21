@@ -12,12 +12,12 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Modal from "@mui/material/Modal";
 import Cookies from "universal-cookie";
-import MyContext from "../../../.js/MyContext";
+import { GlobalContext } from "../../GlobalContext/GlobalContext";
 import { BASE_URL } from "../../../.js/constant-vars";
 import { scrollToTop } from "../../../.js/functions";
 
 const LoginPage = () => {
-  const { setIsAuth, setIsAdmin } = useContext(MyContext);
+  const { setIsAuth, setLoadingAppData } = useContext(GlobalContext);
   //init package
   const cookies = new Cookies();
   //useState
@@ -81,7 +81,8 @@ const LoginPage = () => {
       } else {
         setIsLogin(true);
         setIsAuth(true);
-        setIsAdmin(user.IsAdmin);
+        setLoadingAppData(true);
+
         cookies.set("TOKEN", user.accessToken, {
           expires: expiresDate(),
         });

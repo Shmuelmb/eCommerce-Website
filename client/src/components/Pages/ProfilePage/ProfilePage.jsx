@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import Cookies from "universal-cookie";
-import MyContext from "../../../.js/MyContext";
+import { GlobalContext } from "../../GlobalContext/GlobalContext";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import "./ProfilePage.css";
 import Modal from "@mui/material/Modal";
@@ -17,19 +17,14 @@ const ProfilePage = () => {
   const [loading, setLoading] = useState(true);
   const [openModal, setOpenModal] = useState(false);
   const [openModalDelete, setOpenModalDelete] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const handleClose = () => {
     setOpenModal(false);
     setOpenModalDelete(false);
   };
 
-  const {
-    setIsAuth,
-    isAdmin,
-    isAuth,
-    setIsAdmin,
-    setStateDrawer,
-    stateDrawer,
-  } = useContext(MyContext);
+  const { setIsAuth, isAuth, setStateDrawer, stateDrawer } =
+    useContext(GlobalContext);
 
   const getProfile = async () => {
     try {
@@ -44,7 +39,7 @@ const ProfilePage = () => {
       const data = await response.json();
       if (data.success) {
         setUser(data.massage);
-        setIsAdmin(true);
+        setIsAdmin(data.massage.IsAdmin);
       } else {
         setIsAuth(false);
         setIsAdmin(false);
