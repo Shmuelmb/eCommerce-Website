@@ -17,11 +17,11 @@ import { BASE_URL } from "../../../.js/constant-vars";
 import { scrollToTop } from "../../../.js/functions";
 
 const LoginPage = () => {
-  const { setIsAuth } = useContext(MyContext);
+  const { setIsAuth, setIsAdmin } = useContext(MyContext);
   //init package
   const cookies = new Cookies();
   //useState
-  const navigate = useNavigate();
+  const navigate = useNavigate("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [obj, setObj] = useState({
@@ -81,6 +81,7 @@ const LoginPage = () => {
       } else {
         setIsLogin(true);
         setIsAuth(true);
+        setIsAdmin(user.IsAdmin);
         cookies.set("TOKEN", user.accessToken, {
           expires: expiresDate(),
         });

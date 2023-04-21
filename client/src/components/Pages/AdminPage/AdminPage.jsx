@@ -1,10 +1,38 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { scrollToTop } from "../../../.js/functions";
+import { BASE_URL } from "../../../.js/constant-vars";
+import Cookies from "universal-cookie";
+import MyContext from "../../../.js/MyContext";
 const AdminPage = () => {
   const navigate = useNavigate("");
+  const cookies = new Cookies();
+  const { setIsAdmin, setIsAuth } = useContext(MyContext);
+  const adminAuth = async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/api/users/admin`, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: ` ${cookies.get("TOKEN")}`,
+        },
+      });
+      const data = await response.json();
+      if (data.success) {
+        setIsAuth(true);
+        setIsAdmin(data.massage.IsAdmin);
+      } else {
+        setIsAuth(false);
+        console.log(data);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   useEffect(() => {
+    adminAuth();
     scrollToTop();
   }, []);
 

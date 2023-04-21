@@ -49,8 +49,21 @@ export const profile = async (token) => {
   const decoded = verify(token, TOKEN_SECRET);
   if (decoded) {
     const findUser = await Users.findOne({ _id: decoded.id });
-
     return findUser;
+  } else {
+    return false;
+  }
+};
+
+export const admin = async (token) => {
+  const decoded = verify(token, TOKEN_SECRET);
+  if (decoded) {
+    const findUser = await Users.findOne({ _id: decoded.id });
+    if (findUser.isAdmin) {
+      return findUser;
+    } else {
+      return false;
+    }
   } else {
     return false;
   }
