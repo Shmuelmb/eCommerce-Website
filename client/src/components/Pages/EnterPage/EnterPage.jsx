@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./EnterPage.css";
 import Hero from "./Hero/Hero";
-import MyContext from "../../../.js/MyContext";
+import { GlobalContext } from "../../GlobalContext/GlobalContext";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import menCatImg from "../../../images/men-category.png";
 import womanCatImg from "../../../images/women-category.png";
@@ -11,7 +11,7 @@ import { scrollToTop } from "../../../.js/functions";
 import { useLocation } from "react-router-dom";
 
 const EnterPage = () => {
-  const { loading } = useContext(MyContext);
+  const { loading } = useContext(GlobalContext);
   const navigate = useNavigate();
 
   //scroll the component to top when you enter to the page from route

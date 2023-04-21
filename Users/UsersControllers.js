@@ -33,7 +33,7 @@ export const loginController = async (req, res) => {
       res.status(400).send({ login: false });
     } else {
       user.login = true;
-      user.navigate = "/";
+      user.navigate = "/profile";
       res.status(200).send(user);
     }
   } catch (e) {
@@ -58,7 +58,13 @@ export const adminController = async (req, res) => {
   const token = req.headers.authorization;
   try {
     const user = await admin(token);
-    res.status(200).send({ massage: user, success: true });
+    if (!user) {
+      res
+        .status(200)
+        .send({ massage: "This user is not an administrator", success: false });
+    } else {
+      res.status(200).send({ massage: user, success: true });
+    }
   } catch (e) {
     console.log(e);
     res.status(400).send({ error: e, success: false });

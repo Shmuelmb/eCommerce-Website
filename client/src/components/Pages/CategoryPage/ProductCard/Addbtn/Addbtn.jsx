@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import MyContext from "../../../../../.js/MyContext";
+import { GlobalContext } from "../../../../GlobalContext/GlobalContext";
 import "./prod-btns.css";
 import { upDateUserCartList, addAmount } from "../../../../../.js/functions";
 const Addbtn = ({ id }) => {
   const { setCartList, cartList, setUserCartList, userCartList } =
-    useContext(MyContext);
+    useContext(GlobalContext);
 
   return (
     <button

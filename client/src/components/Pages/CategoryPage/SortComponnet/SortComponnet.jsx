@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import MyContext from "../../../../.js/MyContext";
+import { GlobalContext } from "../../../GlobalContext/GlobalContext";
 import "./SortComponnet.css";
 const SortComponnet = () => {
-  const { setIsChoosenSortH2L } = useContext(MyContext);
+  const { setIsChoosenSortH2L } = useContext(GlobalContext);
   return (
     <div className="products-sort">
       <select

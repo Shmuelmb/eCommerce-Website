@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import MyContext from "../../../../../.js/MyContext";
+import { GlobalContext } from "../../../../GlobalContext/GlobalContext";
 import "./Filter.css";
 import Slider from "@mui/material/Slider";
 
@@ -8,19 +8,13 @@ import Slider from "@mui/material/Slider";
 const Filter = () => {
   const {
     products,
-
     setChoosenSortPrice,
     isChoosenSortH2L,
     setIsChoosenSortH2L,
     listCategoryProducts,
-  } = useContext(MyContext);
+  } = useContext(GlobalContext);
 
   //func
-  const handleToggleChoosenSort = () => {
-    isChoosenSortH2L === false
-      ? setIsChoosenSortH2L(true)
-      : setIsChoosenSortH2L(false);
-  };
 
   //actions
   const priceList = listCategoryProducts
