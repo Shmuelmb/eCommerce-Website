@@ -1,15 +1,19 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { scrollToTop } from "../../../.js/functions";
 import { BASE_URL } from "../../../.js/constant-vars";
 import Cookies from "universal-cookie";
-import MyContext from "../../../.js/MyContext";
+import { GlobalContext } from "../../GlobalContext/GlobalContext";
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 const AdminPage = () => {
   const navigate = useNavigate("");
   const cookies = new Cookies();
-  const { setIsAdmin, setIsAuth } = useContext(MyContext);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const { setLoadingAppData } = useContext(GlobalContext);
   const adminAuth = async () => {
     try {
+      setLoadingAppData(false);
       const response = await fetch(`${BASE_URL}/api/users/admin`, {
         method: "GET",
         headers: {
@@ -20,14 +24,15 @@ const AdminPage = () => {
       });
       const data = await response.json();
       if (data.success) {
-        setIsAuth(true);
-        setIsAdmin(data.massage.IsAdmin);
+        setIsAdmin(true);
       } else {
-        setIsAuth(false);
+        setIsAdmin(false);
         console.log(data);
       }
     } catch (e) {
       console.log(e);
+    } finally {
+      setLoadingAppData(false);
     }
   };
 
@@ -36,7 +41,7 @@ const AdminPage = () => {
     scrollToTop();
   }, []);
 
-  return (
+  return isAdmin ? (
     <div>
       <h1>Hello there &#128075;</h1>
       <h3>What you want to do ?</h3>
@@ -49,6 +54,8 @@ const AdminPage = () => {
         </button>
       </div>
     </div>
+  ) : (
+    <NotFoundPage />
   );
 };
 

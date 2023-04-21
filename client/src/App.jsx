@@ -1,6 +1,6 @@
 import "./App.css";
-import { useEffect, useState } from "react";
-import MyContext from "./.js/MyContext";
+import { useEffect, useState, useContext } from "react";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import EnterPage from "./components/Pages/EnterPage/EnterPage";
 import NotFoundPage from "./components/Pages/NotFoundPage/NotFoundPage";
@@ -18,50 +18,36 @@ import CategoryPage from "./components/Pages/CategoryPage/CategoryPage";
 import Cookies from "universal-cookie";
 import { BASE_URL } from "./.js/constant-vars";
 import { addKeyForObjState } from "./.js/functions";
+import { GlobalContext } from "./components/GlobalContext/GlobalContext";
 function App() {
-  // init seState object
-  const [searchValue, setSearchValue] = useState("");
-  const [choosenSortPrice, setChoosenSortPrice] = useState([0, 999]);
-  const [isChoosenSortH2L, setIsChoosenSortH2L] = useState("");
-  const [products, setProducts] = useState([]); // המוצרים עם השינויים שלהם
-  const [allProducts, setAllProducts] = useState([]); // רשימת המוצרים ללא שינוים עליהם
-  const [loadingAppData, setLoadingAppData] = useState(true);
-  const [cartList, setCartList] = useState([]);
-  const [productID, setProductID] = useState("");
-  const [productsFilter, setProductsFilter] = useState([]);
-  const [isAuth, setIsAuth] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [listCategoryProducts, setListCategoryProducts] = useState([]);
-  const [userCartList, setUserCartList] = useState(
-    JSON.parse(localStorage.getItem("userList")) || []
-  );
-  const [stateDrawer, setStateDrawer] = useState({ right: false });
+  const { setLoadingAppData, setAllProducts, setCartList, setIsAuth } =
+    useContext(GlobalContext);
 
   //init const var
   const cookies = new Cookies();
 
-  // func
-  const onFilterChange = (e) => {
-    if (e.target.innerText === "New Arrivals") {
-      setProducts(allProducts);
-    } else {
-      setProducts(allProducts.filter((p) => p.category === e.target.innerText));
-    }
-  };
+  // // func
+  // const onFilterChange = (e) => {
+  //   if (e.target.innerText === "New Arrivals") {
+  //     setProducts(allProducts);
+  //   } else {
+  //     setProducts(allProducts.filter((p) => p.category === e.target.innerText));
+  //   }
+  // };
 
-  const onSearchClick = (e) => {
-    if (e.target.value.length > 0) {
-      products.map((item) => {
-        if (item.title.includes(e.target.value)) {
-          setProducts(
-            [...products].filter((p) => p.title.includes(e.target.value))
-          );
-        }
-      });
-    } else {
-      setProducts(allProducts);
-    }
-  };
+  // const onSearchClick = (e) => {
+  //   if (e.target.value.length > 0) {
+  //     products.map((item) => {
+  //       if (item.title.includes(e.target.value)) {
+  //         setProducts(
+  //           [...products].filter((p) => p.title.includes(e.target.value))
+  //         );
+  //       }
+  //     });
+  //   } else {
+  //     setProducts(allProducts);
+  //   }
+  // };
 
   const getData = async () => {
     try {
@@ -78,66 +64,31 @@ function App() {
 
   useEffect(() => {
     getData();
+    if (cookies.get("TOKEN")) {
+      setIsAuth(true);
+    }
   }, []);
 
   return (
     <BrowserRouter>
-      <MyContext.Provider
-        value={{
-          isAdmin,
-          setIsAdmin,
-          stateDrawer,
-          setStateDrawer,
-          userCartList,
-          setUserCartList,
-          listCategoryProducts,
-          setListCategoryProducts,
-          setIsAuth,
-          isAuth,
-          productsFilter,
-          setProductsFilter,
-          onSearchClick,
-          searchValue,
-          setSearchValue,
-          isChoosenSortH2L,
-          setIsChoosenSortH2L,
-          addKeyForObjState,
-          setProducts,
-          setAllProducts,
-          setLoadingAppData,
-          loadingAppData,
-          setProductID,
-          productID,
-          products,
-          cartList,
-          setCartList,
-          choosenSortPrice,
-          onFilterChange,
-          setChoosenSortPrice,
-          allProducts,
-        }}
-      >
-        <Nav />
-        <div className="main">
-          <Routes>
-            <Route path="/" element={<EnterPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/admin" element={<AdminPage />} />
-            <Route
-              path="/admin/product-management"
-              element={<ManagProdPage />}
-            />
-            <Route path="/admin/users-management" element={<ManagUsers />} />
-            <Route path="/about" element={<AboutMePage />} />
-            <Route path="/products/:productid" element={<ProductPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="*" element={<NotFoundPage />} />
-            <Route path="/category/:category" element={<CategoryPage />} />
-          </Routes>
-        </div>
-        <Footer />
-      </MyContext.Provider>
+      <Nav />
+      <div className="main">
+        <Routes>
+          <Route path="/" element={<EnterPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/admin/product-management" element={<ManagProdPage />} />
+          <Route path="/admin/users-management" element={<ManagUsers />} />
+          <Route path="/about" element={<AboutMePage />} />
+          <Route path="/products/:productid" element={<ProductPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/category/:category" element={<CategoryPage />} />
+        </Routes>
+      </div>
+      <Footer />
+      {/* </MyContext.Provider> */}
     </BrowserRouter>
   );
 }

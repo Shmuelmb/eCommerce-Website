@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import MyContext from "../../../.js/MyContext";
+import { GlobalContext } from "../../GlobalContext/GlobalContext";
 import "./ShoppingCart.css";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
@@ -11,7 +11,7 @@ import {
 
 const ShoppingCart = () => {
   const { cartList, setCartList, setUserCartList, userCartList } =
-    useContext(MyContext);
+    useContext(GlobalContext);
 
   return (
     <ul className="shoppingCart">

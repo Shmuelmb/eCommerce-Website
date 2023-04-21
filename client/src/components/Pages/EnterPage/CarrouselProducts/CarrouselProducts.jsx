@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { getMultipleRandom } from "../../../../.js/functions";
 import "./CarrouselProducts.css";
-import MyContext from "../../../../.js/MyContext";
+import { GlobalContext } from "../../../GlobalContext/GlobalContext";
 import ProductCard from "../../CategoryPage/ProductCard/ProductCard";
 const CarrouselProducts = () => {
   const [carrouselItems, setCarrouselItems] = useState([]);
-  const { allProducts } = useContext(MyContext);
+  const { allProducts } = useContext(GlobalContext);
   useEffect(() => {
     const arr = getMultipleRandom(allProducts, 5);
     setCarrouselItems(arr);

@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import MyContext from "../../../.js/MyContext";
+import { GlobalContext } from "../../GlobalContext/GlobalContext.jsx";
 import BarTools from "./BarTools/BarTools.jsx";
 import "./CategoryPage.css";
 import ProductCard from "./ProductCard/ProductCard";
 import SortComponnet from "./SortComponnet/SortComponnet";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import { BASE_URL } from "../../../.js/constant-vars";
-
+import { scrollToTop } from "../../../.js/functions";
 const CategoryPage = () => {
   //func
   const filterProductsPriceHigh2Low = (x) => {
@@ -44,7 +44,7 @@ const CategoryPage = () => {
     setListCategoryProducts,
     listCategoryProducts,
     choosenSortPrice,
-  } = useContext(MyContext);
+  } = useContext(GlobalContext);
 
   const getProducts = async () => {
     try {
@@ -82,7 +82,10 @@ const CategoryPage = () => {
     setLocalList(listFilter);
   }, [choosenSortPrice, isChoosenSortH2L]);
 
-  useEffect(() => {}, [isChoosenSortH2L]);
+  useEffect(() => {
+    //scroll the component to top when you enter to the page from route
+    scrollToTop();
+  }, []);
 
   return !loading ? (
     <div className="CategoryPage">

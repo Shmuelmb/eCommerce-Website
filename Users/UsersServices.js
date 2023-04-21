@@ -59,7 +59,8 @@ export const admin = async (token) => {
   const decoded = verify(token, TOKEN_SECRET);
   if (decoded) {
     const findUser = await Users.findOne({ _id: decoded.id });
-    if (findUser.isAdmin) {
+    console.log(findUser);
+    if (findUser.IsAdmin) {
       return findUser;
     } else {
       return false;
