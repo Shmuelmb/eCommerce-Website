@@ -76,31 +76,8 @@ function App() {
     }
   };
 
-  const auth = async () => {
-    try {
-      const response = await fetch(`${BASE_URL}/api/users/profile`, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: ` ${cookies.get("TOKEN")}`,
-        },
-      });
-      const data = await response.json();
-      if (data.success) {
-        setIsAuth(true);
-      } else {
-        setIsAuth(false);
-        console.log(data);
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
   useEffect(() => {
     getData();
-    auth();
   }, []);
 
   return (

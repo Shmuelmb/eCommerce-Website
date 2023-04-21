@@ -16,7 +16,7 @@ const AddUser = () => {
       placeholder: "enter user name",
     },
     {
-      type: "number",
+      type: "text",
       name: "password",
       placeholder: "enter password",
     },
