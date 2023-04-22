@@ -49,7 +49,6 @@ export const profileController = async (req, res) => {
     res.status(200).send({ massage: user, success: true });
   } catch (e) {
     console.log(e);
-
     res.status(400).send({ error: e, success: false });
   }
 };
@@ -98,8 +97,6 @@ export const allUsersController = async (req, res) => {
 export const addUserController = async (req, res) => {
   let { username, password, email, isAdmin } = req.body;
   isAdmin = isAdmin === "true" ? true : false;
-  console.log(isAdmin);
-
   try {
     if (password.length < 8) {
       res.status(500).send({ message: "your password not safe" });

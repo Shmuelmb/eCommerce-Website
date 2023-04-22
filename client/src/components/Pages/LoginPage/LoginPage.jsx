@@ -32,7 +32,7 @@ const LoginPage = () => {
   const [disButton, setDisButton] = useState(true);
   const [isLogin, setIsLogin] = useState(true);
   const [openModal, setOpenModal] = useState(false);
-  const [loading, setLoaidng] = useState(false);
+  const [loading, setLoading] = useState(false);
   const handleClose = () => setOpenModal(false);
 
   //useEffect
@@ -61,13 +61,13 @@ const LoginPage = () => {
 
   const expiresDate = () => {
     const d = new Date();
-    d.setDate(d.getDate() + 30);
+    d.setDate(d.getDate() + 1);
     return d;
   };
   //api func
   const login = async (checkUser) => {
     try {
-      setLoaidng(true);
+      setLoading(true);
       const newUser = JSON.stringify(checkUser);
       const response = await fetch(`${BASE_URL}/api/users/login`, {
         method: "POST",
@@ -93,7 +93,7 @@ const LoginPage = () => {
     } catch (e) {
       console.log(e);
     } finally {
-      setLoaidng(false);
+      setLoading(false);
     }
   };
 
@@ -157,11 +157,8 @@ const LoginPage = () => {
           >
             Login
           </Button>
-          <p onClick={() => navigate("/register")}>
-            Already have an account? Click Here
-          </p>
+          <p onClick={() => navigate("/register")}>Don't have a user yet? </p>
         </div>
-        {/* <img className="img2" src={loginImg} alt="s" /> */}
       </div>
       <Modal className="modal-box" open={openModal} onClose={handleClose}>
         <div className="modal-message">
