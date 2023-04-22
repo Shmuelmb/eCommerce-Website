@@ -78,7 +78,7 @@
 
 @media screen and (max-width: 1000px) {
   .profile-page {
-    padding: 10% 0 10% 0;
+    padding: 2% 0 10% 0;
     width: 100%;
   }
 
@@ -90,7 +90,6 @@
   }
   .personal-info {
     height: auto;
-    border-top: 1px solid rgba(0, 0, 0, 0.637);
     border-bottom: 1px solid rgba(0, 0, 0, 0.637);
     padding: 20% 0 20% 0;
   }

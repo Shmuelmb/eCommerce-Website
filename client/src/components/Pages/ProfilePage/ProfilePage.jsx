@@ -38,6 +38,8 @@ const ProfilePage = () => {
       });
       const data = await response.json();
       if (data.success) {
+        console.log(data);
+
         setUser(data.massage);
         setIsAdmin(data.massage.IsAdmin);
       } else {
@@ -71,12 +73,11 @@ const ProfilePage = () => {
 
   return !loading ? (
     <div className="profile-page">
-      <h1>Hello {user.UserName}</h1>
       <div className="profile-page-content">
         <div className="personal-info">
           <h2>Personal Info</h2>
+          <p>Username: {user.UserName}</p>
           <p>Email: {user.Email} </p>
-          <p>Your ID: {user._id}</p>
         </div>
         <div className="personal-cart">
           <h2>My Cart</h2>

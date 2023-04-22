@@ -44,9 +44,9 @@ export const login = async (username, password) => {
     return false;
   }
 };
-
 export const profile = async (token) => {
   const decoded = verify(token, TOKEN_SECRET);
+  console.log(decoded);
   if (decoded) {
     const findUser = await Users.findOne({ _id: decoded.id });
     return findUser;

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { createContext } from "react";
 
 export const GlobalContext = createContext(null);
+
 export const Context = ({ children }) => {
   const [searchValue, setSearchValue] = useState("");
   const [choosenSortPrice, setChoosenSortPrice] = useState([0, 999]);
@@ -32,7 +33,6 @@ export const Context = ({ children }) => {
         isAuth,
         productsFilter,
         setProductsFilter,
-        // onSearchClick,
         searchValue,
         setSearchValue,
         isChoosenSortH2L,
@@ -47,7 +47,6 @@ export const Context = ({ children }) => {
         cartList,
         setCartList,
         choosenSortPrice,
-        // onFilterChange,
         setChoosenSortPrice,
         allProducts,
       }}
