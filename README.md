@@ -1,7 +1,7 @@
 # eCommerce-Website
 Hellow there !
 welocme to my final project at GoCode college
-My project based on technilogies like: HTML&CSS, React, Material UI, NodeJS, MongoDB, JWT and more
+My project based on technilogies like: HTML&CSS, React, Material UI, NodeJS, MongoDB, JWT and more.
 Link to my Deploy: https://click-fashion.onrender.com/ .
 
 # Install
