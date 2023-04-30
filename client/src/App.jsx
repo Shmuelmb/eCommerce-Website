@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import EnterPage from "./components/Pages/EnterPage/EnterPage";
 import NotFoundPage from "./components/Pages/NotFoundPage/NotFoundPage";
@@ -14,7 +14,6 @@ import LoginPage from "./components/Pages/LoginPage/LoginPage";
 import ProfilePage from "./components/Pages/ProfilePage/ProfilePage";
 import ProductPage from "./components/Pages/ProductPage/ProductPage";
 import CategoryPage from "./components/Pages/CategoryPage/CategoryPage";
-import Cookies from "universal-cookie";
 import { BASE_URL } from "./.js/constant-vars";
 import { addKeyForObjState } from "./.js/functions";
 import { GlobalContext } from "./components/GlobalContext/GlobalContext";
