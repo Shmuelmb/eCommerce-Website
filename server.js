@@ -20,6 +20,7 @@ import {
   deleteUserController,
   allUsersController,
   addUserController,
+  loginGoogleUserController,
 } from "./Users/UsersControllers.js";
 import { validateToken } from "./Users/JWT.js";
 import { fileURLToPath } from "url";
@@ -93,6 +94,7 @@ app.get("/api/users/profile", validateToken, profileController);
 app.get("/api/users/admin", validateToken, adminController);
 app.get("/api/users/getAllUsers", allUsersController);
 app.post("/api/users/addUser", addUserController);
+app.post("/api/google-login", loginGoogleUserController);
 
 //build route
 app.get("*", (req, res) => {

@@ -40,10 +40,7 @@
   color: black;
 }
 
-@media screen and (max-width: 1000px) {
-  .login-container {
-    height: 50vh;
-  }
+@media screen and (max-width: 900px) {
   .login-box {
     padding: 5%;
   }

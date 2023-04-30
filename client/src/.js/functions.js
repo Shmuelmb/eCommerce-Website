@@ -1,4 +1,5 @@
-import { unionBy } from "lodash";
+import pkg from "lodash";
+const { unionBy } = pkg;
 // function unionBy(...arrays) {
 //   const iteratee = arrays.pop();
 //   if (Array.isArray(iteratee)) {
@@ -82,4 +83,20 @@ export const toggleDrawer = (anchor, open, setState, state) => (event) => {
   }
 
   setState({ ...state, [anchor]: open });
+};
+
+export const generatePassword = () => {
+  const charset =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let password = "";
+  for (let i = 0; i < 8; i++) {
+    password += charset.charAt(Math.floor(Math.random() * charset.length));
+  }
+  return password;
+};
+
+export const expiresDate = () => {
+  const d = new Date();
+  d.setDate(d.getDate() + 1);
+  return d;
 };

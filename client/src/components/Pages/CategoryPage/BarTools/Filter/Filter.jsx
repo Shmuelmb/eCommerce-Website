@@ -29,15 +29,13 @@ const Filter = () => {
   return (
     <div className="sort">
       <Slider
-        value={value} // הערך שכרגע אני נמצא שם
+        value={value}
         onChange={(event) => {
-          setValue(event.target.value); // משנה כל רגע את הערך לפי הלחיצות שלי
+          setValue(event.target.value);
         }}
-        valueLabelDisplay="auto" // מראה את המספר שאני נמצא בו
+        valueLabelDisplay="auto"
         min={minDistance}
         max={maxDistance}
-        // step={null}  marks on input range
-        // marks={marks}marks on input range
       />
       <div className="price-view">
         <p>${value[0]}</p>

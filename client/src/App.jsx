@@ -1,6 +1,5 @@
 import "./App.css";
 import { useEffect, useState, useContext } from "react";
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import EnterPage from "./components/Pages/EnterPage/EnterPage";
 import NotFoundPage from "./components/Pages/NotFoundPage/NotFoundPage";
@@ -20,11 +19,10 @@ import { BASE_URL } from "./.js/constant-vars";
 import { addKeyForObjState } from "./.js/functions";
 import { GlobalContext } from "./components/GlobalContext/GlobalContext";
 function App() {
-  const { setLoadingAppData, setAllProducts, setCartList, setIsAuth } =
+  const { setLoadingAppData, setAllProducts, setCartList, setIsAuth, isAuth } =
     useContext(GlobalContext);
 
   //init const var
-  const cookies = new Cookies();
 
   const getData = async () => {
     try {
@@ -38,14 +36,9 @@ function App() {
       setLoadingAppData(false);
     }
   };
-
   useEffect(() => {
     getData();
-    if (cookies.get("TOKEN")) {
-      setIsAuth(true);
-    }
   }, []);
-
   return (
     <BrowserRouter>
       <Nav />

@@ -14,11 +14,11 @@ import Modal from "@mui/material/Modal";
 import Cookies from "universal-cookie";
 import { GlobalContext } from "../../GlobalContext/GlobalContext";
 import { BASE_URL } from "../../../.js/constant-vars";
-import { scrollToTop } from "../../../.js/functions";
+import { scrollToTop, expiresDate } from "../../../.js/functions";
 import LoadingPage from "../LoadingPage/LoadingPage";
-
+import LoginWithGoogle from "../LoginWithGoogle/LoginWithGoogle";
 const LoginPage = () => {
-  const { setIsAuth } = useContext(GlobalContext);
+  const { setIsAuth, isAuth } = useContext(GlobalContext);
   //init package
   const cookies = new Cookies();
   //useState
@@ -32,23 +32,9 @@ const LoginPage = () => {
   const [disButton, setDisButton] = useState(true);
   const [isLogin, setIsLogin] = useState(true);
   const [openModal, setOpenModal] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const handleClose = () => setOpenModal(false);
 
-  //useEffect
-  useEffect(() => {
-    const checkLenOfInput = (arr) => arr.every((val) => val.length > 0);
-    const objVal = Object.values(obj);
-    if (checkLenOfInput(objVal) && obj.password.length > 7) {
-      setDisButton(false);
-    } else {
-      setDisButton(true);
-    }
-  }, [obj]);
-
-  useEffect(() => {
-    scrollToTop();
-  }, []);
   //func
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event) => {
@@ -59,15 +45,9 @@ const LoginPage = () => {
       ? setError("The Password must contain at least eight digits")
       : setError(" ");
 
-  const expiresDate = () => {
-    const d = new Date();
-    d.setDate(d.getDate() + 1);
-    return d;
-  };
   //api func
   const login = async (checkUser) => {
     try {
-      setLoading(true);
       const newUser = JSON.stringify(checkUser);
       const response = await fetch(`${BASE_URL}/api/users/login`, {
         method: "POST",
@@ -97,10 +77,55 @@ const LoginPage = () => {
     }
   };
 
+  const checkIsAuth = async () => {
+    const token = cookies.get("TOKEN");
+    if (token) {
+      try {
+        setLoading(true);
+        const response = await fetch(`${BASE_URL}/api/users/profile`, {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: ` ${token}`,
+          },
+        });
+        const data = await response.json();
+        if (data.success) {
+          setIsAuth(true);
+          navigate("/profile");
+        } else {
+          setIsAuth(false);
+          navigate("/login");
+        }
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      setLoading(false);
+    }
+  };
+  //useEffect
+  useEffect(() => {
+    const checkLenOfInput = (arr) => arr.every((val) => val.length > 0);
+    const objVal = Object.values(obj);
+    if (checkLenOfInput(objVal) && obj.password.length > 7) {
+      setDisButton(false);
+    } else {
+      setDisButton(true);
+    }
+  }, [obj]);
+
+  useEffect(() => {
+    scrollToTop();
+    checkIsAuth();
+  }, []);
   return !loading ? (
     <div className="login-container">
       <div className="login-box">
-        <div className="login">
+        <form className="login">
           <TextField
             onChange={(event) => {
               setObj({ ...obj, username: event.target.value });
@@ -109,6 +134,7 @@ const LoginPage = () => {
             placeholder="User name"
             variant="standard"
             helperText="please enter your username"
+            autoComplete="on"
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -125,9 +151,9 @@ const LoginPage = () => {
             }}
             placeholder="Password"
             type={showPassword ? "text" : "password"}
-            autoComplete="current-password"
             variant="standard"
             helperText={error ? error : "please enter your password"}
+            autoComplete="on"
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -158,7 +184,8 @@ const LoginPage = () => {
             Login
           </Button>
           <p onClick={() => navigate("/register")}>Don't have a user yet? </p>
-        </div>
+          <LoginWithGoogle />
+        </form>
       </div>
       <Modal className="modal-box" open={openModal} onClose={handleClose}>
         <div className="modal-message">

@@ -6,6 +6,43 @@ import JWT from "jsonwebtoken";
 
 const { verify } = JWT;
 
+export const loginGoogleUser = async (username, password, email, isadmin) => {
+  let hash = await bcrypt.hash(password, 10);
+  try {
+    const findUser = await Users.findOne({ Email: email });
+    let user = {};
+    if (findUser) {
+      //login
+      const accessToken = createTokens(findUser);
+      user = {
+        username: username,
+        id: findUser._id,
+        accessToken: accessToken,
+      };
+      return user;
+    } else {
+      //register
+      const newUser = new Users({
+        UserName: username,
+        Password: hash,
+        Email: email,
+        IsAdmin: isadmin,
+      });
+      console.log(`add new user: ${newUser.UserName}`);
+      newUser.save();
+      const accessToken = createTokens(newUser);
+      user = {
+        username: username,
+        id: newUser._id,
+        accessToken: accessToken,
+      };
+      return user;
+    }
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 export const register = async (username, password, email, isadmin) => {
   let hash = await bcrypt.hash(password, 10);
   const userNameCheck = await Users.findOne({ UserName: username });
@@ -46,7 +83,6 @@ export const login = async (username, password) => {
 };
 export const profile = async (token) => {
   const decoded = verify(token, TOKEN_SECRET);
-  console.log(decoded);
   if (decoded) {
     const findUser = await Users.findOne({ _id: decoded.id });
     return findUser;
@@ -59,7 +95,6 @@ export const admin = async (token) => {
   const decoded = verify(token, TOKEN_SECRET);
   if (decoded) {
     const findUser = await Users.findOne({ _id: decoded.id });
-    console.log(findUser);
     if (findUser.IsAdmin) {
       return findUser;
     } else {
