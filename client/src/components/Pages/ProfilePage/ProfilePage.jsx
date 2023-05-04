@@ -6,7 +6,6 @@ import LoadingPage from "../LoadingPage/LoadingPage";
 import "./ProfilePage.css";
 import Modal from "@mui/material/Modal";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../../../.js/constant-vars";
 import { scrollToTop, toggleDrawer } from "../../../.js/functions";
 import ShoppingCart from "../../Nav/ShoppingCart/ShoppingCart";
 
@@ -28,14 +27,17 @@ const ProfilePage = () => {
 
   const getProfile = async () => {
     try {
-      const response = await fetch(`${BASE_URL}/api/users/profile`, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: ` ${cookies.get("TOKEN")}`,
-        },
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/api/users/profile`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: ` ${cookies.get("TOKEN")}`,
+          },
+        }
+      );
       const data = await response.json();
       if (data.success) {
         console.log(data);
@@ -55,9 +57,12 @@ const ProfilePage = () => {
   };
   const deleteUser = async (id) => {
     try {
-      const response = await fetch(`${BASE_URL}/api/users/deleteUser/${id}`, {
-        method: "delete",
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/api/users/deleteUser/${id}`,
+        {
+          method: "delete",
+        }
+      );
       const msg = await response.json();
       console.log(msg);
     } catch (e) {

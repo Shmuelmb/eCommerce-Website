@@ -90,3 +90,6 @@ h1 {
   color: #0050b6;
   transform: translateY(0);
 }
+#g_a11y_announcement {
+  display: none !important;
+}

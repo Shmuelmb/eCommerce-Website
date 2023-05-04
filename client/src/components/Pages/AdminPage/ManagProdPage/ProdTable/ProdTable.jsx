@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { BASE_URL } from "../../../../../.js/constant-vars";
 import "./ProdTable.css";
 const ProdTable = () => {
   const [state, setState] = useState([]);
 
   const getData = async () => {
     try {
-      const response = await fetch(`${BASE_URL}/api/products/getAllProducts`);
+      const response = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/api/products/getAllProducts`
+      );
       const data = await response.json();
       setState(data);
     } catch (err) {
@@ -15,9 +16,12 @@ const ProdTable = () => {
   };
   const removeItem = async (id) => {
     try {
-      const req = await fetch(`${BASE_URL}/api/products/deleteProduct/${id}`, {
-        method: "DELETE",
-      });
+      const req = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/api/products/deleteProduct/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
     } catch (err) {
       console.log(err);
     }

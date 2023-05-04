@@ -13,10 +13,9 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Modal from "@mui/material/Modal";
 import Cookies from "universal-cookie";
 import { GlobalContext } from "../../GlobalContext/GlobalContext";
-import { BASE_URL } from "../../../.js/constant-vars";
 import { scrollToTop, expiresDate } from "../../../.js/functions";
 import LoadingPage from "../LoadingPage/LoadingPage";
-import LoginWithGoogle from "../LoginWithGoogle/LoginWithGoogle";
+import LoginWithGoogle from "./LoginWithGoogle/LoginWithGoogle";
 const LoginPage = () => {
   const { setIsAuth, isAuth } = useContext(GlobalContext);
   //init package
@@ -49,14 +48,17 @@ const LoginPage = () => {
   const login = async (checkUser) => {
     try {
       const newUser = JSON.stringify(checkUser);
-      const response = await fetch(`${BASE_URL}/api/users/login`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: newUser,
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/api/users/login`,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: newUser,
+        }
+      );
       const user = await response.json();
 
       if (!user.login) {
@@ -82,14 +84,17 @@ const LoginPage = () => {
     if (token) {
       try {
         setLoading(true);
-        const response = await fetch(`${BASE_URL}/api/users/profile`, {
-          method: "GET",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: ` ${token}`,
-          },
-        });
+        const response = await fetch(
+          `${import.meta.env.VITE_BASE_URL}/api/users/profile`,
+          {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: ` ${token}`,
+            },
+          }
+        );
         const data = await response.json();
         if (data.success) {
           setIsAuth(true);
@@ -184,8 +189,8 @@ const LoginPage = () => {
             Login
           </Button>
           <p onClick={() => navigate("/register")}>Don't have a user yet? </p>
-          <LoginWithGoogle />
         </form>
+        <LoginWithGoogle />
       </div>
       <Modal className="modal-box" open={openModal} onClose={handleClose}>
         <div className="modal-message">

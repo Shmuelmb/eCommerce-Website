@@ -3,7 +3,6 @@ import "./ProductPage.css";
 import { useParams } from "react-router-dom";
 import Addbtn from "../CategoryPage/ProductCard/Addbtn/Addbtn";
 import Grow from "@mui/material/Grow";
-import { BASE_URL } from "../../../.js/constant-vars";
 import { scrollToTop } from "../../../.js/functions";
 
 const ProductPage = () => {
@@ -12,7 +11,7 @@ const ProductPage = () => {
   const getData = async () => {
     try {
       const response = await fetch(
-        `${BASE_URL}/api/products/getProduct/${productid}`
+        `${import.meta.env.VITE_BASE_URL}/api/products/getProduct/${productid}`
       );
       const data = await response.json();
       setProduct(data);

@@ -13,7 +13,6 @@ import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../../../.js/constant-vars";
 import { scrollToTop } from "../../../.js/functions";
 
 const RegisterPage = () => {
@@ -59,14 +58,17 @@ const RegisterPage = () => {
   const register = async (user) => {
     try {
       const newUser = JSON.stringify(user);
-      const response = await fetch(`${BASE_URL}/api/users/register`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: newUser,
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/api/users/register`,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: newUser,
+        }
+      );
       const data = await response.json();
       if (!data.register) {
         setIsRegister(false);

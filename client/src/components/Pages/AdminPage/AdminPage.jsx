@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { scrollToTop } from "../../../.js/functions";
-import { BASE_URL } from "../../../.js/constant-vars";
 import Cookies from "universal-cookie";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import LoadingPage from "../LoadingPage/LoadingPage";
@@ -13,14 +12,17 @@ const AdminPage = () => {
   const adminAuth = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${BASE_URL}/api/users/admin`, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: ` ${cookies.get("TOKEN")}`,
-        },
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/api/users/admin`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: ` ${cookies.get("TOKEN")}`,
+          },
+        }
+      );
       const data = await response.json();
       if (data.success) {
         setIsAdmin(true);

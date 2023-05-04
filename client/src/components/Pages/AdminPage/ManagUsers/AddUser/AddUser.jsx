@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { BASE_URL } from "../../../../../.js/constant-vars";
 
 const AddUser = () => {
   const [obj, setObj] = useState({
@@ -37,14 +36,17 @@ const AddUser = () => {
   const addUser = async (user) => {
     try {
       const newUser = JSON.stringify(user);
-      const response = await fetch(`${BASE_URL}/api/users/addUser`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: newUser,
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/api/users/addUser`,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: newUser,
+        }
+      );
       const req = await response.json();
       console.log(req);
     } catch (e) {

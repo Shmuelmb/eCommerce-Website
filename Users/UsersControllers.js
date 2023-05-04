@@ -8,21 +8,17 @@ import {
 } from "./UsersServices.js";
 import { loginGoogleUser } from "./UsersServices.js";
 import { generatePassword } from "../client/src/.js/functions.js";
-import dotenv from "dotenv";
 import { OAuth2Client } from "google-auth-library";
 
 const client = new OAuth2Client();
-dotenv.config();
-const { CLIENT_ID } = process.env;
 
 export const loginGoogleUserController = async (req, res) => {
   const { token } = req.body;
   const ticket = await client.verifyIdToken({
     idToken: token,
-    audience: CLIENT_ID,
   });
   const { name, email } = ticket.getPayload();
-  const password = generatePassword(); // פונקציה שמביאה סיסמא רנדומלית
+  const password = generatePassword();
   try {
     const User = await loginGoogleUser(name, password, email);
     !User ? res.status(400).send({ login: false }) : res.status(200).send(User);

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { BASE_URL } from "../../../../../.js/constant-vars";
 const UsersTable = () => {
   const [state, setState] = useState([]);
 
   const getData = async () => {
     try {
-      const response = await fetch(`${BASE_URL}/api/users/getAllUsers`);
+      const response = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/api/users/getAllUsers`
+      );
       const data = await response.json();
       setState(data);
     } catch (err) {
@@ -14,9 +15,12 @@ const UsersTable = () => {
   };
   const removeUser = async (id) => {
     try {
-      const req = await fetch(`${BASE_URL}/api/users/deleteUser/${id}`, {
-        method: "DELETE",
-      });
+      const req = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/api/users/deleteUser/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
     } catch (err) {
       console.log(err);
     }
