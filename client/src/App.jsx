@@ -16,7 +16,7 @@ import CategoryPage from "./components/Pages/CategoryPage/CategoryPage";
 import { addKeyForObjState } from "./.js/functions";
 import { GlobalContext } from "./components/GlobalContext/GlobalContext";
 function App() {
-  const { setLoadingAppData, setAllProducts, setCartList, setIsAuth, isAuth } =
+  const { setLoadingAppData, setAllProducts, setCartList } =
     useContext(GlobalContext);
 
   //init const var
@@ -37,6 +37,7 @@ function App() {
   };
   useEffect(() => {
     getData();
+    console.log(import.meta.env);
   }, []);
   return (
     <BrowserRouter>
