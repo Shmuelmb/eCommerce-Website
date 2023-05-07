@@ -2,8 +2,8 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import UsersRoutes from "./routes/UsersRoutes.js";
-import ProductsRoutes from "./routes/ProductsRoutes.js";
+import UsersRoutes from "./Routes/UsersRoutes.js";
+import ProductsRoutes from "./Routes/ProductsRoutes.js";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
