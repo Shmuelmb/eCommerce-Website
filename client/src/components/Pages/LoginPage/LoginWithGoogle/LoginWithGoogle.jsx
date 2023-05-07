@@ -24,7 +24,7 @@ function LoginWithGoogle() {
     });
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_BASE_URL}/api/google-login`,
+        `${import.meta.env.VITE_BASE_URL}/api/users/google-login`,
         {
           method: "POST",
           body: JSON.stringify({

@@ -19,8 +19,6 @@ function App() {
   const { setLoadingAppData, setAllProducts, setCartList } =
     useContext(GlobalContext);
 
-  //init const var
-
   const getData = async () => {
     try {
       const response = await fetch(
