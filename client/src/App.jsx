@@ -37,7 +37,6 @@ function App() {
   };
   useEffect(() => {
     getData();
-    console.log(import.meta.env);
   }, []);
   return (
     <BrowserRouter>
